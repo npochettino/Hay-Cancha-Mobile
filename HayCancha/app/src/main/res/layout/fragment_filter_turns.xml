@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp">
+
+        <sempait.haycancha.widgets.HelveticaNeueLightTextView
+            android:id="@+id/exp_date_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:padding="5dp"
+            android:text="@string/day"
+            android:visibility="gone" />
+
+
+        <sempait.haycancha.widgets.HelveticaNeueLightEditText
+            android:id="@+id/exp_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:editable="false"
+            android:focusable="true"
+            android:gravity="center"
+            android:hint="@string/day"
+            android:maxLength="6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <sempait.haycancha.widgets.HelveticaNeueLightTextView
+            android:id="@+id/exp_hour_from_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:padding="5dp"
+
+            android:text="@string/hour_from"
+            android:visibility="gone" />
+
+
+        <sempait.haycancha.widgets.HelveticaNeueLightEditText
+            android:id="@+id/exp_hour_from"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:editable="false"
+            android:focusable="true"
+            android:gravity="center"
+            android:hint="@string/hour_from"
+            android:maxLength="6" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <sempait.haycancha.widgets.HelveticaNeueLightTextView
+            android:id="@+id/exp_hour_to_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="@string/hour_to"
+            android:visibility="gone" />
+
+
+        <sempait.haycancha.widgets.HelveticaNeueLightEditText
+            android:id="@+id/exp_hour_to"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="3"
+            android:cursorVisible="false"
+            android:editable="false"
+            android:focusable="true"
+            android:gravity="center"
+            android:hint="@string/hour_to"
+            android:maxLength="6"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_hay_cancha"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/green"
+        android:text="Hay cancha!"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+
+    <ImageView
+        android:id="@+id/img_hay_cancha"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_weight="2"
+        android:src="@drawable/logo_sombra" />
+
+    <ImageView
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_weight="2"
+        android:src="@drawable/logo"
+        android:visibility="invisible" />
+
+</LinearLayout>

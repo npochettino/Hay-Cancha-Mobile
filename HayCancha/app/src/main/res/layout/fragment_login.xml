@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/master_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_fondo"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/app_name"
+            android:padding="20dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/hay_cancha_verde_sin_sombra" />
+
+
+        <LinearLayout
+            android:id="@+id/form"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
+
+
+            <sempait.haycancha.widgets.HelveticaNeueLightEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:hint="@string/email"
+                android:imeOptions="actionNext"
+                android:inputType="textWebEmailAddress"
+                android:singleLine="true"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green" />
+
+
+            <sempait.haycancha.widgets.HelveticaNeueLightEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:hint="@string/password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green" />
+
+
+            <Button
+                android:id="@+id/btn_hay_cancha"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"
+                android:text="@string/login"
+                android:textColor="@color/green"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/btn_forgot_pass"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/green"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/btn_done"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_below="@id/form"-->
+            <!--android:layout_marginBottom="30dp"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:layout_marginRight="30dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:background="@drawable/login">-->
+
+
+            <!--<sempait.disfrazaterojas.Utils.HelveticaNeueLightTextView-->
+            <!--android:id="@+id/btn_done_text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:text="@string/done"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="@dimen/text_size_subtitle" />-->
+
+            <!--</RelativeLayout>-->
+
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/btn_crear_cuenta"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_below="@id/form"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:layout_marginRight="30dp"-->
+            <!--android:background="@drawable/create_account">-->
+
+            <!--<sempait.haycancha.widgets.HelveticaNeueLightTextView-->
+            <!--android:id="@+id/btn_craar_cuenta_text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:text="Crear cuenta"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="18sp" />-->
+
+            <Button
+                android:id="@+id/btn_crear_cuenta"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"
+                android:text="@string/singup"
+                android:textColor="@color/green"
+                android:textSize="16sp" />
+
+
+            <ImageView
+                android:id="@+id/img_login_facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/facebook_login" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

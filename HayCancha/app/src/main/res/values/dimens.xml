@@ -1,0 +1,28 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="btn_name">16sp</dimen>
+    <dimen name="text_row_list">20sp</dimen>
+
+    <!-- List View -->
+    <dimen name="min_list_view">14sp</dimen>
+
+    <!-- Dimen to Linear Layout List -->
+    <dimen name="list_linear_text">16sp</dimen>
+
+    <dimen name="btn_rounded_corner">5dp</dimen>
+    <dimen name="pager_footer_height">25dp</dimen>
+    <dimen name="pager_footer_width">150dp</dimen>
+    <dimen name="header_img">180dp</dimen>
+    <dimen name="header_img_small">100dp</dimen>
+    <dimen name="height_button">45dp</dimen>
+    <dimen name="pager_footer_margin">5dp</dimen>
+    <dimen name="purchase_picker_btn_size">50dp</dimen>
+    <dimen name="purchase_picker_btn_margin">5dp</dimen>
+    <dimen name="purchase_picker_padding">5dp</dimen>
+    <dimen name="purchase_picker_edit_text_size">45dp</dimen>
+    <dimen name="purchase_picker_width">200dp</dimen>
+    <dimen name="navigation_drawer_width">280dp</dimen>
+</resources>

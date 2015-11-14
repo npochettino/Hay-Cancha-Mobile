@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/img_cinema_row_favorite"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:background="@android:color/transparent"
+        android:padding="5dp"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <sempait.haycancha.widgets.HelveticaNeueLightTextView
+            android:id="@+id/txt_field_row_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="Complejo Name"
+            android:textColor="@color/btn_gray"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <sempait.haycancha.widgets.HelveticaNeueLightTextView
+                android:id="@+id/txt_field_row_direction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="Complejo Direction"
+                android:textColor="@color/btn_gray" />
+
+            <sempait.haycancha.widgets.HelveticaNeueLightTextView
+                android:id="@+id/txt_field_row_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:textColor="@color/black_light"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <sempait.haycancha.widgets.HelveticaNeueLightTextView
+            android:id="@+id/txt_field_row_field_cod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="cancha 1"
+            android:textColor="@color/btn_gray" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lyt_stars_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:id="@+id/img_billboard_star_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="1dp"
+                android:src="@drawable/star_off" />
+
+            <ImageView
+                android:id="@+id/img_billboard_star_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="1dp"
+                android:src="@drawable/star_off" />
+
+            <ImageView
+                android:id="@+id/img_billboard_star_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="1dp"
+                android:src="@drawable/star_off" />
+
+            <ImageView
+                android:id="@+id/img_billboard_star_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="1dp"
+                android:src="@drawable/star_off" />
+
+            <ImageView
+                android:id="@+id/img_billboard_star_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="1dp"
+                android:src="@drawable/star_off" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/txt_field_row_save_me"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerInside"
+            android:src="@drawable/reservar" />
+
+        <sempait.haycancha.widgets.HelveticaNeueLightTextView
+            android:id="@+id/txt_field_row_hoour_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:singleLine="true"
+            android:text="10:00 am"
+            android:textColor="@color/green" />
+
+    </LinearLayout>
+
+</LinearLayout>
