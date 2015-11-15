@@ -38,12 +38,14 @@ public class TurnListAdapter extends BaseAdapter {
     private Context mContext;
     private SaveTurnTask mSaveTurnTask;
     private GetLocalTask mGetLocalTask;
+    private String mDate;
 
 
-    public TurnListAdapter(List<Turn> turns, Context context) {
+    public TurnListAdapter(List<Turn> turns, Context context, String date) {
         turnList = turns;
         mInflater = LayoutInflater.from(context);
         mContext = context;
+        mDate = date;
 
     }
 
@@ -147,21 +149,8 @@ public class TurnListAdapter extends BaseAdapter {
 
                 } else {
 
-                    ConfirmDialogCustom dialog = new ConfirmDialogCustom("Hubo un problema, intentalo nuevamente, más tarde", "Buscar turnos", "Aceptar") {
-                        @Override
-                        public void actionButtonLeft() {
-                            super.actionButtonLeft();
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.fields), mContext.getString(R.string.acept_text));
 
-
-                        }
-
-                        @Override
-                        public void actionButtonRigth() {
-                            super.actionButtonRigth();
-
-
-                        }
-                    };
                     FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
                     ft.add(dialog, null);
                     ft.commitAllowingStateLoss();
@@ -214,7 +203,7 @@ public class TurnListAdapter extends BaseAdapter {
         };
 
         mSaveTurnTask.mCodigoUsuario = ConfigurationClass.getUserCod(mContext);
-        mSaveTurnTask.mFecha = turn.getDate();
+        mSaveTurnTask.mFecha = mDate;
         mSaveTurnTask.mCodigoCancha = Integer.parseInt(turn.getCodigoCancha());
         mSaveTurnTask.mHDesde = Integer.parseInt(turn.getHoraDesde());
         mSaveTurnTask.mHHasta = Integer.parseInt(turn.getHoraHasta());

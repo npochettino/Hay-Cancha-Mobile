@@ -147,9 +147,10 @@
                 android:id="@+id/img_login_facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
+                android:padding="30dp"
+                android:layout_gravity="center_horizontal"
                 android:scaleType="centerInside"
-                android:src="@drawable/facebook_login" />
+                android:src="@drawable/fb" />
 
 
         </LinearLayout>

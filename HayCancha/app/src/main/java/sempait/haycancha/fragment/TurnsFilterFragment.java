@@ -230,19 +230,23 @@ public class TurnsFilterFragment extends BaseFragment {
 
                 if (result != null) {
 
+                    Date date = myCalendar.getTime();
+                    SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+                    String stringDate = format1.format(date);
+
                     if (result.length() != 2) {
 
                         List<Turn> mTurns = new Gson().fromJson(result.toString(), new TypeToken<List<Turn>>() {
                         }.getType());
 
-                        getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnoFragment.newIntance(mTurns), true);
+                        getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnFragment.newIntance(mTurns, stringDate), true);
                     } else
-                        getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnoFragment.newIntance(new ArrayList<Turn>()), true);
+                        getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnFragment.newIntance(new ArrayList<Turn>(), stringDate), true);
 
 
                 } else {
 
-                    ConfirmDialogCustom dialog=  new ConfirmDialogCustom("Hubo un problema, intentelo nuevamente", "Crear cuenta", "Aceptar");
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.fields), mContext.getString(R.string.acept_text));
 
                     FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
                     ft.add(dialog, null);

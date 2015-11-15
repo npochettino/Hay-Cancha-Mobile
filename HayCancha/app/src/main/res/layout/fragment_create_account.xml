@@ -59,6 +59,7 @@
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:singleLine="true"
+                android:textColor="@color/green"
                 android:textColorHint="@color/green" />
 
             <sempait.haycancha.widgets.HelveticaNeueLightEditText

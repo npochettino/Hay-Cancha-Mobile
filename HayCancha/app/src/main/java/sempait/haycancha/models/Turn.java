@@ -28,12 +28,12 @@ public class Turn implements Serializable {
 
     public String getDate() {
 
-        return "12-11-2015 02:27:44";
+        return "12/11/2015";
     }
 
     public void setDate(String date) {
 
-        this.date = "12-11-2015 02:27:44";
+        this.date = "12/11/2015";
 
     }
 
