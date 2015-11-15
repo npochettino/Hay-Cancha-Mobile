@@ -3,6 +3,7 @@ package sempait.haycancha.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import sempait.haycancha.ConfigurationClass;
-import sempait.haycancha.DialogCatalog;
+import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.activities.LoginActivity;
 import sempait.haycancha.base.BaseActivity;
@@ -86,16 +87,22 @@ public class CreateAccountFragment2 extends BaseFragment {
                 if (allFildCompleted()) {
 
                     if (mEtPassword.getText().toString().equals(mEtConfirmPassword.getText().toString()))
-
-
                         executeServiceAccount();
+                    else {
+                        ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_password_message), mContext.getString(R.string.create_account_title), mContext.getString(R.string.acept_text));
+                        FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                        ft.add(dialog, null);
+                        ft.commitAllowingStateLoss();
+                    }
 
 
-                    else
-                        DialogCatalog.mensajeError("Los campos de contraseña deben coincidir", mContext);
+                } else {
 
-                } else
-                    DialogCatalog.mensajeError("Debe completar todos los datos del formulario", mContext);
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_form_incomplete_message), mContext.getString(R.string.create_account_title), mContext.getString(R.string.acept_text));
+                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                    ft.add(dialog, null);
+                    ft.commitAllowingStateLoss();
+                }
 
             }
         });
@@ -111,14 +118,27 @@ public class CreateAccountFragment2 extends BaseFragment {
                 super.onPostExecute(result);
 
 
+                ConfirmDialogCustom dialog;
+
+
                 if (result != null) {
 
-                    if (result != null) {
-                        DialogCatalog.mensajeError("La cuenta fue creada con éxito", mContext);
-                        ((BaseActivity) mContext).startActivity(new Intent(((BaseActivity) mContext), LoginActivity.class));
-                        ((BaseActivity) mContext).finish();
-                    } else
-                        DialogCatalog.mensajeError("Hubo un problema, intentelo nuevamente mas tarde", mContext);
+                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_create_account_message), mContext.getString(R.string.create_account_title), mContext.getString(R.string.acept_text));
+                    ((BaseActivity) mContext).startActivity(new Intent(((BaseActivity) mContext), LoginActivity.class));
+                    ((BaseActivity) mContext).finish();
+                } else
+                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.create_account_title), mContext.getString(R.string.acept_text));
+
+
+                FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                ft.add(dialog, null);
+                ft.commitAllowingStateLoss();
+
+            }
+
+
+        };
+
 
 //                    switch (Integer.valueOf(result)) {
 
@@ -146,17 +166,6 @@ public class CreateAccountFragment2 extends BaseFragment {
 
 //                }
 
-
-                } else
-
-                    DialogCatalog.mensajeError("Hubo un problema, intentelo nuevamente mas tarde", mContext);
-
-            }
-
-
-        }
-
-        ;
 
         if (ConfigurationClass.getUserNameCompleted(mContext) != null)
             mCreateTask.mCodigoUsuario = ConfigurationClass.getUserCod(mContext);

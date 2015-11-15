@@ -1,10 +1,5 @@
 package sempait.haycancha.drawer;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Shader;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,13 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import sempait.haycancha.ConfigurationClass;
+import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseDrawerFragment;
-import sempait.haycancha.R;
 import sempait.haycancha.fragment.TurnsFilterFragment;
 
 import static sempait.haycancha.R.drawable.background_drawer_selected;

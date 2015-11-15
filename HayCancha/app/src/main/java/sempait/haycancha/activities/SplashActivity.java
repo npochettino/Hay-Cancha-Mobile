@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import sempait.haycancha.ConfigurationClass;
-import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.R;
+import sempait.haycancha.base.BaseActivity;
 
 /**
  * Created by martin on 19/10/15.

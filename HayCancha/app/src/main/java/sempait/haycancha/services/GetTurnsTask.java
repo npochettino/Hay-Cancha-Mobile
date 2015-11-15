@@ -2,16 +2,12 @@ package sempait.haycancha.services;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
-
-import java.util.Calendar;
-import java.util.Date;
 
 import sempait.haycancha.Constants;
 import sempait.haycancha.base.BaseActivity;

@@ -9,13 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+import sempait.haycancha.R;
 import sempait.haycancha.adapter.TurnListAdapter;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.Turn;
-import sempait.haycancha.R;
 
 /**
  * Created by martin on 24/10/15.

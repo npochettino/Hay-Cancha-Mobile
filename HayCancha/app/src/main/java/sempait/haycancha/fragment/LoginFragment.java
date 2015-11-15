@@ -2,9 +2,9 @@ package sempait.haycancha.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +19,13 @@ import com.google.gson.reflect.TypeToken;
 import java.util.List;
 
 import sempait.haycancha.ConfigurationClass;
-import sempait.haycancha.DialogCatalog;
+import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.activities.LoginActivity;
 import sempait.haycancha.activities.MainActivity;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.User;
-import sempait.haycancha.services.CreateAccountTask;
 import sempait.haycancha.services.LoginTask;
 
 /**
@@ -84,8 +83,12 @@ public class LoginFragment extends BaseFragment {
 
                 if (allFildCompleted())
                     executeLoginService();
-                else
-                    DialogCatalog.mensajeError("Debe completar todos los datos del formulario", mContext);
+                else {
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_form_incomplete_message), mContext.getString(R.string.login_title), mContext.getString(R.string.acept_text));
+                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                    ft.add(dialog, null);
+                    ft.commitAllowingStateLoss();
+                }
             }
         });
 
@@ -151,7 +154,10 @@ public class LoginFragment extends BaseFragment {
 
                 } else {
 
-                    DialogCatalog.logueoIncorrecto("El usuario y/o contraseña son incorrectos", mContext);
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_user_password_wrong), mContext.getString(R.string.login_title), mContext.getString(R.string.acept_text));
+                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                    ft.add(dialog, null);
+                    ft.commitAllowingStateLoss();
                 }
 
 

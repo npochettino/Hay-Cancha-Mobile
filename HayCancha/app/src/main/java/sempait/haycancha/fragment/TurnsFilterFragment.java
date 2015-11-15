@@ -8,6 +8,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,6 @@ import android.widget.TimePicker;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,8 +28,9 @@ import java.util.List;
 import java.util.Locale;
 
 import sempait.haycancha.ConfigurationClass;
-import sempait.haycancha.DialogCatalog;
+import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
+import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.Turn;
 import sempait.haycancha.services.GetTurnsTask;
@@ -241,7 +242,11 @@ public class TurnsFilterFragment extends BaseFragment {
 
                 } else {
 
-                    DialogCatalog.mensajeError("Hubo un problema, intentelo nuevamente", mContext);
+                    ConfirmDialogCustom dialog=  new ConfirmDialogCustom("Hubo un problema, intentelo nuevamente", "Crear cuenta", "Aceptar");
+
+                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                    ft.add(dialog, null);
+                    ft.commitAllowingStateLoss();
                 }
 
 

@@ -7,9 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
-import sempait.haycancha.DialogCatalog;
+import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
@@ -55,7 +54,7 @@ public class CreateAccountFragment extends BaseFragment {
                 if (allFildCompleted())
                     ((BaseActivity) mContext).replaceInnerFragmentWhitFLip(new CreateAccountFragment2().newInstance(mEtName.getText().toString(), mEtLastName.getText().toString(), mEtPhone.getText().toString()), true);
                 else
-                    DialogCatalog.mensajeError("Debe completar todos los datos del formulario", mContext);
+                    new ConfirmDialogCustom("Hubo un problema, intentelo nuevamente", getString(R.string.create_account_title), getString(R.string.acept_text));
             }
         });
     }

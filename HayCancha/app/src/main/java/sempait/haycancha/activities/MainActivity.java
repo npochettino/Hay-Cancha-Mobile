@@ -8,9 +8,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import sempait.haycancha.R;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.drawer.MainNavigationDrawer;
-import sempait.haycancha.R;
 
 
 public class MainActivity extends BaseActivity {

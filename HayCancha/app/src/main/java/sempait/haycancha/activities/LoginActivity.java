@@ -3,10 +3,7 @@ package sempait.haycancha.activities;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
-
 import sempait.haycancha.R;
-import sempait.haycancha.base.BaseActivity;
-import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.base.BaseInnerActivity;
 import sempait.haycancha.fragment.LoginFragment;
 

@@ -1,8 +1,6 @@
 package sempait.haycancha.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,6 @@ import java.util.List;
 import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.models.Comment;
-import sempait.haycancha.models.Turn;
 
 /**
  * Created by martin on 14/11/15.

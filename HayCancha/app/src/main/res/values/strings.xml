@@ -29,6 +29,15 @@
     <string name="create_account_title">Registrarse</string>
     <string name="stadium_detail">Detalle Complejo</string>
     <string name="title_activity_maps">Map</string>
+    <string name="acept_text">"Aceptar"</string>
+    <string name="cancel_text">"Cancelar"</string>
+    <string name="error_message">"Hubo un problema, intentelo nuevamente"</string>
+    <string name="success_save_turn_message">"Excelente, esperemos a que tu canchero responda"</string>
+    <string name="save_turn">"Reservar turno"</string>
+    <string name="success_create_account_message">"La cuenta fue creada con éxito"</string>
+    <string name="error_password_message">"Los campos de contraseña deben coincidir"</string>
+    <string name="error_form_incomplete_message">"Debe completar todos los datos del formulario"</string>
+    <string name="error_user_password_wrong">"El usuario y/o contraseña son incorrectos"</string>
 
 
 </resources>

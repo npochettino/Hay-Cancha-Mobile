@@ -1,11 +1,11 @@
 package sempait.haycancha.adapter;
 
 import android.content.Context;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,23 +14,17 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import sempait.haycancha.ConfigurationClass;
-import sempait.haycancha.DialogCatalog;
+import sempait.haycancha.ConfirmDialogCustom;
+import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.fragment.FieldDetailFragment;
-import sempait.haycancha.fragment.ResultTurnoFragment;
 import sempait.haycancha.models.Stadium;
 import sempait.haycancha.models.Turn;
-import sempait.haycancha.R;
-import sempait.haycancha.models.User;
 import sempait.haycancha.services.GetLocalTask;
-import sempait.haycancha.services.GetTurnsTask;
 import sempait.haycancha.services.SaveTurnTask;
 
 
@@ -125,7 +119,7 @@ public class TurnListAdapter extends BaseAdapter {
         holder.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                executeSaveTurnService(turn);
+                executeSaveTurnService(turn, holder.save);
             }
         });
 
@@ -153,7 +147,25 @@ public class TurnListAdapter extends BaseAdapter {
 
                 } else {
 
-                    DialogCatalog.mensajeError("Hubo un problema, intentelo nuevamente", mContext);
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom("Hubo un problema, intentalo nuevamente, más tarde", "Buscar turnos", "Aceptar") {
+                        @Override
+                        public void actionButtonLeft() {
+                            super.actionButtonLeft();
+
+
+                        }
+
+                        @Override
+                        public void actionButtonRigth() {
+                            super.actionButtonRigth();
+
+
+                        }
+                    };
+                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                    ft.add(dialog, null);
+                    ft.commitAllowingStateLoss();
+
                 }
 
 
@@ -167,7 +179,7 @@ public class TurnListAdapter extends BaseAdapter {
 
     }
 
-    private void executeSaveTurnService(Turn turn) {
+    private void executeSaveTurnService(Turn turn, final ImageView image) {
 
         mSaveTurnTask = new SaveTurnTask(mContext) {
             @Override
@@ -175,15 +187,27 @@ public class TurnListAdapter extends BaseAdapter {
 
                 super.onPostExecute(result);
 
+                ConfirmDialogCustom dialog;
+
                 if (result != null) {
 
-                    DialogCatalog.mensajeError("Excelente, esperemos a que tu canchero responda", mContext);
 
+                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_save_turn_message), mContext.getString(R.string.save_turn), mContext.getString(R.string.acept_text));
+
+
+                    image.setImageResource(R.drawable.pendiente);
 
                 } else {
 
-                    DialogCatalog.mensajeError("Hubo un problema, intentelo nuevamente", mContext);
+
+                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.save_turn), mContext.getString(R.string.acept_text));
+
+
                 }
+
+                FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                ft.add(dialog, null);
+                ft.commitAllowingStateLoss();
 
 
             }
