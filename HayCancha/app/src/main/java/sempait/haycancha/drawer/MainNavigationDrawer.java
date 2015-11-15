@@ -15,9 +15,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import sempait.haycancha.ConfigurationClass;
+import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseDrawerFragment;
 import sempait.haycancha.R;
 import sempait.haycancha.fragment.TurnsFilterFragment;
@@ -135,13 +137,15 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
     public void setUserInfo() {
 
         mProfileItem.setVisibility(View.VISIBLE);
-            txt_userPosition.setText("("+ConfigurationClass.getDescPosition(mContext)+")");
+        txt_userPosition.setText("(" + ConfigurationClass.getDescPosition(mContext) + ")");
 //        txt_userTeamName.setText("(Aston birra)");
         txt_userName.setText(ConfigurationClass.getUserFirstNameUser(mContext));
         txt_userLastName.setText(ConfigurationClass.getUserLastNameUserUser(mContext));
 //        txt_userTeamName.setVisibility(View.VISIBLE);
 
-//            ImageLoader.getInstance().displayImage(user.getAvatar().contains("http:") ? user.getAvatar() : "http:" + user.getAvatar(), imgAvatar, Utils.getImageLoaderOptionRouded());
+        String url="http://3.bp.blogspot.com/-QgXJDaHt5Lo/UpxQPX_W-gI/AAAAAAAANII/TzU2P5KfGxU/s1600/3874_3_1219.jpg";
+
+        ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, imgAvatar, Utils.getImageLoaderOptionRouded());
 
 
     }

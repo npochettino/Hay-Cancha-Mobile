@@ -1,299 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.nirhart.parallaxscroll.views.ParallaxScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical">
-
-
-    <LinearLayout
-        android:id="@+id/content_map"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="vertical">
-
-        <fragment
-            android:id="@+id/cinema_map"
-            class="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/green" />
-
+    android:scrollbars="none"
+    app:parallax_factor="1.9">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical">
 
-
         <LinearLayout
+            android:id="@+id/content_map"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:id="@+id/img_type_salas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingLeft="1dp"
-
-                    android:paddingRight="1dp" />
-            </HorizontalScrollView>
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/green" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="40dp"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp">
-
-            <sempait.haycancha.widgets.HelveticaNeueLightTextView
-                android:id="@+id/stadium_name"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|left"
-                android:text="FULTITO"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <ImageView
-                android:id="@+id/img_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:singleLine="true" />
-
-            <sempait.haycancha.widgets.HelveticaNeueLightTextView
-                android:id="@+id/txt_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:text="2474663344"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-
-
-            <LinearLayout
-                android:id="@+id/lyt_stars_rating"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="right"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingRight="10dp">
-
-
-                <ImageView
-
-                    android:id="@+id/img_billboard_star_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="1dp"
-                    android:src="@drawable/star_off" />
-
-                <ImageView
-                    android:id="@+id/img_billboard_star_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="1dp"
-                    android:src="@drawable/star_off" />
-
-                <ImageView
-                    android:id="@+id/img_billboard_star_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="1dp"
-                    android:src="@drawable/star_off" />
-
-                <ImageView
-                    android:id="@+id/img_billboard_star_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="1dp"
-                    android:src="@drawable/star_off" />
-
-                <ImageView
-                    android:id="@+id/img_billboard_star_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="1dp"
-                    android:src="@drawable/star_off" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <sempait.haycancha.widgets.HelveticaNeueLightTextView
-            android:id="@+id/txt_info_stadium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|left"
-            android:minHeight="40dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:text="Las Heras y Moreno/Horarios de 09:00 a 23:00"
-            android:textColor="@color/black" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:orientation="vertical">
 
+            <fragment
+                android:id="@+id/cinema_map"
+                class="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/green" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <sempait.haycancha.widgets.HelveticaNeueLightTextView
+                    android:id="@+id/stadium_name"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="FULTITO"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/img_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true" />
+
+                <sempait.haycancha.widgets.HelveticaNeueLightTextView
+                    android:id="@+id/txt_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="2474663344"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+
+                <LinearLayout
+                    android:id="@+id/lyt_stars_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp">
+
+
+                    <ImageView
+
+                        android:id="@+id/img_billboard_star_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="1dp"
+                        android:src="@drawable/star_off" />
+
+                    <ImageView
+                        android:id="@+id/img_billboard_star_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="1dp"
+                        android:src="@drawable/star_off" />
+
+                    <ImageView
+                        android:id="@+id/img_billboard_star_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="1dp"
+                        android:src="@drawable/star_off" />
+
+                    <ImageView
+                        android:id="@+id/img_billboard_star_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="1dp"
+                        android:src="@drawable/star_off" />
+
+                    <ImageView
+                        android:id="@+id/img_billboard_star_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="1dp"
+                        android:src="@drawable/star_off" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
                 android:orientation="horizontal">
+
+                <sempait.haycancha.widgets.HelveticaNeueLightTextView
+                    android:id="@+id/txt_info_stadium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical|left"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:text="Las Heras y Moreno/Horarios de 09:00 a 23:00"
+                    android:textColor="@color/black" />
+
+                <sempait.haycancha.widgets.HelveticaNeueLightTextView
+                    android:id="@+id/txt_calificar_stadium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:text="Calificar"
+                    android:textColor="@color/green_dark"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <sempait.haycancha.widgets.HelveticaNeueLightTextView
+                        android:id="@+id/txt_calificar"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:text="CALIFICAR"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
 
 
                 <sempait.haycancha.widgets.HelveticaNeueLightTextView
-                    android:id="@+id/txt_calificar"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:gravity="left"
+                    android:id="@+id/txt_ver_coment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
                     android:paddingLeft="10dp"
-                    android:text="CALIFICAR"
+                    android:text="Ver comentarios"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
                     android:visibility="gone" />
 
 
             </LinearLayout>
 
-
-            <sempait.haycancha.widgets.HelveticaNeueLightTextView
-                android:id="@+id/txt_ver_coment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|left"
-                android:paddingLeft="10dp"
-                android:text="Ver comentarios"
-                android:textColor="@color/black"
-                android:visibility="gone" />
-
-
-        </LinearLayout>
-
-        <!--<View-->
+            <!--<View-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="0.6dp"-->
             <!--android:background="@color/light_gray_darker_transparent"-->
             <!--android:paddingBottom="10dp"-->
             <!--android:paddingLeft="10dp" />-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="40dp"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <sempait.haycancha.widgets.HelveticaNeueLightTextView
-                android:id="@+id/txt_turnos_disponibles"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|left"
-                android:paddingLeft="10dp"
-                android:text="TURNOS DISPONIBLES"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:visibility="gone" />
-
-            <sempait.haycancha.widgets.HelveticaNeueLightTextView
-                android:id="@+id/txt_cinema_detail_state"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:textColor="@color/gray"
-                android:textSize="14sp" />
+                android:minHeight="40dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
-        </LinearLayout>
+                <sempait.haycancha.widgets.HelveticaNeueLightTextView
+                    android:id="@+id/txt_turnos_disponibles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="10dp"
+                    android:text="TURNOS DISPONIBLES"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
 
-        <View
-        android:layout_width="match_parent"
-        android:layout_height="0.6dp"
-        android:background="@color/white"
-        android:paddingLeft="10dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="40dp"
-            android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-            <Button
-                android:id="@+id/btn_calificar"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:background="@drawable/button_border"
-                android:text="Calificar"
-                android:textColor="@color/green" />
-
-
-            <Button
-                android:id="@+id/btn_vercomentarios"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:background="@drawable/button_border"
-                android:text="Comentarios"
-                android:textColor="@color/green" />
-
-
-        </LinearLayout>
-
-
-        <Button
-            android:id="@+id/btn_hay_cancha"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:background="@drawable/button_border"
-            android:text="Turnos Disponibles"
-            android:textColor="@color/green" />
+                <sempait.haycancha.widgets.HelveticaNeueLightTextView
+                    android:id="@+id/txt_cinema_detail_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
 
             </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/green" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/img_type_salas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="1dp"
+
+                        android:paddingRight="1dp" />
+                </HorizontalScrollView>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/green" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="2dp">
+
+
+                <Button
+                    android:id="@+id/btn_hay_cancha"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:background="@color/green"
+                    android:text="Turnos Disponibles"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/list_comment"
+            android:layout_width="match_parent"
+            android:layout_height="940dp" />
+
 
     </LinearLayout>
 
 
-</LinearLayout>
-
-
+</com.nirhart.parallaxscroll.views.ParallaxScrollView>

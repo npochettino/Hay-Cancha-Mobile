@@ -39,12 +39,13 @@ public class SaveTurnTask extends AsyncTask<Void, Void, String> {
 
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
+        request.addProperty("codigoTurnoVariable", 0);
         request.addProperty("codigoCancha", mCodigoCancha);
         request.addProperty("fecha", mFecha);
         request.addProperty("horaDesde", mHDesde);
-        request.addProperty("HoraHasta", mHHasta);
+        request.addProperty("horaHasta", mHHasta);
         request.addProperty("codigoUsuarioApp", mCodigoUsuario);
-        request.addProperty("observaciones", "");
+        request.addProperty("observaciones", "hola");
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 

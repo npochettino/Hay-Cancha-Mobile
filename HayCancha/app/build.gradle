@@ -24,14 +24,12 @@ dependencies {
     compile files('libs/volley.jar')
     compile files('libs/gson-2.2.1.jar')
     compile files('libs/ksoap2-android-assembly-3.0.0-jar-with-dependencies.jar')
-
-
-
-
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.google.android.gms:play-services-gcm:7.0.0'
     compile 'com.google.android.gms:play-services-maps:8.1.0'
     compile 'com.github.nirhart:parallaxscroll:1.0'
     compile 'com.google.android.gms:play-services-location:7.0.0'
     compile 'com.google.android.gms:play-services:8.1.0'
+    compile files('libs/universal-image-loader-1.9.3-with-sources.jar')
+    compile files('libs/Parse-1.4.3.jar')
 }

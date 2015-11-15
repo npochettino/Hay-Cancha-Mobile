@@ -72,43 +72,6 @@ public class ResultTurnoFragment extends BaseFragment {
     private void fillDataAdapter() {
 
 
-//        List<Turn> mListTurn = new ArrayList<Turn>();
-//
-//        Turn mTurn = new Turn();
-//        mTurn.setDate("27/10/2015");
-//        mTurn.setHoraDesde("21:00");
-//        mTurn.setHoraHasta("11:00");
-//        mTurn.setDirection("Francia 2000");
-//        mTurn.setName("Heroes Futbol");
-//        mTurn.setDistance(3.5f);
-//        mTurn.setRaiting(4.5f);
-//
-//        mListTurn.add(mTurn);
-//
-//        Turn mTurn1 = new Turn();
-//        mTurn1.setDate("27/10/2015");
-//        mTurn1.setHoraDesde("20:00");
-//        mTurn1.setHoraHasta("11:00");
-//        mTurn1.setDirection("Oroño 839");
-//        mTurn1.setName("Centro Gol");
-//        mTurn1.setDistance(4.5f);
-//        mTurn1.setRaiting(5);
-//
-//        mListTurn.add(mTurn1);
-//
-//
-//        Turn mTurn2 = new Turn();
-//        mTurn2.setDate("27/10/2015");
-//        mTurn2.setHoraDesde("23:00");
-//        mTurn2.setHoraHasta("11:00");
-//        mTurn2.setDirection("Salta 1982");
-//        mTurn2.setName("Fultito");
-//        mTurn2.setDistance(5.5f);
-//        mTurn2.setRaiting(2.2f);
-//
-//        mListTurn.add(mTurn2);
-
-
         if (mListTurn != null && !mListTurn.isEmpty()) {
 
             TurnListAdapter mBillboardAdapter = new TurnListAdapter(mListTurn, mContext);

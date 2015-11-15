@@ -8,7 +8,7 @@
     android:padding="5dp">
 
     <ImageView
-        android:id="@+id/img_cinema_row_favorite"
+        android:id="@+id/img_logo"
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:background="@android:color/transparent"
@@ -133,7 +133,7 @@
             android:layout_gravity="center_horizontal"
             android:singleLine="true"
             android:text="10:00 am"
-            android:textColor="@color/green" />
+            android:textColor="@color/green_dark" />
 
     </LinearLayout>
 

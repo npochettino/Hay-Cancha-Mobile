@@ -253,7 +253,6 @@ public class TurnsFilterFragment extends BaseFragment {
 
 
         Date date = myCalendar.getTime();
-//        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String stringDate = format1.format(date);
 

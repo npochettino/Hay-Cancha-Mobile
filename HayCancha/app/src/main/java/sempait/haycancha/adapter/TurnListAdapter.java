@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.List;
 
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.DialogCatalog;
+import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.fragment.FieldDetailFragment;
 import sempait.haycancha.fragment.ResultTurnoFragment;
@@ -92,6 +94,7 @@ public class TurnListAdapter extends BaseAdapter {
             holder.rating = (LinearLayout) convertView.findViewById(R.id.lyt_stars_rating);
             holder.save = (ImageView) convertView.findViewById(R.id.txt_field_row_save_me);
             holder.fieldCod = (TextView) convertView.findViewById(R.id.txt_field_row_field_cod);
+            holder.logoStadium = (ImageView) convertView.findViewById(R.id.img_logo);
 
 
             convertView.setTag(holder);
@@ -107,6 +110,7 @@ public class TurnListAdapter extends BaseAdapter {
         setupRating(Float.parseFloat(turn.getPuntajeComplejo()), holder.rating);
         holder.hourTo.setText(turn.getHoraDesde() + " hs");
         holder.fieldCod.setText(turn.getDescripcionCancha() + " ($ " + turn.getPrecio() + ")");
+        ImageLoader.getInstance().displayImage(turn.getImagenComplejo().contains("http:") ? turn.getImagenComplejo() : "http:" + turn.getImagenComplejo(), holder.logoStadium, Utils.getImageLoaderOptionRouded());
 
 
         convertView.setOnClickListener(new View.OnClickListener() {
@@ -202,6 +206,7 @@ public class TurnListAdapter extends BaseAdapter {
         TextView direction;
         TextView distance;
         TextView hourTo;
+        ImageView logoStadium;
         TextView fieldCod;
         ImageView save;
         LinearLayout rating;
