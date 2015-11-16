@@ -67,7 +67,8 @@ public class PushNotificationReceiver extends ParsePushBroadcastReceiver {
                 .getSystemService(Context.NOTIFICATION_SERVICE);
 
 
-        Intent intent = new Intent(context, SplashActivity.class);
+        Intent intent = new Intent(context, DeepLinkActivity.class);
+        intent.putExtra("deeplink", deepLink);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
                 intent, PendingIntent.FLAG_UPDATE_CURRENT);
