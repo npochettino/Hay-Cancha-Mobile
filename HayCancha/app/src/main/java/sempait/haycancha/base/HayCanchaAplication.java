@@ -1,6 +1,7 @@
 package sempait.haycancha.base;
 
 import android.app.Application;
+import android.text.style.SubscriptSpan;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
@@ -12,7 +13,8 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.parse.Parse;
-import com.parse.PushService;
+import com.parse.ParseInstallation;
+
 
 import java.io.File;
 
@@ -29,8 +31,9 @@ public class HayCanchaAplication extends Application {
         super.onCreate();
 
         Parse.initialize(this, "2p3PaBJnkhIVS4j2elSz51g3lXvOk1sszrnveJwj", "ZS8ojWT1G3QS1dLk6ZhA95yalnPuTX2dHmhW7nb8");
-        PushService.setDefaultPushCallback(this, SplashActivity.class);
-        PushService.subscribe(this, "HayCancha", SplashActivity.class);
+        ParseInstallation.getCurrentInstallation().saveInBackground();
+
+
 
         intializeImageLoader();
     }

@@ -19,6 +19,7 @@ import android.widget.TimePicker;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.parse.ParsePush;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -118,6 +119,12 @@ public class TurnsFilterFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 executeTurnsService();
+
+//                ParsePush push = new ParsePush();
+//                push.setMessage("Hola juancho avisame si te lelga esto por favor");
+//                push.sendInBackground();
+
+
             }
         });
 
