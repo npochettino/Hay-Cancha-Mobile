@@ -38,6 +38,7 @@
     <string name="error_password_message">"Los campos de contraseña deben coincidir"</string>
     <string name="error_form_incomplete_message">"Debe completar todos los datos del formulario"</string>
     <string name="error_user_password_wrong">"El usuario y/o contraseña son incorrectos"</string>
+    <string name="comment">"Comentario"</string>
 
 
 </resources>

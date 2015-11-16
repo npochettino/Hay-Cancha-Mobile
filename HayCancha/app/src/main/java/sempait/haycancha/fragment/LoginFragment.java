@@ -99,8 +99,6 @@ public class LoginFragment extends BaseFragment {
 
                 ((BaseActivity) mContext).replaceInnerFragmentWhitFLip(CreateAccountFragment.newInstance(), true);
 
-//                executeServiceAccount();
-
 
             }
         });

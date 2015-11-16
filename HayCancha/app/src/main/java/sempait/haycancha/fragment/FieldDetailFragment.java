@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.adapter.CommentListAdapter;
 import sempait.haycancha.adapter.CustomInfoWindowAdapter;
+import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.Comment;
 import sempait.haycancha.models.Stadium;
@@ -46,6 +49,7 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
     private Stadium mStadium;
     private TextView mTxtNameStadium;
     private TextView mTxtPhoneStadium;
+    private TextView mTxtCalificar;
     private TextView mTxtInfoStadium;
     private LinearLayout mLinearStars;
     private GoogleMap mMap;
@@ -89,6 +93,7 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
         mLinearStars = (LinearLayout) mView.findViewById(R.id.lyt_stars_rating);
         mLinearImages = (LinearLayout) mView.findViewById(R.id.img_type_salas);
         mListViewComment = (ListView) mView.findViewById(R.id.list_comment);
+        mTxtCalificar = (TextView) mView.findViewById(R.id.txt_calificar_stadium);
 
 
         setData();
@@ -96,6 +101,25 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
         return mView;
 
 
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        mTxtCalificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                RaitingDialogFragment dialog = new RaitingDialogFragment();
+                FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                ft.add(dialog, null);
+                ft.commitAllowingStateLoss();
+
+
+            }
+        });
     }
 
     @Override
@@ -173,7 +197,6 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
         mComment3.setRaiting(2.2f);
 
         mListComment.add(mComment3);
-
 
 
         Comment mComment4 = new Comment();
