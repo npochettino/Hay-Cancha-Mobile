@@ -1,6 +1,9 @@
 package sempait.haycancha.models;
 
+import android.location.Location;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * Created by martin on 26/10/15.
@@ -21,19 +24,19 @@ public class Turn implements Serializable {
     private String precio;
     private String direccion;
     private String puntajeComplejo;
-    private String latitud;
-    private String longitud;
+    private Double latitud;
+    private Double longitud;
     private String codigoCancha;
 
 
     public String getDate() {
 
-        return "12/11/2015";
+        return date;
     }
 
     public void setDate(String date) {
 
-        this.date = "12/11/2015";
+        this.date = date;
 
     }
 
@@ -64,12 +67,29 @@ public class Turn implements Serializable {
 
     public float getDistance() {
         return distance;
-
     }
 
     public void setDistance(float distance) {
 
         this.distance = distance;
+    }
+
+
+    public float calculateDistanceTo(Location location1) {
+
+        if (location1 != null) {
+            Location location2 = new Location("");
+            location2.setLatitude(getLatitud());
+            location2.setLongitude(getLongitud());
+            float distance = location1.distanceTo(location2);
+            this.distance = distance;
+        } else
+            this.distance = 0;
+
+
+        return distance;
+
+
     }
 
 
@@ -137,19 +157,19 @@ public class Turn implements Serializable {
         this.puntajeComplejo = puntajeComplejo;
     }
 
-    public String getLatitud() {
+    public Double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(String latitud) {
+    public void setLatitud(Double latitud) {
         this.latitud = latitud;
     }
 
-    public String getLongitud() {
+    public Double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(String longitud) {
+    public void setLongitud(Double longitud) {
         this.longitud = longitud;
     }
 

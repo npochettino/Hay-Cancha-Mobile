@@ -246,7 +246,7 @@ public class TurnsFilterFragment extends BaseFragment {
                         List<Turn> mTurns = new Gson().fromJson(result.toString(), new TypeToken<List<Turn>>() {
                         }.getType());
 
-                        getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnFragment.newIntance(mTurns, stringDate), true);
+                        getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnFragment.newIntance(orderList(mTurns), stringDate), true);
                     } else
                         getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnFragment.newIntance(new ArrayList<Turn>(), stringDate), true);
 
@@ -279,6 +279,17 @@ public class TurnsFilterFragment extends BaseFragment {
 
         mGetTurnTask.execute();
 
+    }
+
+    private List<Turn> orderList(List<Turn> mTurns) {
+
+        for (Turn turn : mTurns) {
+
+            turn.setLatitud(-32.967076);
+            turn.setLongitud(-60.672095);
+        }
+
+        return mTurns;
     }
 
 }

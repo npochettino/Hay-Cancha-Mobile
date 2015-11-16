@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import sempait.haycancha.ConfigurationClass;
@@ -25,6 +26,7 @@ import sempait.haycancha.fragment.FieldDetailFragment;
 import sempait.haycancha.models.Stadium;
 import sempait.haycancha.models.Turn;
 import sempait.haycancha.services.GetLocalTask;
+import sempait.haycancha.services.LocationManager;
 import sempait.haycancha.services.SaveTurnTask;
 
 
@@ -102,7 +104,7 @@ public class TurnListAdapter extends BaseAdapter {
 
         holder.name.setText(turn.getDescripcionComplejo());
         holder.direction.setText(turn.getDireccion());
-        holder.distance.setText(" (A " + String.valueOf(turn.getDistance()) + " Km)");
+        holder.distance.setText(" (A " + String.valueOf(round(turn.calculateDistanceTo(LocationManager.getInstance(mContext).getLocation()) / 1000, 2)) + " Km)");
         setupRating(Float.parseFloat(turn.getPuntajeComplejo()), holder.rating);
         holder.hourTo.setText(turn.getHoraDesde() + " hs");
         holder.fieldCod.setText(turn.getDescripcionCancha() + " ($ " + turn.getPrecio() + ")");
@@ -127,6 +129,12 @@ public class TurnListAdapter extends BaseAdapter {
 
         return convertView;
 
+    }
+
+    public static float round(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
     }
 
     private void executeGetLocalService(Turn turn) {
