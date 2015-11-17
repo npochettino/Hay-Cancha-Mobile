@@ -39,6 +39,11 @@
     <string name="error_form_incomplete_message">"Debe completar todos los datos del formulario"</string>
     <string name="error_user_password_wrong">"El usuario y/o contraseña son incorrectos"</string>
     <string name="comment">"Comentario"</string>
+    <string name="txt_desc_disponible">"Si estas disponible, otros usuarios podrán encontrarte en "Buscar jugador" para invitarte a diferentes turnos"</string>
+    <string name="txt_desc_position">"Indicá tu posición favorita"</string>
+    <string name="txt_close_sesion">"Cerrar sesión"</string>
+    <string name="update">"Actualizar"</string>
+
 
 
 </resources>

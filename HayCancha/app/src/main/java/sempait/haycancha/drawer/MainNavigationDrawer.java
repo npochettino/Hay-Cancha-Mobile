@@ -16,7 +16,10 @@ import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseDrawerFragment;
+import sempait.haycancha.fragment.LoginFragment;
+import sempait.haycancha.fragment.PerfilFragment;
 import sempait.haycancha.fragment.TurnsFilterFragment;
+import sempait.haycancha.models.User;
 
 import static sempait.haycancha.R.drawable.background_drawer_selected;
 
@@ -137,7 +140,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
         txt_userLastName.setText(ConfigurationClass.getUserLastNameUserUser(mContext));
 //        txt_userTeamName.setVisibility(View.VISIBLE);
 
-        String url="http://3.bp.blogspot.com/-QgXJDaHt5Lo/UpxQPX_W-gI/AAAAAAAANII/TzU2P5KfGxU/s1600/3874_3_1219.jpg";
+        String url = "http://3.bp.blogspot.com/-QgXJDaHt5Lo/UpxQPX_W-gI/AAAAAAAANII/TzU2P5KfGxU/s1600/3874_3_1219.jpg";
 
         ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, imgAvatar, Utils.getImageLoaderOptionRouded());
 
@@ -155,10 +158,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
 
             case PROFILE:
 
-//                if (User.getCurentUser() == null)
-//                    fragment = new LoginFragment();
-//                else
-//                    fragment = new UserMenuFragment();
+                fragment = new PerfilFragment();
                 getBaseActivity().setSectionTitle(getString(R.string.perfil));
 
                 break;

@@ -269,7 +269,7 @@ public class TurnsFilterFragment extends BaseFragment {
 
 
         Date date = myCalendar.getTime();
-        SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
         String stringDate = format1.format(date);
 
         mGetTurnTask.mDate = stringDate;
