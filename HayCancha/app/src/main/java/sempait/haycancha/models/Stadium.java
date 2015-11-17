@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Stadium implements Serializable {
 
 
-    private String codigoComplejo;
+    private int codigoComplejo;
     private String descripcion;
     private String direccion;
     private String horaApertura;
@@ -19,11 +19,11 @@ public class Stadium implements Serializable {
     private String telefono;
     private float raiting;
 
-    public String getCodigoComplejo() {
+    public int getCodigoComplejo() {
         return codigoComplejo;
     }
 
-    public void setCodigoComplejo(String codigoComplejo) {
+    public void setCodigoComplejo(int codigoComplejo) {
         this.codigoComplejo = codigoComplejo;
     }
 

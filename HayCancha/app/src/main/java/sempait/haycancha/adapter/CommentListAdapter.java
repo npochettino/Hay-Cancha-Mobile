@@ -77,13 +77,13 @@ public class CommentListAdapter extends BaseAdapter {
             holder = (viewHolder) convertView.getTag();
 
 
-        holder.nameUser.setText(comment.getApellidoUser() + " " + comment.getNomUser());
+        holder.nameUser.setText(comment.getNombreApellidoUsuarioApp());
         setupRating(comment.getRaiting(), holder.rating);
         holder.date.setText(comment.getDate());
         holder.title.setText(comment.getTitle());
         holder.comment.setText(comment.getComment());
-        if(comment.getUrlImagen()!=null)
-        ImageLoader.getInstance().displayImage(comment.getUrlImagen().contains("http:") ? comment.getUrlImagen() : "http:" + comment.getUrlImagen(), holder.imgUser, Utils.getImageLoaderOptionRouded());
+        if (comment.getUrlImagen() != null)
+            ImageLoader.getInstance().displayImage(comment.getUrlImagen().contains("http:") ? comment.getUrlImagen() : "http:" + comment.getUrlImagen(), holder.imgUser, Utils.getImageLoaderOptionRouded());
 
 
         return convertView;

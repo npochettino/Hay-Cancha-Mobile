@@ -1,5 +1,7 @@
 package sempait.haycancha.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -7,11 +9,14 @@ import java.io.Serializable;
  */
 public class Comment implements Serializable {
 
+    @SerializedName("fechaHoraValoracion")
     private String date;
-    private String nomUser;
-    private String apellidoUser;
+    private String nombreApellidoUsuarioApp;
+    @SerializedName("puntaje")
     private float raiting;
+    @SerializedName("comentario")
     private String comment;
+    @SerializedName("titulo")
     private String title;
     private String urlImagen;
 
@@ -26,21 +31,6 @@ public class Comment implements Serializable {
         this.date = date;
     }
 
-    public String getNomUser() {
-        return nomUser;
-    }
-
-    public void setNomUser(String nomUser) {
-        this.nomUser = nomUser;
-    }
-
-    public String getApellidoUser() {
-        return apellidoUser;
-    }
-
-    public void setApellidoUser(String apellidoUser) {
-        this.apellidoUser = apellidoUser;
-    }
 
     public float getRaiting() {
         return raiting;
@@ -72,5 +62,13 @@ public class Comment implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getNombreApellidoUsuarioApp() {
+        return nombreApellidoUsuarioApp;
+    }
+
+    public void setNombreApellidoUsuarioApp(String nombreApellidoUsuarioApp) {
+        this.nombreApellidoUsuarioApp = nombreApellidoUsuarioApp;
     }
 }
