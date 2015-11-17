@@ -133,5 +133,8 @@ public class CommentListAdapter extends BaseAdapter {
 
     }
 
-
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+    }
 }

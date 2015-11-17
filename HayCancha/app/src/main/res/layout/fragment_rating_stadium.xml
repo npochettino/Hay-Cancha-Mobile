@@ -103,7 +103,7 @@
         android:paddingTop="10dp">
 
         <sempait.haycancha.widgets.HelveticaNeueLightTextView
-            android:id="@+id/cancel_button"
+            android:id="@+id/rate_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

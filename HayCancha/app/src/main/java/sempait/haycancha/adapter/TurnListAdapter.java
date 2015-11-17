@@ -27,7 +27,7 @@ import sempait.haycancha.models.Stadium;
 import sempait.haycancha.models.Turn;
 import sempait.haycancha.services.GetLocalTask;
 import sempait.haycancha.services.LocationManager;
-import sempait.haycancha.services.SaveTurnTask;
+import sempait.haycancha.services.PutTurnTask;
 
 
 public class TurnListAdapter extends BaseAdapter {
@@ -38,7 +38,7 @@ public class TurnListAdapter extends BaseAdapter {
     private List<Turn> turnList;
     private LayoutInflater mInflater;
     private Context mContext;
-    private SaveTurnTask mSaveTurnTask;
+    private PutTurnTask mSaveTurnTask;
     private GetLocalTask mGetLocalTask;
     private String mDate;
 
@@ -178,7 +178,7 @@ public class TurnListAdapter extends BaseAdapter {
 
     private void executeSaveTurnService(Turn turn, final ImageView image) {
 
-        mSaveTurnTask = new SaveTurnTask(mContext) {
+        mSaveTurnTask = new PutTurnTask(mContext) {
             @Override
             protected void onPostExecute(String result) {
 

@@ -32,6 +32,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
+import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.adapter.CommentListAdapter;
@@ -43,6 +44,7 @@ import sempait.haycancha.models.Stadium;
 import sempait.haycancha.models.User;
 import sempait.haycancha.services.GetCommentForStadiumTask;
 import sempait.haycancha.services.LocationManager;
+import sempait.haycancha.services.PutStadiumCommentTask;
 
 /**
  * Created by martin on 12/11/15.
@@ -62,6 +64,8 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
     private LinearLayout mLinearImages;
     private ListView mListViewComment;
     private GetCommentForStadiumTask mGetCommentTask;
+    private PutStadiumCommentTask mPutCommentTask;
+    private CommentListAdapter commentListAdapter;
 
 
     public Fragment newInstance(Stadium stadium) {
@@ -117,7 +121,7 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
             public void onClick(View v) {
 
 
-                RaitingDialogFragment dialog = new RaitingDialogFragment();
+                RaitingDialogFragment dialog = new RaitingDialogFragment(FieldDetailFragment.this);
                 FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
                 ft.add(dialog, null);
                 ft.commitAllowingStateLoss();
@@ -150,7 +154,6 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
         setStadiumImages();
         executeCommentTask();
 
-//        setComment();
 
     }
 
@@ -168,10 +171,9 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
 
                 if (coments != null && !coments.isEmpty()) {
 
-                    CommentListAdapter commentListAdapter = new CommentListAdapter(coments, mContext);
+                    commentListAdapter = new CommentListAdapter(coments, mContext);
                     mListViewComment.setAdapter(commentListAdapter);
                 }
-
 
 
             }
@@ -438,6 +440,29 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
                     ((ImageView) holder.findViewById(R.id.img_billboard_star_1)).setImageResource(R.drawable.star_half);
                 break;
         }
+
+    }
+
+    public void executeRateService(String title, String comment, int rate) {
+
+        mPutCommentTask = new PutStadiumCommentTask(this.getActivity()) {
+
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+
+            }
+        };
+
+
+        mPutCommentTask.mCodigoComplejo = mStadium.getCodigoComplejo();
+        mPutCommentTask.mCodigoUsuario = ConfigurationClass.getUserCod(mContext);
+        mPutCommentTask.mTitulo = title;
+        mPutCommentTask.mComentario = comment;
+        mPutCommentTask.mPuntaje = rate;
+        mPutCommentTask.execute();
 
     }
 

@@ -2,7 +2,6 @@ package sempait.haycancha.services;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -14,23 +13,24 @@ import sempait.haycancha.Constants;
 import sempait.haycancha.base.BaseActivity;
 
 /**
- * Created by martin on 12/11/15.
+ * Created by martin on 17/11/15.
  */
-public class SaveTurnTask extends AsyncTask<Void, Void, String> {
+public class PutStadiumCommentTask extends AsyncTask<Void, Void, String> {
 
-    private String METHOD_NAME = "InsertarActualizarTurnoVariable";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarTurnoVariable";
-    public int mCodigoCancha;
-    public String mFecha;
-    public int mHDesde;
-    public int mHHasta;
+    private String METHOD_NAME = "InsertarActualizarValoracionComplejo";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarValoracionComplejo";
+
+    public int mCodigoComplejo;
     public int mCodigoUsuario;
+    public int mPuntaje;
+    public String mComentario;
+    public String mTitulo;
 
     public String mPassword;
     private Context mContext;
 
 
-    public SaveTurnTask(Context ctx) {
+    public PutStadiumCommentTask(Context ctx) {
         mContext = ctx;
     }
 
@@ -39,13 +39,12 @@ public class SaveTurnTask extends AsyncTask<Void, Void, String> {
 
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
-        request.addProperty("codigoTurnoVariable", 0);
-        request.addProperty("codigoCancha", mCodigoCancha);
-        request.addProperty("fecha", mFecha);
-        request.addProperty("horaDesde", mHDesde);
-        request.addProperty("horaHasta", mHHasta);
+        request.addProperty("codigoComplejo", mCodigoComplejo);
+        request.addProperty("puntaje", mPuntaje);
         request.addProperty("codigoUsuarioApp", mCodigoUsuario);
-        request.addProperty("observaciones", "hola");
+        request.addProperty("comentario", mComentario);
+        request.addProperty("titulo", mTitulo);
+
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 
@@ -64,7 +63,7 @@ public class SaveTurnTask extends AsyncTask<Void, Void, String> {
             return result.toString();
 
         } catch (Exception e) {
-            Log.d("", e.getMessage());
+
 
         }
         return null;

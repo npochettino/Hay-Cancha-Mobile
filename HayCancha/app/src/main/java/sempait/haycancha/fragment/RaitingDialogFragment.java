@@ -1,5 +1,6 @@
 package sempait.haycancha.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import sempait.haycancha.R;
+import sempait.haycancha.services.PutStadiumCommentTask;
 
 /**
  * Created by martin on 16/11/15.
@@ -26,6 +28,13 @@ public class RaitingDialogFragment extends DialogFragment {
     private Boolean mRate3State = false;
     private Boolean mRate4State = false;
     private Boolean mRate5State = false;
+    private FieldDetailFragment mInstace;
+
+    public RaitingDialogFragment(FieldDetailFragment instace) {
+
+        mInstace = instace;
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,6 +64,17 @@ public class RaitingDialogFragment extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+        view.findViewById(R.id.rate_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                mInstace.executeRateService("titulo", "comentario cambiado", 4);
+
+            }
+        });
 
         mRate1.setOnClickListener(new View.OnClickListener() {
 
@@ -160,4 +180,6 @@ public class RaitingDialogFragment extends DialogFragment {
             }
         });
     }
+
+
 }
