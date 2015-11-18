@@ -264,7 +264,7 @@ public class PerfilFragment extends BaseFragment {
         ConfigurationClass.setEmailUser(mContext, mTxtUserEmail.getText().toString());
         ConfigurationClass.setTelUser(mContext, mTxtUserPhone.getText().toString());
         ConfigurationClass.setPasswodUser(mContext, mTxtUserPassword.getText().toString());
-        ConfigurationClass.setCodigoTelefono(mContext, Utils.getUUID(mContext));
+        ConfigurationClass.setCodigoTelefono(mContext, ConfigurationClass.getCodigoTelefono(mContext));
         ConfigurationClass.setCodigoPosicion(mContext, mPositionSelected);
         ConfigurationClass.setDescPosicion(mContext, mDescPositionSelected);
         ConfigurationClass.setIsActivo(mContext, mSwichActivo.isChecked());

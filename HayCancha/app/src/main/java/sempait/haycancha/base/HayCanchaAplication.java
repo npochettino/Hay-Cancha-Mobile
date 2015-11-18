@@ -17,6 +17,7 @@ import com.parse.PushService;
 
 import java.io.File;
 
+import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.services.LocationManager;
 
 /**
@@ -30,6 +31,7 @@ public class HayCanchaAplication extends Application {
         super.onCreate();
 
         Parse.initialize(this, "2p3PaBJnkhIVS4j2elSz51g3lXvOk1sszrnveJwj", "ZS8ojWT1G3QS1dLk6ZhA95yalnPuTX2dHmhW7nb8");
+        ParseInstallation.getCurrentInstallation().saveInBackground();
 
         intializeImageLoader();
         LocationManager.getInstance(this);

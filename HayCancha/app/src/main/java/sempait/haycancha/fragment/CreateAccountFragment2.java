@@ -134,7 +134,6 @@ public class CreateAccountFragment2 extends BaseFragment {
 
                     dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_create_account_message), mContext.getString(R.string.create_account_title), mContext.getString(R.string.acept_text));
                     setDataUser();
-                    initParse();
 
                     ((BaseActivity) mContext).startActivity(new Intent(((BaseActivity) mContext), LoginActivity.class));
                     ((BaseActivity) mContext).finish();
@@ -189,7 +188,7 @@ public class CreateAccountFragment2 extends BaseFragment {
         mCreateTask.mTelefono = mPhone;
         mCreateTask.mPassword = mEtPassword.getText().toString();
         mCreateTask.mPosicion = 1;
-        mCreateTask.mCodigoTelefono = ConfigurationClass.getCodigoTelefono(mContext);
+        mCreateTask.mCodigoTelefono = ParseInstallation.getCurrentInstallation().getObjectId();
         mCreateTask.mIsActivo = true;
 
 
@@ -198,14 +197,6 @@ public class CreateAccountFragment2 extends BaseFragment {
 
     }
 
-    private void initParse() {
-
-        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        ParsePush.subscribeInBackground(ConfigurationClass.getCodigoTelefono(mContext));
-
-
-        installation.saveInBackground();
-    }
 
     private void setDataUser() {
 
@@ -216,7 +207,7 @@ public class CreateAccountFragment2 extends BaseFragment {
         ConfigurationClass.setEmailUser(mContext, mEtEmail.getText().toString());
         ConfigurationClass.setTelUser(mContext, mPhone);
         ConfigurationClass.setPasswodUser(mContext, mEtPassword.getText().toString());
-        ConfigurationClass.setCodigoTelefono(mContext, Utils.getUUID(mContext));
+        ConfigurationClass.setCodigoTelefono(mContext, ParseInstallation.getCurrentInstallation().getObjectId());
         ConfigurationClass.setCodigoPosicion(mContext, 1);
         ConfigurationClass.setDescPosicion(mContext, "Todo el campo");
         ConfigurationClass.setIsActivo(mContext, true);

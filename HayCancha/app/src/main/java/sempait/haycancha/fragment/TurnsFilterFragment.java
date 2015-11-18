@@ -19,7 +19,12 @@ import android.widget.TimePicker;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.parse.ParseInstallation;
 import com.parse.ParsePush;
+import com.parse.ParseQuery;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,9 +52,6 @@ public class TurnsFilterFragment extends BaseFragment {
     TimePickerDialog.OnTimeSetListener hourFrom;
     TimePickerDialog.OnTimeSetListener hourTo;
     Calendar myCalendar = Calendar.getInstance();
-    Date mDate;
-    int mHourDesde;
-    int mHourHasta;
     GetTurnsTask mGetTurnTask;
 
 
@@ -120,8 +122,21 @@ public class TurnsFilterFragment extends BaseFragment {
             public void onClick(View v) {
                 executeTurnsService();
 
+//                ParseQuery pushQuery = ParseInstallation.getQuery();
+//                pushQuery.whereEqualTo("objectId", ConfigurationClass.getCodigoTelefono(mContext));
 //                ParsePush push = new ParsePush();
-//                push.setMessage("Hola juancho avisame si te lelga esto por favor");
+//
+//                JSONObject obj = new JSONObject();
+//
+//                try {
+//                    obj.put("deep_link", "home");
+//                    obj.put("message", "Mesanje");
+//                    obj.put("title", "default");
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                push.setQuery(pushQuery);
+//                push.setData(obj);
 //                push.sendInBackground();
 
 

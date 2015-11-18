@@ -18,6 +18,7 @@ import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseDrawerFragment;
 import sempait.haycancha.fragment.LoginFragment;
 import sempait.haycancha.fragment.PerfilFragment;
+import sempait.haycancha.fragment.ReservationFragments;
 import sempait.haycancha.fragment.TurnsFilterFragment;
 import sempait.haycancha.models.User;
 
@@ -180,7 +181,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
                 break;
 
             case RESERVATIONS:
-//                fragment = new NewsFragment();
+                fragment = new ReservationFragments();
                 getBaseActivity().setSectionTitle(getString(R.string.reservations));
 
                 break;
