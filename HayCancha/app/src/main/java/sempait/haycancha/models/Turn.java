@@ -27,6 +27,7 @@ public class Turn implements Serializable {
     private Double latitud;
     private Double longitud;
     private String codigoCancha;
+    private int codigoTurno;
 
 
     public String getDate() {
@@ -195,5 +196,13 @@ public class Turn implements Serializable {
 
     public void setDescripcionCancha(String descripcionCancha) {
         this.descripcionCancha = descripcionCancha;
+    }
+
+    public int getCodigoTurno() {
+        return codigoTurno;
+    }
+
+    public void setCodigoTurno(int codigoTurno) {
+        this.codigoTurno = codigoTurno;
     }
 }

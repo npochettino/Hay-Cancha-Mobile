@@ -188,7 +188,7 @@ public class CreateAccountFragment2 extends BaseFragment {
         mCreateTask.mTelefono = mPhone;
         mCreateTask.mPassword = mEtPassword.getText().toString();
         mCreateTask.mPosicion = 1;
-        mCreateTask.mCodigoTelefono = ParseInstallation.getCurrentInstallation().getObjectId();
+        mCreateTask.mCodigoTelefono = ConfigurationClass.getCodigoTelefono(mContext);
         mCreateTask.mIsActivo = true;
 
 
@@ -207,7 +207,6 @@ public class CreateAccountFragment2 extends BaseFragment {
         ConfigurationClass.setEmailUser(mContext, mEtEmail.getText().toString());
         ConfigurationClass.setTelUser(mContext, mPhone);
         ConfigurationClass.setPasswodUser(mContext, mEtPassword.getText().toString());
-        ConfigurationClass.setCodigoTelefono(mContext, ParseInstallation.getCurrentInstallation().getObjectId());
         ConfigurationClass.setCodigoPosicion(mContext, 1);
         ConfigurationClass.setDescPosicion(mContext, "Todo el campo");
         ConfigurationClass.setIsActivo(mContext, true);

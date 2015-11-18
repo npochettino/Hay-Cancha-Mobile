@@ -1,6 +1,7 @@
 package sempait.haycancha.base;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
@@ -12,12 +13,18 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseInstallation;
+import com.parse.ParsePush;
 import com.parse.PushService;
+import com.parse.SaveCallback;
+
+import org.kobjects.util.Util;
 
 import java.io.File;
 
 import sempait.haycancha.ConfigurationClass;
+import sempait.haycancha.Utils;
 import sempait.haycancha.services.LocationManager;
 
 /**
@@ -32,6 +39,9 @@ public class HayCanchaAplication extends Application {
 
         Parse.initialize(this, "2p3PaBJnkhIVS4j2elSz51g3lXvOk1sszrnveJwj", "ZS8ojWT1G3QS1dLk6ZhA95yalnPuTX2dHmhW7nb8");
         ParseInstallation.getCurrentInstallation().saveInBackground();
+
+        ConfigurationClass.setCodigoTelefono(this, (String) ParseInstallation.getCurrentInstallation().get("deviceToken"));
+
 
         intializeImageLoader();
         LocationManager.getInstance(this);

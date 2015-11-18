@@ -123,7 +123,7 @@ public class TurnsFilterFragment extends BaseFragment {
                 executeTurnsService();
 
 //                ParseQuery pushQuery = ParseInstallation.getQuery();
-//                pushQuery.whereEqualTo("objectId", ConfigurationClass.getCodigoTelefono(mContext));
+//                pushQuery.whereEqualTo("deviceToken", "APA91bGdbztll9oMQepfj6WSkVYfzCBr9tIGUBXWSyUjcHnqD7Xg0Wlu5XGhBZ1ZvLeIhbJ7el9_nmxDzL7zV8eXX6y7hhUBvvX_giIE54qdUie42lnagY_7a28-b4QsiIk5bXakYuwW");
 //                ParsePush push = new ParsePush();
 //
 //                JSONObject obj = new JSONObject();

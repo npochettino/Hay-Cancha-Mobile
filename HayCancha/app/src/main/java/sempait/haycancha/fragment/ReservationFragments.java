@@ -17,6 +17,7 @@ import java.util.List;
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
+import sempait.haycancha.adapter.MyReservationsConfirmAdapter;
 import sempait.haycancha.adapter.TurnListAdapter;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
@@ -97,7 +98,7 @@ public class ReservationFragments extends BaseFragment {
 
         if (listReservation != null && !listReservation.isEmpty()) {
 
-            TurnListAdapter turnAdapter = new TurnListAdapter(listReservation, mContext, "");
+            MyReservationsConfirmAdapter turnAdapter = new MyReservationsConfirmAdapter(listReservation, mContext, "");
             mListReservations.setAdapter(turnAdapter);
         }
 
