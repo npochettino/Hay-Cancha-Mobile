@@ -27,6 +27,8 @@ public class ConfigurationClass {
     private static final String DNI_USER = "dni_user";
     private static final String CODIGO_POSITION = "codigo_position";
     private static final String DESC_POSITION = "desc_position";
+    private static final String UUID = "uuid";
+    private static final String IS_ACTIVO = "is_activo";
 
 
     public static SharedPreferences sharedPref(Context context) {
@@ -194,4 +196,22 @@ public class ConfigurationClass {
         return sharedPref(context).getString(DESC_POSITION, null);
     }
 
+    public static void setCodigoTelefono(Context mContext, String uuid) {
+        sharedPref(mContext).edit().putString(UUID, uuid).commit();
+
+    }
+
+    public static String getCodigoTelefono(Context context) {
+        return sharedPref(context).getString(UUID, null);
+    }
+
+
+    public static void setIsActivo(Context mContext, Boolean isActivo) {
+        sharedPref(mContext).edit().putBoolean(IS_ACTIVO, isActivo).commit();
+
+    }
+
+    public static Boolean getIsActivo(Context context) {
+        return sharedPref(context).getBoolean(IS_ACTIVO, false);
+    }
 }

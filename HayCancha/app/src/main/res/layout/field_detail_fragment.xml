@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <fragment
-                android:id="@+id/cinema_map"
+                android:id="@+id/stadium_map"
                 class="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -52,18 +52,20 @@
 
                 <sempait.haycancha.widgets.HelveticaNeueLightTextView
                     android:id="@+id/stadium_name"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:text="FULTITO"
+
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
                 <ImageView
                     android:id="@+id/img_phone"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true" />
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/telefono_" />
 
                 <sempait.haycancha.widgets.HelveticaNeueLightTextView
                     android:id="@+id/txt_phone"
@@ -295,7 +297,7 @@
         <ListView
             android:id="@+id/list_comment"
             android:layout_width="match_parent"
-            android:layout_height="940dp" />
+            android:layout_height="900dp" />
 
 
     </LinearLayout>

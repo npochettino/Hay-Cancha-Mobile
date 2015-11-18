@@ -1,7 +1,10 @@
 package sempait.haycancha;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -18,6 +21,14 @@ public class Utils {
                 .cacheInMemory(false).cacheOnDisk(true).considerExifParams(false).showImageOnLoading(R.drawable.logo).imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2).bitmapConfig(Bitmap.Config.ARGB_8888).displayer(new RoundedBitmapDisplayer(1000)).handler(new Handler()).build();
 
         return options;
+    }
+
+    public static String getUUID(Context context) {
+
+        String android_id = Settings.Secure.getString(context.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+
+        return android_id;
     }
 }
 

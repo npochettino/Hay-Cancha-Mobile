@@ -28,6 +28,8 @@ public class CreateAccountTask extends AsyncTask<Void, Void, String> {
     public String mPassword;
     public String mTelefono;
     public int mPosicion;
+    public String mCodigoTelefono;
+    public Boolean mIsActivo;
 
     public CreateAccountTask() {
         super();
@@ -54,6 +56,8 @@ public class CreateAccountTask extends AsyncTask<Void, Void, String> {
         request.addProperty("contraseña", mPassword);
         request.addProperty("telefono", mTelefono);
         request.addProperty("codigoPosicion", mPosicion);
+        request.addProperty("codigoTelefono", mCodigoTelefono);
+        request.addProperty("isActivo", mIsActivo);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 

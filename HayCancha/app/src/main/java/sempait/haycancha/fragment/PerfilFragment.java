@@ -2,7 +2,6 @@ package sempait.haycancha.fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -32,8 +32,10 @@ public class PerfilFragment extends BaseFragment {
     private EditText mTxtUserName, mTxtUserEmail, mTxtUserPassword, mTxtUserPhone, mEtxtLastName;
     private TextView mTxtPosicion;
     private ImageView mImgProfile, mImgArquero, mImgDefensor, mImgDelantero, mImgTodaElCampo;
-    private int mPositionSelectec;
+    private int mPositionSelected;
+    private String mDescPositionSelected;
     private CreateAccountTask mUpdateAccountTask;
+    private Switch mSwichActivo;
 
 
     @Nullable
@@ -54,6 +56,7 @@ public class PerfilFragment extends BaseFragment {
         mImgDelantero = (ImageView) mView.findViewById(R.id.img_delantero);
         mImgTodaElCampo = (ImageView) mView.findViewById(R.id.img_todo_el_campo);
         mTxtPosicion = (TextView) mView.findViewById(R.id.txt_position);
+        mSwichActivo = (Switch) mView.findViewById(R.id.sw_activo);
 
         setDataUser();
 
@@ -70,6 +73,7 @@ public class PerfilFragment extends BaseFragment {
         mTxtUserEmail.setText(ConfigurationClass.getEmalUser(mContext));
         mTxtUserPassword.setText(ConfigurationClass.getPasswordUser(mContext));
         mTxtUserPhone.setText(ConfigurationClass.getTelUser(mContext));
+        mSwichActivo.setChecked(ConfigurationClass.getIsActivo(mContext));
         String url = "http://3.bp.blogspot.com/-QgXJDaHt5Lo/UpxQPX_W-gI/AAAAAAAANII/TzU2P5KfGxU/s1600/3874_3_1219.jpg";
         ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, mImgProfile, Utils.getImageLoaderOptionRouded());
         refreshPostion(ConfigurationClass.getCodigoPosicion(mContext));
@@ -98,21 +102,21 @@ public class PerfilFragment extends BaseFragment {
         mImgArquero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refreshPostion(1);
+                refreshPostion(2);
             }
         });
 
         mImgDefensor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refreshPostion(2);
+                refreshPostion(3);
             }
         });
 
         mImgDelantero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refreshPostion(3);
+                refreshPostion(4);
             }
         });
 
@@ -120,7 +124,7 @@ public class PerfilFragment extends BaseFragment {
         mImgTodaElCampo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                refreshPostion(4);
+                refreshPostion(1);
             }
         });
 
@@ -157,6 +161,7 @@ public class PerfilFragment extends BaseFragment {
 
                 if (result != null && result.equalsIgnoreCase("ok")) {
 
+                    setDataUserInShared();
                     dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_update_user_info), mContext.getString(R.string.perfil), mContext.getString(R.string.acept_text));
 
                 } else
@@ -171,13 +176,15 @@ public class PerfilFragment extends BaseFragment {
             }
         };
 
-        mUpdateAccountTask.mPosicion = mPositionSelectec;
+        mUpdateAccountTask.mPosicion = mPositionSelected;
         mUpdateAccountTask.mApellido = mEtxtLastName.getText().toString();
         mUpdateAccountTask.mNombre = mTxtUserName.getText().toString();
         mUpdateAccountTask.mEmail = mTxtUserEmail.getText().toString();
         mUpdateAccountTask.mPassword = mTxtUserPassword.getText().toString();
         mUpdateAccountTask.mTelefono = mTxtUserPhone.getText().toString();
         mUpdateAccountTask.mCodigoUsuario = ConfigurationClass.getUserCod(mContext);
+        mUpdateAccountTask.mCodigoTelefono = ConfigurationClass.getCodigoTelefono(mContext);
+        mUpdateAccountTask.mIsActivo = mSwichActivo.isChecked();
 
         mUpdateAccountTask.execute();
 
@@ -189,39 +196,44 @@ public class PerfilFragment extends BaseFragment {
 
         switch (position) {
 
-            case 1:
+            case 2:
                 mImgArquero.setImageResource(R.drawable.arquero_activo);
                 mImgDefensor.setImageResource(R.drawable.defensa_desactivado);
                 mImgDelantero.setImageResource(R.drawable.delantero_desactivado);
                 mImgTodaElCampo.setImageResource(R.drawable.todo_campo_desactivado);
-                mTxtPosicion.setText("Arquero");
-                mPositionSelectec = 1;
-                break;
-
-            case 2:
-                mImgArquero.setImageResource(R.drawable.arquero_desactivado);
-                mImgDefensor.setImageResource(R.drawable.defensa_activo);
-                mImgDelantero.setImageResource(R.drawable.delantero_desactivado);
-                mImgTodaElCampo.setImageResource(R.drawable.todo_campo_desactivado);
-                mTxtPosicion.setText("Defensor");
-                mPositionSelectec = 2;
+                mDescPositionSelected = "Arquero";
+                mTxtPosicion.setText(mDescPositionSelected);
+                mPositionSelected = 2;
                 break;
 
             case 3:
                 mImgArquero.setImageResource(R.drawable.arquero_desactivado);
+                mImgDefensor.setImageResource(R.drawable.defensa_activo);
+                mImgDelantero.setImageResource(R.drawable.delantero_desactivado);
+                mImgTodaElCampo.setImageResource(R.drawable.todo_campo_desactivado);
+                mDescPositionSelected = "Defensor";
+                mTxtPosicion.setText(mDescPositionSelected);
+                mPositionSelected = 3;
+                break;
+
+            case 4:
+                mImgArquero.setImageResource(R.drawable.arquero_desactivado);
                 mImgDefensor.setImageResource(R.drawable.defensa_desactivado);
                 mImgDelantero.setImageResource(R.drawable.delantero_activo);
                 mImgTodaElCampo.setImageResource(R.drawable.todo_campo_desactivado);
-                mTxtPosicion.setText("Delantero");
-                mPositionSelectec = 3;
+                mDescPositionSelected = "Delantero";
+                mTxtPosicion.setText(mDescPositionSelected);
+
+                mPositionSelected = 4;
                 break;
-            case 4:
+            case 1:
                 mImgArquero.setImageResource(R.drawable.arquero_desactivado);
                 mImgDefensor.setImageResource(R.drawable.defensa_desactivado);
                 mImgDelantero.setImageResource(R.drawable.delantero_desactivado);
                 mImgTodaElCampo.setImageResource(R.drawable.todo_campo_activo);
-                mTxtPosicion.setText("Todo el campo");
-                mPositionSelectec = 4;
+                mDescPositionSelected = "Todo el campo";
+                mTxtPosicion.setText(mDescPositionSelected);
+                mPositionSelected = 1;
                 break;
 
         }
@@ -238,6 +250,28 @@ public class PerfilFragment extends BaseFragment {
 
         } else
             return true;
+
+
+    }
+
+
+    private void setDataUserInShared() {
+
+
+        ConfigurationClass.setUserNameCompleted(mContext, mEtxtLastName.getText().toString() + " " + mTxtUserName.getText().toString());
+        ConfigurationClass.setFirstNameUser(mContext, mTxtUserName.getText().toString());
+        ConfigurationClass.setUserLastNameUser(mContext, mEtxtLastName.getText().toString());
+        ConfigurationClass.setEmailUser(mContext, mTxtUserEmail.getText().toString());
+        ConfigurationClass.setTelUser(mContext, mTxtUserPhone.getText().toString());
+        ConfigurationClass.setPasswodUser(mContext, mTxtUserPassword.getText().toString());
+        ConfigurationClass.setCodigoTelefono(mContext, Utils.getUUID(mContext));
+        ConfigurationClass.setCodigoPosicion(mContext, mPositionSelected);
+        ConfigurationClass.setDescPosicion(mContext, mDescPositionSelected);
+        ConfigurationClass.setIsActivo(mContext, mSwichActivo.isChecked());
+
+
+//        if (mInstace != null)
+//            mInstace.setNameUser();
 
 
     }

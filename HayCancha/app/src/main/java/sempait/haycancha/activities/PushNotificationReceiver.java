@@ -5,19 +5,12 @@ import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.parse.GcmBroadcastReceiver;
-import com.parse.Parse;
-import com.parse.ParseBroadcastReceiver;
 import com.parse.ParsePushBroadcastReceiver;
-import com.parse.PushService;
 
 import org.json.JSONException;
 import org.json.JSONObject;

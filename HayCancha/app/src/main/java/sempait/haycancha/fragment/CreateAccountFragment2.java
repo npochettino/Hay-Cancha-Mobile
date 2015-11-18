@@ -10,9 +10,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.parse.Parse;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
+import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
+import sempait.haycancha.Utils;
 import sempait.haycancha.activities.LoginActivity;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
@@ -124,6 +133,9 @@ public class CreateAccountFragment2 extends BaseFragment {
                 if (result != null) {
 
                     dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_create_account_message), mContext.getString(R.string.create_account_title), mContext.getString(R.string.acept_text));
+                    setDataUser();
+                    initParse();
+
                     ((BaseActivity) mContext).startActivity(new Intent(((BaseActivity) mContext), LoginActivity.class));
                     ((BaseActivity) mContext).finish();
                 } else
@@ -173,20 +185,26 @@ public class CreateAccountFragment2 extends BaseFragment {
             mCreateTask.mCodigoUsuario = 0;
         mCreateTask.mApellido = mLastName;
         mCreateTask.mNombre = mName;
-        mCreateTask.mEmail = mEtEmail.getText().
-
-                toString();
-
+        mCreateTask.mEmail = mEtEmail.getText().toString();
         mCreateTask.mTelefono = mPhone;
-        mCreateTask.mPassword = mEtPassword.getText().
-
-                toString();
-
+        mCreateTask.mPassword = mEtPassword.getText().toString();
         mCreateTask.mPosicion = 1;
+        mCreateTask.mCodigoTelefono = ConfigurationClass.getCodigoTelefono(mContext);
+        mCreateTask.mIsActivo = true;
+
 
         mCreateTask.execute();
 
 
+    }
+
+    private void initParse() {
+
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        ParsePush.subscribeInBackground(ConfigurationClass.getCodigoTelefono(mContext));
+
+
+        installation.saveInBackground();
     }
 
     private void setDataUser() {
@@ -198,6 +216,11 @@ public class CreateAccountFragment2 extends BaseFragment {
         ConfigurationClass.setEmailUser(mContext, mEtEmail.getText().toString());
         ConfigurationClass.setTelUser(mContext, mPhone);
         ConfigurationClass.setPasswodUser(mContext, mEtPassword.getText().toString());
+        ConfigurationClass.setCodigoTelefono(mContext, Utils.getUUID(mContext));
+        ConfigurationClass.setCodigoPosicion(mContext, 1);
+        ConfigurationClass.setDescPosicion(mContext, "Todo el campo");
+        ConfigurationClass.setIsActivo(mContext, true);
+
 
 //        if (mInstace != null)
 //            mInstace.setNameUser();

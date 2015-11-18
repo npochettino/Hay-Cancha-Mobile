@@ -3,129 +3,125 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:minWidth="800dp"
-    android:minHeight="250dp"
-    android:orientation="vertical"
-    android:padding="5dp">
+    android:minHeight="200dp"
+    android:minWidth="700dp"
+    android:paddingBottom="10dp"
+    android:orientation="vertical">
 
-    <sempait.haycancha.widgets.HelveticaNeueLightTextView
-        android:id="@+id/title_message"
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/app_name"
-        android:textColor="@color/green_dark"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
+        android:layout_height="80dp"
+        android:scaleType="centerInside"
+        android:padding="5dp"
+        android:src="@drawable/hay_cancha_verde_sin_sombra"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <sempait.haycancha.widgets.HelveticaNeueLightTextView
-            android:id="@+id/message"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:padding="10dp"
-            android:text="@string/comment"
-            android:textColor="@color/dark_gray"
-            android:textSize="16sp" />
-
-
-        <LinearLayout
-            android:id="@+id/lyt_stars_rating"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp">
-
-            <ImageView
-                android:id="@+id/img_star_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:padding="1dp"
-                android:src="@drawable/star_off" />
-
-            <ImageView
-                android:id="@+id/img_star_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:padding="1dp"
-                android:src="@drawable/star_off" />
-
-            <ImageView
-                android:id="@+id/img_star_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:padding="1dp"
-                android:src="@drawable/star_off" />
-
-            <ImageView
-                android:id="@+id/img_star_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:padding="1dp"
-                android:src="@drawable/star_off" />
-
-            <ImageView
-                android:id="@+id/img_star_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:padding="1dp"
-                android:src="@drawable/star_off" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/txt_close_reason"
+        android:id="@+id/lyt_stars_rating"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@null"
-        android:gravity="top" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/img_star_1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:padding="3dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/star_on" />
+
+        <ImageView
+            android:id="@+id/img_star_2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:padding="3dp"
+            android:src="@drawable/star_off" />
+
+        <ImageView
+            android:id="@+id/img_star_3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:padding="3dp"
+            android:src="@drawable/star_off" />
+
+        <ImageView
+            android:id="@+id/img_star_4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:padding="3dp"
+            android:src="@drawable/star_off" />
+
+        <ImageView
+            android:id="@+id/img_star_5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:padding="3dp"
+            android:src="@drawable/star_off" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp">
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp">
+
+        <sempait.haycancha.widgets.HelveticaNeueLightEditText
+            android:id="@+id/exp_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1.5"
+            android:editable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:hint="Título"
+            android:textColor="@color/green_dark" />
+
+
+        <sempait.haycancha.widgets.HelveticaNeueLightEditText
+            android:id="@+id/exp_comment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:editable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:hint="@string/comment"
+            android:textColor="@color/green_dark" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
 
         <sempait.haycancha.widgets.HelveticaNeueLightTextView
             android:id="@+id/rate_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@color/green"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
+            android:gravity="center"
             android:text="@string/done"
             android:textColor="@color/white" />
 
-        <sempait.haycancha.widgets.HelveticaNeueLightTextView
-            android:id="@+id/ok_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@color/green"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:text="@string/acept_text"
-            android:textColor="@color/white"
-            android:visibility="gone" />
     </LinearLayout>
+
 
 </LinearLayout>

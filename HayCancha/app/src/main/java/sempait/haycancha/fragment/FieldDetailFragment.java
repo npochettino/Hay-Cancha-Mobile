@@ -16,6 +16,7 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -116,6 +117,8 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+
         mTxtCalificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,11 +140,11 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
 
         fm = getChildFragmentManager();
 
-        supportMapFragment = (SupportMapFragment) fm.findFragmentById(R.id.cinema_map);
+        supportMapFragment = (SupportMapFragment) fm.findFragmentById(R.id.stadium_map);
 
         if (supportMapFragment == null) {
             supportMapFragment = SupportMapFragment.newInstance();
-            fm.beginTransaction().replace(R.id.cinema_map, supportMapFragment).commit();
+            fm.beginTransaction().replace(R.id.stadium_map, supportMapFragment).commit();
         }
     }
 
@@ -407,7 +410,7 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, longitude)).title(title)
                 .snippet(description)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.buscara_partidos_pin)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.puntero_mapa_1)));
 
     }
 
@@ -451,7 +454,7 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
             @Override
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
-
+                executeCommentTask();
 
             }
         };
