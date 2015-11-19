@@ -29,6 +29,7 @@ public class ConfigurationClass {
     private static final String DESC_POSITION = "desc_position";
     private static final String UUID = "uuid";
     private static final String IS_ACTIVO = "is_activo";
+    private static final String IMAGE_USER = "image_user";
 
 
     public static SharedPreferences sharedPref(Context context) {
@@ -214,4 +215,15 @@ public class ConfigurationClass {
     public static Boolean getIsActivo(Context context) {
         return sharedPref(context).getBoolean(IS_ACTIVO, false);
     }
+
+    public static void setImageUser(Context mContext, String imgaeUrl) {
+        sharedPref(mContext).edit().putString(IMAGE_USER, imgaeUrl).commit();
+
+    }
+
+    public static String getImageUser(Context context) {
+        return sharedPref(context).getString(IMAGE_USER, null);
+    }
+
+
 }

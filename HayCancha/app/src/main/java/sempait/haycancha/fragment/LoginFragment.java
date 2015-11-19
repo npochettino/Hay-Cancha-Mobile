@@ -144,6 +144,7 @@ public class LoginFragment extends BaseFragment {
                     ConfigurationClass.setPasswodUser(mContext, mUserActual.getContraseña());
                     ConfigurationClass.setCodigoPosicion(mContext, mUserActual.getCodigoPosicion());
                     ConfigurationClass.setDescPosicion(mContext, mUserActual.getDescPosicion());
+                    ConfigurationClass.setImageUser(mContext, mUserActual.getImagen());
 
 
                     mContext.startActivity(new Intent(mContext, MainActivity.class));

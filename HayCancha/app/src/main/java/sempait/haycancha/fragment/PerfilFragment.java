@@ -1,8 +1,14 @@
 package sempait.haycancha.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -14,6 +20,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.parse.ParseFile;
+
+import java.io.File;
 
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
@@ -36,7 +45,7 @@ public class PerfilFragment extends BaseFragment {
     private String mDescPositionSelected;
     private CreateAccountTask mUpdateAccountTask;
     private Switch mSwichActivo;
-
+    public static final CharSequence options_Upload_Photo[] = new CharSequence[]{"Choose from Library", "Take a Photo"};
 
     @Nullable
     @Override
@@ -74,16 +83,43 @@ public class PerfilFragment extends BaseFragment {
         mTxtUserPassword.setText(ConfigurationClass.getPasswordUser(mContext));
         mTxtUserPhone.setText(ConfigurationClass.getTelUser(mContext));
         mSwichActivo.setChecked(ConfigurationClass.getIsActivo(mContext));
-        String url = "http://3.bp.blogspot.com/-QgXJDaHt5Lo/UpxQPX_W-gI/AAAAAAAANII/TzU2P5KfGxU/s1600/3874_3_1219.jpg";
+        String url = ConfigurationClass.getImageUser(mContext);
         ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, mImgProfile, Utils.getImageLoaderOptionRouded());
         refreshPostion(ConfigurationClass.getCodigoPosicion(mContext));
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == getActivity().RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+            Cursor cursor = mContext.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            String url = picturePath;
+            mImgProfile.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+        }
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+        mImgProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, 1);
+
+            }
+        });
+
 
         view.findViewById(R.id.txt_cerrar_sesion).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,6 +222,7 @@ public class PerfilFragment extends BaseFragment {
         mUpdateAccountTask.mCodigoUsuario = ConfigurationClass.getUserCod(mContext);
         mUpdateAccountTask.mCodigoTelefono = ConfigurationClass.getCodigoTelefono(mContext);
         mUpdateAccountTask.mIsActivo = mSwichActivo.isChecked();
+        mUpdateAccountTask.mUrlImage = ConfigurationClass.getImageUser(mContext);
 
         mUpdateAccountTask.execute();
 
