@@ -1,7 +1,5 @@
 package sempait.haycancha.fragment;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -20,9 +18,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.parse.ParseFile;
-
-import java.io.File;
 
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
@@ -31,7 +26,7 @@ import sempait.haycancha.Utils;
 import sempait.haycancha.activities.LoginActivity;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
-import sempait.haycancha.services.CreateAccountTask;
+import sempait.haycancha.services.PUT.CreateAccountTask;
 
 /**
  * Created by martin on 16/11/15.

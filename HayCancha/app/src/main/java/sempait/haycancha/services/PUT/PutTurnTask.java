@@ -1,4 +1,4 @@
-package sempait.haycancha.services;
+package sempait.haycancha.services.PUT;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -14,17 +14,23 @@ import sempait.haycancha.Constants;
 import sempait.haycancha.base.BaseActivity;
 
 /**
- * Created by martin on 02/11/15.
+ * Created by martin on 12/11/15.
  */
-public class LoginTask extends AsyncTask<Void, Void, String> {
-    private String METHOD_NAME = "RecuperarUsuarioApp";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarUsuarioApp";
-    public String mEmail;
+public class PutTurnTask extends AsyncTask<Void, Void, String> {
+
+    private String METHOD_NAME = "InsertarActualizarTurnoVariable";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarTurnoVariable";
+    public int mCodigoCancha;
+    public String mFecha;
+    public int mHDesde;
+    public int mHHasta;
+    public int mCodigoUsuario;
+
     public String mPassword;
     private Context mContext;
 
 
-    public LoginTask(Context ctx) {
+    public PutTurnTask(Context ctx) {
         mContext = ctx;
     }
 
@@ -33,8 +39,13 @@ public class LoginTask extends AsyncTask<Void, Void, String> {
 
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
-        request.addProperty("mail", mEmail);
-        request.addProperty("contraseña", mPassword);
+        request.addProperty("codigoTurnoVariable", 0);
+        request.addProperty("codigoCancha", mCodigoCancha);
+        request.addProperty("fecha", mFecha);
+        request.addProperty("horaDesde", mHDesde);
+        request.addProperty("horaHasta", mHHasta);
+        request.addProperty("codigoUsuarioApp", mCodigoUsuario);
+        request.addProperty("observaciones", "hola");
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 
@@ -53,7 +64,7 @@ public class LoginTask extends AsyncTask<Void, Void, String> {
             return result.toString();
 
         } catch (Exception e) {
-            Log.d("", "");
+            Log.d("", e.getMessage());
 
         }
         return null;
@@ -73,6 +84,4 @@ public class LoginTask extends AsyncTask<Void, Void, String> {
 
         ((BaseActivity) mContext).showLoadingView();
     }
-
-
 }

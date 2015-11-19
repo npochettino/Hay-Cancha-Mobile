@@ -10,22 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.parse.Parse;
-import com.parse.ParseInstallation;
-import com.parse.ParsePush;
-import com.parse.ParseUser;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
-import sempait.haycancha.Utils;
 import sempait.haycancha.activities.LoginActivity;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
-import sempait.haycancha.services.CreateAccountTask;
+import sempait.haycancha.services.PUT.CreateAccountTask;
 
 /**
  * Created by martin on 11/11/15.

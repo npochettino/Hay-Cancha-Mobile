@@ -1,7 +1,6 @@
 package sempait.haycancha.adapter;
 
 import android.content.Context;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,26 +9,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import sempait.haycancha.ConfigurationClass;
-import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseActivity;
-import sempait.haycancha.fragment.CreateAccountFragment2;
-import sempait.haycancha.fragment.FieldDetailFragment;
 import sempait.haycancha.fragment.SearchPlayerFragment;
-import sempait.haycancha.models.Stadium;
 import sempait.haycancha.models.Turn;
-import sempait.haycancha.services.GetLocalTask;
+import sempait.haycancha.services.GET.GetLocalTask;
 import sempait.haycancha.services.LocationManager;
-import sempait.haycancha.services.PutTurnTask;
 
 /**
  * Created by martin on 18/11/15.

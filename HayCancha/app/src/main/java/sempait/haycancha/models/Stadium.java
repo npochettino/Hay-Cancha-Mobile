@@ -60,7 +60,7 @@ public class Stadium implements Serializable {
     }
 
     public Float getLatitud() {
-        return -32.9471732f;
+        return latitud;
     }
 
     public void setLatitud(Float latitud) {
@@ -68,7 +68,7 @@ public class Stadium implements Serializable {
     }
 
     public Float getLongitud() {
-        return -60.6343267f;
+        return longitud;
     }
 
     public void setLongitud(Float longitud) {

@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
@@ -21,7 +20,7 @@ import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.Turn;
 import sempait.haycancha.models.User;
-import sempait.haycancha.services.GetPlayerAvailableForPosition;
+import sempait.haycancha.services.GET.GetPlayerAvailableForPosition;
 
 /**
  * Created by martin on 18/11/15.

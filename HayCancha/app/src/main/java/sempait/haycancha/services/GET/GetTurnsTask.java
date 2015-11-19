@@ -1,4 +1,4 @@
-package sempait.haycancha.services;
+package sempait.haycancha.services.GET;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -13,19 +13,21 @@ import sempait.haycancha.Constants;
 import sempait.haycancha.base.BaseActivity;
 
 /**
- * Created by martin on 18/11/15.
+ * Created by martin on 04/11/15.
  */
-public class GetTurnsCurrentForUser extends AsyncTask<Void, Void, String> {
-
-    private String METHOD_NAME = "RecuperarTurnosVigentesPorUsuario";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarTurnosVigentesPorUsuario";
+public class GetTurnsTask extends AsyncTask<Void, Void, String> {
+    private String METHOD_NAME = "RecuperarTurnosPorRangoHorario";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarTurnosPorRangoHorario";
+    public String mDate;
+    public int mHdesde;
+    public int mHHasta;
     public int mCodigoUsuario;
 
     public String mPassword;
     private Context mContext;
 
 
-    public GetTurnsCurrentForUser(Context ctx) {
+    public GetTurnsTask(Context ctx) {
         mContext = ctx;
     }
 
@@ -34,7 +36,9 @@ public class GetTurnsCurrentForUser extends AsyncTask<Void, Void, String> {
 
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
-
+        request.addProperty("fechaStr", mDate);
+        request.addProperty("horaDesde", mHdesde);
+        request.addProperty("horaHasta", mHHasta);
         request.addProperty("codigoUsuarioApp", mCodigoUsuario);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);

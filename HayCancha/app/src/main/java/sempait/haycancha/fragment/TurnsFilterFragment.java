@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -19,12 +20,6 @@ import android.widget.TimePicker;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.parse.ParseInstallation;
-import com.parse.ParsePush;
-import com.parse.ParseQuery;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,10 +31,11 @@ import java.util.Locale;
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
+import sempait.haycancha.activities.LoginActivity;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.Turn;
-import sempait.haycancha.services.GetTurnsTask;
+import sempait.haycancha.services.GET.GetTurnsTask;
 
 /**
  * Created by martin on 29/10/15.
@@ -53,6 +49,9 @@ public class TurnsFilterFragment extends BaseFragment {
     TimePickerDialog.OnTimeSetListener hourTo;
     Calendar myCalendar = Calendar.getInstance();
     GetTurnsTask mGetTurnTask;
+    EditText mExpDate;
+    EditText mExpHFrom;
+    EditText mExpHTo;
 
 
     @Override
@@ -67,6 +66,9 @@ public class TurnsFilterFragment extends BaseFragment {
 
 
         mView = inflater.inflate(R.layout.fragment_filter_turns, container, false);
+        mExpDate = (EditText) mView.findViewById(R.id.exp_date);
+        mExpHFrom = (EditText) mView.findViewById(R.id.exp_hour_from);
+        mExpHTo = (EditText) mView.findViewById(R.id.exp_hour_to);
 
         date = new DatePickerDialog.OnDateSetListener() {
 
@@ -120,25 +122,16 @@ public class TurnsFilterFragment extends BaseFragment {
         mView.findViewById(R.id.img_hay_cancha).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                executeTurnsService();
+                if (Integer.valueOf(mExpHFrom.getText().toString().substring(0, 2)) < Integer.valueOf(mExpHTo.getText().toString().substring(0, 2)))
+                    executeTurnsService();
+                else {
 
-//                ParseQuery pushQuery = ParseInstallation.getQuery();
-//                pushQuery.whereEqualTo("deviceToken", "APA91bGdbztll9oMQepfj6WSkVYfzCBr9tIGUBXWSyUjcHnqD7Xg0Wlu5XGhBZ1ZvLeIhbJ7el9_nmxDzL7zV8eXX6y7hhUBvvX_giIE54qdUie42lnagY_7a28-b4QsiIk5bXakYuwW");
-//                ParsePush push = new ParsePush();
-//
-//                JSONObject obj = new JSONObject();
-//
-//                try {
-//                    obj.put("deep_link", "home");
-//                    obj.put("message", "Mesanje");
-//                    obj.put("title", "default");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//                push.setQuery(pushQuery);
-//                push.setData(obj);
-//                push.sendInBackground();
 
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_hora_message), mContext.getString(R.string.fields), mContext.getString(R.string.acept_text));
+                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                    ft.add(dialog, null);
+                    ft.commitAllowingStateLoss();
+                }
 
             }
         });
@@ -261,7 +254,7 @@ public class TurnsFilterFragment extends BaseFragment {
                         List<Turn> mTurns = new Gson().fromJson(result.toString(), new TypeToken<List<Turn>>() {
                         }.getType());
 
-                        getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnFragment.newIntance(orderList(mTurns), stringDate), true);
+                        getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnFragment.newIntance(mTurns, stringDate), true);
                     } else
                         getBaseActivity().replaceInnerFragmentWhitFLip(ResultTurnFragment.newIntance(new ArrayList<Turn>(), stringDate), true);
 
@@ -296,15 +289,5 @@ public class TurnsFilterFragment extends BaseFragment {
 
     }
 
-    private List<Turn> orderList(List<Turn> mTurns) {
-
-        for (Turn turn : mTurns) {
-
-            turn.setLatitud(-32.967076);
-            turn.setLongitud(-60.672095);
-        }
-
-        return mTurns;
-    }
 
 }

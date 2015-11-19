@@ -50,7 +50,7 @@
         <!--Api Production-->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCwvWaZZp8bPC__iFIzP2G9ZX_9KXLRvTg" />
+            android:value="AIzaSyDHq9VttjYkU55iF_SVYjt7IEXYRErDCpo" />
 
 
         <service android:name="com.parse.PushService" />

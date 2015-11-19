@@ -1,7 +1,6 @@
 package sempait.haycancha.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,14 +24,12 @@ import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.Utils;
-import sempait.haycancha.activities.LoginActivity;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.models.Turn;
 import sempait.haycancha.models.User;
-import sempait.haycancha.services.GetLocalTask;
-import sempait.haycancha.services.LocationManager;
-import sempait.haycancha.services.PutInvitationTask;
-import sempait.haycancha.services.PutTurnTask;
+import sempait.haycancha.services.GET.GetLocalTask;
+import sempait.haycancha.services.PUT.PutInvitationTask;
+import sempait.haycancha.services.PUT.PutTurnTask;
 
 /**
  * Created by martin on 18/11/15.

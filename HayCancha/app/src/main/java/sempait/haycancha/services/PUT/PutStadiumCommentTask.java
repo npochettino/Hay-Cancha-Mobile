@@ -1,4 +1,4 @@
-package sempait.haycancha.services;
+package sempait.haycancha.services.PUT;
 
 import android.content.Context;
 import android.os.AsyncTask;

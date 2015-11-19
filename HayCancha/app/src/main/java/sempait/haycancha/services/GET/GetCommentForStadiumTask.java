@@ -1,4 +1,4 @@
-package sempait.haycancha.services;
+package sempait.haycancha.services.GET;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -14,23 +14,17 @@ import sempait.haycancha.Constants;
 import sempait.haycancha.base.BaseActivity;
 
 /**
- * Created by martin on 12/11/15.
+ * Created by martin on 17/11/15.
  */
-public class PutTurnTask extends AsyncTask<Void, Void, String> {
+public class GetCommentForStadiumTask extends AsyncTask<Void, Void, String> {
 
-    private String METHOD_NAME = "InsertarActualizarTurnoVariable";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarTurnoVariable";
-    public int mCodigoCancha;
-    public String mFecha;
-    public int mHDesde;
-    public int mHHasta;
-    public int mCodigoUsuario;
-
-    public String mPassword;
+    private String METHOD_NAME = "RecuperarValoracionesComplejo";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarValoracionesComplejo";
+    public int mCodigoComplejo;
     private Context mContext;
 
 
-    public PutTurnTask(Context ctx) {
+    public GetCommentForStadiumTask(Context ctx) {
         mContext = ctx;
     }
 
@@ -39,13 +33,8 @@ public class PutTurnTask extends AsyncTask<Void, Void, String> {
 
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
-        request.addProperty("codigoTurnoVariable", 0);
-        request.addProperty("codigoCancha", mCodigoCancha);
-        request.addProperty("fecha", mFecha);
-        request.addProperty("horaDesde", mHDesde);
-        request.addProperty("horaHasta", mHHasta);
-        request.addProperty("codigoUsuarioApp", mCodigoUsuario);
-        request.addProperty("observaciones", "hola");
+        request.addProperty("codigoComplejo", mCodigoComplejo);
+
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 

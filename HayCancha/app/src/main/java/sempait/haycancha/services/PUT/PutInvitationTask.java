@@ -1,4 +1,4 @@
-package sempait.haycancha.services;
+package sempait.haycancha.services.PUT;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -15,14 +15,22 @@ import sempait.haycancha.base.BaseActivity;
 /**
  * Created by martin on 18/11/15.
  */
-public class GetPlayerAvailableForPosition extends AsyncTask<Void, Void, String> {
-    private String METHOD_NAME = "RecuperarUsuariosAppActivosPorPosicion";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarUsuariosAppActivosPorPosicion";
-    public int mCodigoPosicion;
+public class PutInvitationTask extends AsyncTask<Void, Void, String> {
+
+    private String METHOD_NAME = "InsertarActualizarSolicitud";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarSolicitud";
+
+    public int mCodigoSolicitud;
+    public int mCodigoTurnoVariable;
+    public int mcodigoUsuarioAppInvitado;
+    public int mCodigoEstadoSolicitud;
+
+
+    public String mPassword;
     private Context mContext;
 
 
-    public GetPlayerAvailableForPosition(Context ctx) {
+    public PutInvitationTask(Context ctx) {
         mContext = ctx;
     }
 
@@ -31,8 +39,11 @@ public class GetPlayerAvailableForPosition extends AsyncTask<Void, Void, String>
 
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
+        request.addProperty("codigoSolicitud", mCodigoSolicitud);
+        request.addProperty("codigoTurnoVariable", mCodigoTurnoVariable);
+        request.addProperty("codigoUsuarioAppInvitado", mcodigoUsuarioAppInvitado);
+        request.addProperty("codigoEstadoSolicitud", mCodigoEstadoSolicitud);
 
-        request.addProperty("codigoPosicion", mCodigoPosicion);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 
@@ -52,6 +63,7 @@ public class GetPlayerAvailableForPosition extends AsyncTask<Void, Void, String>
 
         } catch (Exception e) {
 
+
         }
         return null;
     }
@@ -70,5 +82,4 @@ public class GetPlayerAvailableForPosition extends AsyncTask<Void, Void, String>
 
         ((BaseActivity) mContext).showLoadingView();
     }
-
 }

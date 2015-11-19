@@ -1,4 +1,4 @@
-package sempait.haycancha.services;
+package sempait.haycancha.services.GET;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -14,52 +14,29 @@ import sempait.haycancha.Constants;
 import sempait.haycancha.base.BaseActivity;
 
 /**
- * Created by martin on 02/11/15.
+ * Created by martin on 12/11/15.
  */
-public class CreateAccountTask extends AsyncTask<Void, Void, String> {
+public class GetLocalTask extends AsyncTask<Void, Void, String> {
+    private String METHOD_NAME = "RecuperarComplejo";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarComplejo";
+    public int mCodigoComplejo;
 
 
-    private String METHOD_NAME = "InsertarActualizarUsuarioApp";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarUsuarioApp";
-    public int mCodigoUsuario;
-    public String mNombre;
-    public String mApellido;
-    public String mEmail;
     public String mPassword;
-    public String mTelefono;
-    public int mPosicion;
-    public String mCodigoTelefono;
-    public Boolean mIsActivo;
-    public String mUrlImage;
-
-    public CreateAccountTask() {
-        super();
-    }
-
     private Context mContext;
 
 
-    public CreateAccountTask(Context ctx) {
+    public GetLocalTask(Context ctx) {
         mContext = ctx;
     }
 
     @Override
     protected String doInBackground(Void... params) {
 
-
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
+        request.addProperty("codigoComplejo", mCodigoComplejo);
 
-        request.addProperty("codigoUsuario", mCodigoUsuario);
-        request.addProperty("nombre", mNombre);
-        request.addProperty("apellido", mApellido);
-        request.addProperty("mail", mEmail);
-        request.addProperty("contraseña", mPassword);
-        request.addProperty("telefono", mTelefono);
-        request.addProperty("codigoPosicion", mPosicion);
-        request.addProperty("codigoTelefono", mCodigoTelefono);
-        request.addProperty("isActivo", mIsActivo);
-        request.addProperty("imagen", mUrlImage);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 
@@ -82,15 +59,14 @@ public class CreateAccountTask extends AsyncTask<Void, Void, String> {
 
         }
         return null;
-
-
     }
-
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         ((BaseActivity) mContext).dismissLoadingView();
+
+
     }
 
     @Override

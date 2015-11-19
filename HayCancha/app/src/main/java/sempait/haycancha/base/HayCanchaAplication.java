@@ -42,7 +42,8 @@ public class HayCanchaAplication extends Application {
 
         ConfigurationClass.setCodigoTelefono(this, (String) ParseInstallation.getCurrentInstallation().get("deviceToken"));
         intializeImageLoader();
-        LocationManager.getInstance(this);
+
+
     }
 
     private void intializeImageLoader() {

@@ -1,8 +1,7 @@
-package sempait.haycancha.services;
+package sempait.haycancha.services.GET;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -14,19 +13,16 @@ import sempait.haycancha.Constants;
 import sempait.haycancha.base.BaseActivity;
 
 /**
- * Created by martin on 12/11/15.
+ * Created by martin on 18/11/15.
  */
-public class GetLocalTask extends AsyncTask<Void, Void, String> {
-    private String METHOD_NAME = "RecuperarComplejo";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarComplejo";
-    public int mCodigoComplejo;
-
-
-    public String mPassword;
+public class GetPlayerAvailableForPosition extends AsyncTask<Void, Void, String> {
+    private String METHOD_NAME = "RecuperarUsuariosAppActivosPorPosicion";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarUsuariosAppActivosPorPosicion";
+    public int mCodigoPosicion;
     private Context mContext;
 
 
-    public GetLocalTask(Context ctx) {
+    public GetPlayerAvailableForPosition(Context ctx) {
         mContext = ctx;
     }
 
@@ -35,8 +31,8 @@ public class GetLocalTask extends AsyncTask<Void, Void, String> {
 
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
-        request.addProperty("codigoComplejo", mCodigoComplejo);
 
+        request.addProperty("codigoPosicion", mCodigoPosicion);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 
@@ -55,7 +51,6 @@ public class GetLocalTask extends AsyncTask<Void, Void, String> {
             return result.toString();
 
         } catch (Exception e) {
-            Log.d("", e.getMessage());
 
         }
         return null;
@@ -75,4 +70,5 @@ public class GetLocalTask extends AsyncTask<Void, Void, String> {
 
         ((BaseActivity) mContext).showLoadingView();
     }
+
 }

@@ -1,8 +1,7 @@
-package sempait.haycancha.services;
+package sempait.haycancha.services.GET;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -14,17 +13,19 @@ import sempait.haycancha.Constants;
 import sempait.haycancha.base.BaseActivity;
 
 /**
- * Created by martin on 17/11/15.
+ * Created by martin on 18/11/15.
  */
-public class GetCommentForStadiumTask extends AsyncTask<Void, Void, String> {
+public class GetTurnsCurrentForUser extends AsyncTask<Void, Void, String> {
 
-    private String METHOD_NAME = "RecuperarValoracionesComplejo";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarValoracionesComplejo";
-    public int mCodigoComplejo;
+    private String METHOD_NAME = "RecuperarTurnosVigentesPorUsuario";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarTurnosVigentesPorUsuario";
+    public int mCodigoUsuario;
+
+    public String mPassword;
     private Context mContext;
 
 
-    public GetCommentForStadiumTask(Context ctx) {
+    public GetTurnsCurrentForUser(Context ctx) {
         mContext = ctx;
     }
 
@@ -33,8 +34,8 @@ public class GetCommentForStadiumTask extends AsyncTask<Void, Void, String> {
 
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
-        request.addProperty("codigoComplejo", mCodigoComplejo);
 
+        request.addProperty("codigoUsuarioApp", mCodigoUsuario);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 
@@ -53,7 +54,6 @@ public class GetCommentForStadiumTask extends AsyncTask<Void, Void, String> {
             return result.toString();
 
         } catch (Exception e) {
-            Log.d("", e.getMessage());
 
         }
         return null;

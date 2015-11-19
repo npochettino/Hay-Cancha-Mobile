@@ -18,11 +18,10 @@ import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.adapter.MyReservationsConfirmAdapter;
-import sempait.haycancha.adapter.TurnListAdapter;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.Turn;
-import sempait.haycancha.services.GetTurnsCurrentForUser;
+import sempait.haycancha.services.GET.GetTurnsCurrentForUser;
 
 /**
  * Created by martin on 18/11/15.

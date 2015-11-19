@@ -16,7 +16,6 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,11 +29,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import sempait.haycancha.ConfigurationClass;
-import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.adapter.CommentListAdapter;
 import sempait.haycancha.adapter.CustomInfoWindowAdapter;
@@ -42,10 +39,9 @@ import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.Comment;
 import sempait.haycancha.models.Stadium;
-import sempait.haycancha.models.User;
-import sempait.haycancha.services.GetCommentForStadiumTask;
+import sempait.haycancha.services.GET.GetCommentForStadiumTask;
 import sempait.haycancha.services.LocationManager;
-import sempait.haycancha.services.PutStadiumCommentTask;
+import sempait.haycancha.services.PUT.PutStadiumCommentTask;
 
 /**
  * Created by martin on 12/11/15.

@@ -1,7 +1,8 @@
-package sempait.haycancha.services;
+package sempait.haycancha.services.PUT;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -13,37 +14,52 @@ import sempait.haycancha.Constants;
 import sempait.haycancha.base.BaseActivity;
 
 /**
- * Created by martin on 18/11/15.
+ * Created by martin on 02/11/15.
  */
-public class PutInvitationTask extends AsyncTask<Void, Void, String> {
-
-    private String METHOD_NAME = "InsertarActualizarSolicitud";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarSolicitud";
-
-    public int mCodigoSolicitud;
-    public int mCodigoTurnoVariable;
-    public int mcodigoUsuarioAppInvitado;
-    public int mCodigoEstadoSolicitud;
+public class CreateAccountTask extends AsyncTask<Void, Void, String> {
 
 
+    private String METHOD_NAME = "InsertarActualizarUsuarioApp";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarUsuarioApp";
+    public int mCodigoUsuario;
+    public String mNombre;
+    public String mApellido;
+    public String mEmail;
     public String mPassword;
+    public String mTelefono;
+    public int mPosicion;
+    public String mCodigoTelefono;
+    public Boolean mIsActivo;
+    public String mUrlImage;
+
+    public CreateAccountTask() {
+        super();
+    }
+
     private Context mContext;
 
 
-    public PutInvitationTask(Context ctx) {
+    public CreateAccountTask(Context ctx) {
         mContext = ctx;
     }
 
     @Override
     protected String doInBackground(Void... params) {
 
+
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
-        request.addProperty("codigoSolicitud", mCodigoSolicitud);
-        request.addProperty("codigoTurnoVariable", mCodigoTurnoVariable);
-        request.addProperty("codigoUsuarioAppInvitado", mcodigoUsuarioAppInvitado);
-        request.addProperty("codigoEstadoSolicitud", mCodigoEstadoSolicitud);
 
+        request.addProperty("codigoUsuario", mCodigoUsuario);
+        request.addProperty("nombre", mNombre);
+        request.addProperty("apellido", mApellido);
+        request.addProperty("mail", mEmail);
+        request.addProperty("contraseña", mPassword);
+        request.addProperty("telefono", mTelefono);
+        request.addProperty("codigoPosicion", mPosicion);
+        request.addProperty("codigoTelefono", mCodigoTelefono);
+        request.addProperty("isActivo", mIsActivo);
+        request.addProperty("imagen", mUrlImage);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 
@@ -62,18 +78,19 @@ public class PutInvitationTask extends AsyncTask<Void, Void, String> {
             return result.toString();
 
         } catch (Exception e) {
-
+            Log.d("", e.getMessage());
 
         }
         return null;
+
+
     }
+
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         ((BaseActivity) mContext).dismissLoadingView();
-
-
     }
 
     @Override

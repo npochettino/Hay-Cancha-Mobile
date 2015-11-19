@@ -25,9 +25,9 @@ import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.fragment.FieldDetailFragment;
 import sempait.haycancha.models.Stadium;
 import sempait.haycancha.models.Turn;
-import sempait.haycancha.services.GetLocalTask;
+import sempait.haycancha.services.GET.GetLocalTask;
 import sempait.haycancha.services.LocationManager;
-import sempait.haycancha.services.PutTurnTask;
+import sempait.haycancha.services.PUT.PutTurnTask;
 
 
 public class TurnListAdapter extends BaseAdapter {
