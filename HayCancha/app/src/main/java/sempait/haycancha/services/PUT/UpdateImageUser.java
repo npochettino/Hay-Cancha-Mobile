@@ -1,6 +1,7 @@
 package sempait.haycancha.services.PUT;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -23,7 +24,7 @@ public class UpdateImageUser extends AsyncTask<Void, Void, String> {
     private String METHOD_NAME = "InsertarActualizarImageUsuarioApp";
     private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarImageUsuarioApp";
     public int mCodigoUsuario;
-    public File mImageUser;
+    public Bitmap mImageUser;
     private Context mContext;
 
 

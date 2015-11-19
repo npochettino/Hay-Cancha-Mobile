@@ -84,12 +84,13 @@ public class RaitingDialogFragment extends DialogFragment {
 
         for (Comment commnet : mComments) {
 
-            if (commnet.getMyComment()) {
-                mComment.setText(commnet.getComment());
-                mTitle.setText(commnet.getTitle());
-                Utils.setupRating(commnet.getRaiting(), mLinearStars);
-                break;
-            }
+            if (commnet.getMyComment() != null)
+                if (commnet.getMyComment()) {
+                    mComment.setText(commnet.getComment());
+                    mTitle.setText(commnet.getTitle());
+                    Utils.setupRating(commnet.getRaiting(), mLinearStars);
+                    break;
+                }
         }
 
     }

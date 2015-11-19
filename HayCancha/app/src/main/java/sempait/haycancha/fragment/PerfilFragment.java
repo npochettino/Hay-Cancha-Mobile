@@ -102,7 +102,7 @@ public class PerfilFragment extends BaseFragment {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
             String url = picturePath;
-            mImgProfile.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
 
             executeUpdateImage(picturePath);
         }
@@ -119,7 +119,10 @@ public class PerfilFragment extends BaseFragment {
 
                 if (result != null) {
 
+                    String url = result;
                     ConfigurationClass.setImageUser(mContext, result);
+                    if (url != null)
+                        ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, mImgProfile, Utils.getImageLoaderOptionRouded());
                     Toast.makeText(mContext, R.string.success_update_user_image, Toast.LENGTH_SHORT);
                 } else {
                     ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.perfil), mContext.getString(R.string.acept_text));
@@ -134,7 +137,7 @@ public class PerfilFragment extends BaseFragment {
         };
 
         mUpdateImageTask.mCodigoUsuario = ConfigurationClass.getUserCod(mContext);
-        mUpdateImageTask.mImageUser = new File(urlImage);
+        mUpdateImageTask.mImageUser = BitmapFactory.decodeFile(urlImage);
 
     }
 
