@@ -2,6 +2,7 @@ package sempait.haycancha.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,27 +10,39 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.List;
+
+import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
+import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
+import sempait.haycancha.models.Turn;
+import sempait.haycancha.models.User;
+import sempait.haycancha.services.GetPlayerAvailableForPosition;
 
 /**
  * Created by martin on 18/11/15.
  */
 public class SearchPlayerFragment extends BaseFragment {
 
-    private String CODIGO_USER = "codigo_user";
-    private int mCodigoUser;
-    private View mView;
+    private String TURN = "turn";
+    private Turn mTurn;
     private int mPositionSelected;
+    private View mView;
     private String mDescPositionSelected;
     private ImageView mImgProfile, mImgArquero, mImgDefensor, mImgDelantero, mImgTodaElCampo;
+    private Button mDoneButton;
+    private GetPlayerAvailableForPosition mGetPlayerTask;
 
 
-    public Fragment newInstance(int codigo) {
+    public Fragment newInstance(Turn turn) {
 
         SearchPlayerFragment mSearchPlayer = new SearchPlayerFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(CODIGO_USER, codigo);
+        bundle.putSerializable(TURN, turn);
 
 
         mSearchPlayer.setArguments(bundle);
@@ -41,14 +54,14 @@ public class SearchPlayerFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mCodigoUser = getArguments().getInt(CODIGO_USER);
+        mTurn = (Turn) getArguments().getSerializable(TURN);
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        getBaseActivity().setSectionTitle(getString(R.string.players));
+        getBaseActivity().setSectionTitle("Elegí una posicion");
 
         mView = (ViewGroup) inflater.inflate(R.layout.search_player_fragment, container, false);
 
@@ -57,6 +70,7 @@ public class SearchPlayerFragment extends BaseFragment {
         mImgDefensor = (ImageView) mView.findViewById(R.id.img_defensor);
         mImgDelantero = (ImageView) mView.findViewById(R.id.img_delantero);
         mImgTodaElCampo = (ImageView) mView.findViewById(R.id.img_todo_el_campo);
+        mDoneButton = (Button) mView.findViewById(R.id.btn_done);
 
 
         return mView;
@@ -94,6 +108,47 @@ public class SearchPlayerFragment extends BaseFragment {
                 refreshPostion(1);
             }
         });
+
+        mDoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                executeGetPlayerForPosition();
+            }
+        });
+    }
+
+    private void executeGetPlayerForPosition() {
+
+        mGetPlayerTask = new GetPlayerAvailableForPosition(mContext) {
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+                if (result != null && result.length() != 2) {
+
+
+                    List<User> mUsers = new Gson().fromJson(result.toString(), new TypeToken<List<User>>() {
+                    }.getType());
+
+                    getBaseActivity().replaceInnerFragmentWhitFLip(ResultSearchPlayerFragment.newIntance(mUsers, mTurn), true);
+
+
+                } else {
+
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.players), mContext.getString(R.string.acept_text));
+                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                    ft.add(dialog, null);
+                    ft.commitAllowingStateLoss();
+                }
+
+            }
+        };
+
+        mGetPlayerTask.mCodigoPosicion = mPositionSelected;
+        mGetPlayerTask.execute();
+
     }
 
     private void refreshPostion(int position) {

@@ -139,6 +139,7 @@ public class LoginFragment extends BaseFragment {
                     ConfigurationClass.setUserCod(mContext, mUserActual.getCodigoUsuario());
                     ConfigurationClass.setEmailUser(mContext, mUserActual.getMail());
                     ConfigurationClass.setTelUser(mContext, mUserActual.getTelefono());
+                    ConfigurationClass.setCodigoTelefono(mContext, mUserActual.getCodigoTelefono());
                     ConfigurationClass.setDNIUser(mContext, mUserActual.getDni());
                     ConfigurationClass.setPasswodUser(mContext, mUserActual.getContraseña());
                     ConfigurationClass.setCodigoPosicion(mContext, mUserActual.getCodigoPosicion());

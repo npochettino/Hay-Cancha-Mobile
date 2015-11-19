@@ -13,7 +13,10 @@ public class User implements Serializable {
     private String telefono;
     private String mail;
     private String contraseña;
+    private String codigoTelefono;
     private int codigoPosicion;
+    private float puntaje;
+    private String imagen;
     private String descripcionPosicion;
 
 
@@ -114,5 +117,29 @@ public class User implements Serializable {
     public void setCodigoPosicion(int codigoPosicion) {
 
         this.codigoPosicion = codigoPosicion;
+    }
+
+    public String getCodigoTelefono() {
+        return codigoTelefono;
+    }
+
+    public void setCodigoTelefono(String codigoTelefono) {
+        this.codigoTelefono = codigoTelefono;
+    }
+
+    public float getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(float puntaje) {
+        this.puntaje = puntaje;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

@@ -24,7 +24,7 @@ public class DeepLinkActivity extends BaseActivity {
             if (data.equalsIgnoreCase("home"))
                 i = new Intent(getApplicationContext(), SplashActivity.class);
             else if (data.equalsIgnoreCase("invitation")) {
-                i = new Intent(getApplicationContext(), LoginActivity.class);
+                i = new Intent(getApplicationContext(), SplashActivity.class);
 
             } else
                 i = new Intent(getApplicationContext(), SplashActivity.class);

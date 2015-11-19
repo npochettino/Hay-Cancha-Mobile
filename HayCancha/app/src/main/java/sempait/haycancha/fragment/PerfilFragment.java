@@ -115,6 +115,36 @@ public class PerfilFragment extends BaseFragment {
 
             }
         });
+
+
+        mImgArquero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refreshPostion(2);
+            }
+        });
+
+        mImgDefensor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refreshPostion(3);
+            }
+        });
+
+        mImgDelantero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refreshPostion(4);
+            }
+        });
+
+
+        mImgTodaElCampo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refreshPostion(1);
+            }
+        });
     }
 
     private void executeUpdateData() {

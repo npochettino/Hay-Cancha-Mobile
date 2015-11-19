@@ -86,7 +86,7 @@ public class MyReservationsConfirmAdapter extends BaseAdapter {
             holder = new viewHolder();
 
 
-            convertView = mInflater.inflate(R.layout.row_turn_list, null);
+            convertView = mInflater.inflate(R.layout.row_reservations_list, null);
 
             holder.name = (TextView) convertView.findViewById(R.id.txt_field_row_name);
             holder.direction = (TextView) convertView.findViewById(R.id.txt_field_row_direction);
@@ -118,7 +118,7 @@ public class MyReservationsConfirmAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                ((BaseActivity) mContext).replaceInnerFragmentWhitFLip(new SearchPlayerFragment().newInstance(turn.getCodigoTurno()), true);
+                ((BaseActivity) mContext).replaceInnerFragmentWhitFLip(new SearchPlayerFragment().newInstance(turn), true);
             }
 
 

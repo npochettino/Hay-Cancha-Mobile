@@ -15,6 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import sempait.haycancha.R;
+import sempait.haycancha.fragment.TurnsFilterFragment;
 
 /**
  * Created by martin on 19/10/15.
@@ -89,16 +90,15 @@ public class BaseActivity extends AppCompatActivity {
         replaceInnerFragment(fragment, addToBackStack, animType, true);
     }
 
-    public void replaceFragmentSection(Fragment fragment) {
+    public void replaceFragmentSection(Fragment fragment, String tag) {
 
+        getSupportFragmentManager().popBackStack(null, getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        transaction.replace(R.id.container, fragment);
+        transaction.replace(R.id.container, fragment, tag);
         if (false)
             transaction.addToBackStack(null);
         transaction.commit();
-
-
     }
 
     public void replaceInnerFragmentWhitFLip(Fragment fragment, Boolean addToBackstack) {
@@ -260,6 +260,20 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            TurnsFilterFragment myFragment = (TurnsFilterFragment) getSupportFragmentManager().findFragmentByTag(getString(R.string.fields));
+
+            if (!(myFragment != null && myFragment.isVisible())) {
+                replaceFragmentSection(new TurnsFilterFragment(), getString(R.string.fields));
+            } else
+                super.onBackPressed();
+
+        } else
+            super.onBackPressed();
+    }
 
     public void dismissLoadingView() {
 

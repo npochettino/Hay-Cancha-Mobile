@@ -9,6 +9,7 @@
     <string name="players">Buscar jugador</string>
     <string name="reservations">Mis reservas</string>
     <string name="favorites">Canchas favoritas</string>
+    <string name="invitations">Mis invitaciones</string>
     <string name="perfil">Perfil</string>
     <string name="calificar">Calificar</string>
     <string name="resultado">Turnos encontrados</string>

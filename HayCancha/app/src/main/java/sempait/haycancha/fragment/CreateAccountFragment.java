@@ -55,7 +55,7 @@ public class CreateAccountFragment extends BaseFragment {
                 if (allFildCompleted())
                     ((BaseActivity) mContext).replaceInnerFragmentWhitFLip(new CreateAccountFragment2().newInstance(mEtName.getText().toString(), mEtLastName.getText().toString(), mEtPhone.getText().toString()), true);
                 else {
-                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(getString(R.string.error_message), getString(R.string.create_account_title), getString(R.string.acept_text));
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(getString(R.string.error_form_incomplete_message), getString(R.string.create_account_title), getString(R.string.acept_text));
                     FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
                     ft.add(dialog, null);
                     ft.commitAllowingStateLoss();

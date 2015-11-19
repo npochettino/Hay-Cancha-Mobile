@@ -16,11 +16,10 @@ import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseDrawerFragment;
-import sempait.haycancha.fragment.LoginFragment;
 import sempait.haycancha.fragment.PerfilFragment;
 import sempait.haycancha.fragment.ReservationFragments;
+import sempait.haycancha.fragment.ReservationsPendingFragment;
 import sempait.haycancha.fragment.TurnsFilterFragment;
-import sempait.haycancha.models.User;
 
 import static sempait.haycancha.R.drawable.background_drawer_selected;
 
@@ -34,7 +33,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
     private LinearLayout mSearchPlayerItem;
     private LinearLayout mSearchMatchItem;
     private LinearLayout mMyreservationsItem;
-    private LinearLayout mFavoriteFieldItem;
+    private LinearLayout mInvitationItem;
 
     private ImageView imgAvatar;
     private TextView txt_userPosition;
@@ -43,7 +42,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
     private TextView txt_userLastName;
 
     public static enum Section {
-        FIELDS, MATCHES, PROFILE, FAVORITES, RESERVATIONS, PLAYERS
+        FIELDS, MATCHES, PROFILE, INVITATIONS, RESERVATIONS, PLAYERS
     }
 
     public Section mSelectedSection = Section.FIELDS;
@@ -58,7 +57,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
         mSearchPlayerItem = (LinearLayout) mView.findViewById(R.id.buscar_jugador_item);
         mSearchMatchItem = (LinearLayout) mView.findViewById(R.id.buscar_partido_item);
         mMyreservationsItem = (LinearLayout) mView.findViewById(R.id.mis_reservas_item);
-        mFavoriteFieldItem = (LinearLayout) mView.findViewById(R.id.favoritos_item);
+        mInvitationItem = (LinearLayout) mView.findViewById(R.id.invitation_item);
 
 
         imgAvatar = (ImageView) mView.findViewById(R.id.img_profile);
@@ -123,10 +122,10 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
             }
         });
 
-        mFavoriteFieldItem.setOnClickListener(new OnClickListener() {
+        mInvitationItem.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                openSection(Section.FAVORITES);
+                openSection(Section.INVITATIONS);
             }
         });
     }
@@ -152,6 +151,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
     public void openSection(Section section) {
         Boolean addToBackStack = true;
         mSelectedSection = section;
+        String tagFragment = getString(R.string.fields);
 
         Fragment fragment = null;
 
@@ -160,19 +160,17 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
             case PROFILE:
 
                 fragment = new PerfilFragment();
-                getBaseActivity().setSectionTitle(getString(R.string.perfil));
-
+                tagFragment = getString(R.string.perfil);
                 break;
 
             case FIELDS:
-
                 fragment = new TurnsFilterFragment();
-                getBaseActivity().setSectionTitle(getString(R.string.fields));
+                tagFragment = getString(R.string.fields);
                 break;
 
             case PLAYERS:
-//                fragment = new CinemasFragment();
-                getBaseActivity().setSectionTitle(getString(R.string.players));
+                fragment = new ReservationFragments();
+                tagFragment = getString(R.string.players);
                 break;
 
             case MATCHES:
@@ -181,15 +179,13 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
                 break;
 
             case RESERVATIONS:
-                fragment = new ReservationFragments();
-                getBaseActivity().setSectionTitle(getString(R.string.reservations));
-
+                fragment = new ReservationsPendingFragment();
+                tagFragment = getString(R.string.reservations);
                 break;
 
-            case FAVORITES:
+            case INVITATIONS:
 //                fragment = new PromosFragment();
-                getBaseActivity().setSectionTitle(getString(R.string.favorites));
-
+                tagFragment = getString(R.string.players);
                 break;
 
 
@@ -199,7 +195,8 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
 
 
         if (fragment != null) {
-            getBaseActivity().replaceFragmentSection(fragment);
+            getBaseActivity().setSectionTitle(tagFragment);
+            getBaseActivity().replaceFragmentSection(fragment, tagFragment);
 //            getBaseActivity().cleanBacStack();
         }
 
@@ -217,7 +214,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
         mSearchPlayerItem.setBackgroundResource(android.R.color.transparent);
         mSearchMatchItem.setBackgroundResource(android.R.color.transparent);
         mMyreservationsItem.setBackgroundResource(android.R.color.transparent);
-        mFavoriteFieldItem.setBackgroundResource(android.R.color.transparent);
+        mInvitationItem.setBackgroundResource(android.R.color.transparent);
 
 
         switch (mSelectedSection) {
@@ -242,8 +239,8 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
                 mMyreservationsItem.setBackgroundResource(background_drawer_selected);
                 break;
 
-            case FAVORITES:
-                mFavoriteFieldItem.setBackgroundResource(background_drawer_selected);
+            case INVITATIONS:
+                mInvitationItem.setBackgroundResource(background_drawer_selected);
                 break;
 
 

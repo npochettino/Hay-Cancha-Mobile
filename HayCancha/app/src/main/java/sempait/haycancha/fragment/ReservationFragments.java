@@ -47,7 +47,7 @@ public class ReservationFragments extends BaseFragment {
         View mView = inflater.inflate(R.layout.list_general_view, container, false);
         mListReservations = (ListView) mView.findViewById(R.id.list_general);
 
-        getBaseActivity().setSectionTitle(getResources().getString(R.string.reservations));
+        getBaseActivity().setSectionTitle("Elegí el partido a invitar");
 
 
         executeGetReservationsServices();

@@ -124,7 +124,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
             android:scaleType="centerInside"
-            android:src="@drawable/reservar" />
+            android:src="@drawable/confirmado" />
 
         <sempait.haycancha.widgets.HelveticaNeueLightTextView
             android:id="@+id/txt_field_row_hoour_to"

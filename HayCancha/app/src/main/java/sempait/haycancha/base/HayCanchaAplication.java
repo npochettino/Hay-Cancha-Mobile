@@ -41,8 +41,6 @@ public class HayCanchaAplication extends Application {
         ParseInstallation.getCurrentInstallation().saveInBackground();
 
         ConfigurationClass.setCodigoTelefono(this, (String) ParseInstallation.getCurrentInstallation().get("deviceToken"));
-
-
         intializeImageLoader();
         LocationManager.getInstance(this);
     }

@@ -69,6 +69,7 @@ public class PushNotificationReceiver extends ParsePushBroadcastReceiver {
 
         Notification noti = new Notification.Builder(context)
                 .setContentTitle(title)
+                .setAutoCancel(true)
                 .setContentText(message)
                 .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setSmallIcon(R.drawable.logo)

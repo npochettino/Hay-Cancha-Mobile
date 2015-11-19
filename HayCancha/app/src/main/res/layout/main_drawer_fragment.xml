@@ -32,9 +32,9 @@
                 android:id="@+id/img_profile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:scaleType="centerCrop"
                 android:layout_gravity="center_vertical"
                 android:padding="10dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/remera_perfil" />
 
 
@@ -103,6 +103,8 @@
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:scaleType="centerInside"
+
                     android:layout_marginRight="10dp"
                     android:src="@drawable/buscar_turno" />
 
@@ -133,6 +135,8 @@
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:scaleType="centerInside"
+
                     android:layout_marginRight="10dp"
                     android:src="@drawable/buscar_jugador" />
 
@@ -198,6 +202,8 @@
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:scaleType="centerInside"
+
                     android:layout_marginRight="10dp"
                     android:src="@drawable/mis_reservas" />
 
@@ -218,28 +224,29 @@
 
 
             <LinearLayout
-                android:id="@+id/favoritos_item"
+                android:id="@+id/invitation_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-1dp"
                 android:layout_marginTop="-1dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:scaleType="centerInside"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/canchas_favoritas" />
+                    android:src="@drawable/mis_invitaciones" />
 
 
                 <sempait.haycancha.widgets.HelveticaNeueLightTextView
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+
                     android:gravity="center_vertical|left"
-                    android:text="@string/favorites"
+                    android:text="@string/invitations"
                     android:textColor="@color/green" />
             </LinearLayout>
 
