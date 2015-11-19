@@ -1,6 +1,8 @@
 package sempait.haycancha.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +22,11 @@ import org.json.JSONObject;
 import java.util.List;
 
 import sempait.haycancha.ConfigurationClass;
+import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.Utils;
+import sempait.haycancha.activities.LoginActivity;
+import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.models.Turn;
 import sempait.haycancha.models.User;
 import sempait.haycancha.services.GetLocalTask;
@@ -144,26 +149,44 @@ public class PlayerListAdapter extends BaseAdapter {
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
 
-                ParseQuery pushQuery = ParseInstallation.getQuery();
-                pushQuery.whereEqualTo("deviceToken", user.getCodigoTelefono());
-                ParsePush push = new ParsePush();
+                ConfirmDialogCustom dialog;
+                if (result != null) {
 
-                JSONObject obj = new JSONObject();
 
-                try {
-                    obj.put("deep_link", "invitation");
-                    obj.put("message", ConfigurationClass.getUserNameCompleted(mContext) + " " + "te ha inventado a un partido");
-                    obj.put("title", "HayCancha!");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                push.setQuery(pushQuery);
-                push.setData(obj);
-                push.sendInBackground();
+                    ParseQuery pushQuery = ParseInstallation.getQuery();
+                    pushQuery.whereEqualTo("deviceToken", user.getCodigoTelefono());
+                    ParsePush push = new ParsePush();
+
+                    JSONObject obj = new JSONObject();
+
+                    try {
+                        obj.put("deep_link", "invitation");
+                        obj.put("message", ConfigurationClass.getUserNameCompleted(mContext) + " " + "te ha invitado a un partido");
+                        obj.put("title", "HayCancha!");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    push.setQuery(pushQuery);
+                    push.setData(obj);
+                    push.sendInBackground();
+
+
+                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_invite_player_message), mContext.getString(R.string.invitations), mContext.getString(R.string.acept_text));
+
+
+
+                } else
+                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.create_account_title), mContext.getString(R.string.acept_text));
+
+
+                FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                ft.add(dialog, null);
+                ft.commitAllowingStateLoss();
 
 
             }
         };
+
 
         mPutInvitation.mCodigoEstadoSolicitud = 0;
         mPutInvitation.mCodigoEstadoSolicitud = 1;

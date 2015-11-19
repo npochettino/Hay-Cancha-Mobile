@@ -91,15 +91,6 @@ public class CreateAccountTask extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         ((BaseActivity) mContext).dismissLoadingView();
-
-//        if (result != null) {
-//
-//
-//        } else
-//
-////            DialogCatalog.mensajeError("No pudo crearse la cuenta, intentelo nuevamente en unos minutos ", mContext);
-
-
     }
 
     @Override

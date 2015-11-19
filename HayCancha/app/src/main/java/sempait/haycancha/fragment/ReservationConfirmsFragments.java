@@ -27,7 +27,7 @@ import sempait.haycancha.services.GetTurnsCurrentForUser;
 /**
  * Created by martin on 18/11/15.
  */
-public class ReservationFragments extends BaseFragment {
+public class ReservationConfirmsFragments extends BaseFragment {
 
     private ListView mListReservations;
     private Context mActivity;

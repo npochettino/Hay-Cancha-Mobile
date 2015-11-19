@@ -17,7 +17,7 @@ import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseDrawerFragment;
 import sempait.haycancha.fragment.PerfilFragment;
-import sempait.haycancha.fragment.ReservationFragments;
+import sempait.haycancha.fragment.ReservationConfirmsFragments;
 import sempait.haycancha.fragment.ReservationsPendingFragment;
 import sempait.haycancha.fragment.TurnsFilterFragment;
 
@@ -169,7 +169,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
                 break;
 
             case PLAYERS:
-                fragment = new ReservationFragments();
+                fragment = new ReservationConfirmsFragments();
                 tagFragment = getString(R.string.players);
                 break;
 

@@ -84,7 +84,8 @@ public class PerfilFragment extends BaseFragment {
         mTxtUserPhone.setText(ConfigurationClass.getTelUser(mContext));
         mSwichActivo.setChecked(ConfigurationClass.getIsActivo(mContext));
         String url = ConfigurationClass.getImageUser(mContext);
-        ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, mImgProfile, Utils.getImageLoaderOptionRouded());
+        if (url != null)
+            ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, mImgProfile, Utils.getImageLoaderOptionRouded());
         refreshPostion(ConfigurationClass.getCodigoPosicion(mContext));
 
     }

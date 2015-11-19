@@ -70,7 +70,7 @@ public class ResultSearchPlayerFragment extends BaseFragment {
         View mView = inflater.inflate(R.layout.list_general_view, container, false);
         mPlayerListView = (ListView) mView.findViewById(R.id.list_general);
 
-        getBaseActivity().setSectionTitle(getResources().getString(R.string.resultado));
+        getBaseActivity().setSectionTitle(getResources().getString(R.string.resultado_player));
 
 
         fillDataAdapter();
