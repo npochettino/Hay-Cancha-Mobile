@@ -46,7 +46,7 @@ import sempait.haycancha.services.PUT.PutStadiumCommentTask;
 /**
  * Created by martin on 12/11/15.
  */
-public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInfoWindowClickListener, GoogleMap.OnMarkerClickListener {
+public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnInfoWindowClickListener, GoogleMap.OnMarkerClickListener {
 
     private String STADIUM = "stadium";
     private Stadium mStadium;
@@ -67,7 +67,7 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
 
     public Fragment newInstance(Stadium stadium) {
 
-        FieldDetailFragment mFragment = new FieldDetailFragment();
+        StadiumDetailFragment mFragment = new StadiumDetailFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable(STADIUM, stadium);
 
@@ -114,13 +114,12 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
         super.onViewCreated(view, savedInstanceState);
 
 
-
         mTxtCalificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                RaitingDialogFragment dialog = new RaitingDialogFragment(FieldDetailFragment.this);
+                RaitingDialogFragment dialog = new RaitingDialogFragment(StadiumDetailFragment.this);
                 FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
                 ft.add(dialog, null);
                 ft.commitAllowingStateLoss();
@@ -149,7 +148,7 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
         mTxtNameStadium.setText(mStadium.getDescripcion());
         mTxtPhoneStadium.setText(mStadium.getTelefono());
         mTxtInfoStadium.setText(mStadium.getDireccion() + "/" + "Horarios: " + mStadium.getHoraApertura() + " a " + mStadium.getHoraCierre());
-        setupRating(4.5f, mLinearStars);
+        setupRating(mStadium.getRaiting(), mLinearStars);
         setStadiumImages();
         executeCommentTask();
 
@@ -181,103 +180,6 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
         mGetCommentTask.mCodigoComplejo = mStadium.getCodigoComplejo();
         mGetCommentTask.execute();
     }
-
-//    private void setComment() {
-//
-//
-//        List<Comment> mListComment = new ArrayList<Comment>();
-//
-//        Comment mComment = new Comment();
-//        mComment.setDate("27/10/2015");
-//        mComment.setApellidoUser("Diguilio");
-//        mComment.setNomUser("Martin");
-//        mComment.setRaiting(4.5f);
-//        mComment.setUrlImagen("http://3.bp.blogspot.com/-QgXJDaHt5Lo/UpxQPX_W-gI/AAAAAAAANII/TzU2P5KfGxU/s1600/3874_3_1219.jpg");
-//        mComment.setTitle("Me encanto");
-//        mComment.setComment("La cancha es excelente, y encima te dan una coca de regalo");
-//
-//        mListComment.add(mComment);
-//
-//        Comment mComment1 = new Comment();
-//        mComment1.setDate("23/10/2015");
-//        mComment1.setApellidoUser("Dalaison");
-//        mComment1.setNomUser("Ezequiel");
-//        mComment1.setRaiting(1);
-//        mComment1.setUrlImagen("http://www.vitaldent.com/pix/tratamientos/tratamientos_infantil/ortopedia_dentofacial/detalle/tratamientos_infantil_ortopedia_dentofacial_foto_frente_despues_detalle.jpg");
-//        mComment1.setTitle("Soy muy malo");
-//        mComment1.setComment("No me gusto la cancha, le pegue muchas veces al piso y me canse de levantar tierra");
-//
-//        mListComment.add(mComment1);
-//
-//
-//        Comment mComment2 = new Comment();
-//        mComment2.setDate("15/10/2015");
-//        mComment2.setNomUser("Nicolas");
-//        mComment2.setApellidoUser("Pochettino");
-//        mComment2.setUrlImagen("http://www.nosdivorciamos.com/imagenes/articulo/0054.jpg");
-//        mComment2.setComment("La verdad es que la cancha es muy buena, pero yo no se si soy zurdo o derecho aun");
-//        mComment2.setTitle("Que reserrrrva");
-//        mComment2.setRaiting(2.2f);
-//
-//        mListComment.add(mComment2);
-//
-//
-//        Comment mComment3 = new Comment();
-//        mComment3.setDate("15/10/2015");
-//        mComment3.setNomUser("Nikete");
-//        mComment3.setApellidoUser("Demayo");
-//        mComment3.setUrlImagen("http://www.nosdivorciamos.com/imagenes/articulo/0054.jpg");
-//        mComment3.setComment("No puedo ser mas reserva");
-//        mComment3.setTitle("Que reserrrrva");
-//        mComment3.setRaiting(2.2f);
-//
-//        mListComment.add(mComment3);
-//
-//
-//        Comment mComment4 = new Comment();
-//        mComment4.setDate("15/10/2015");
-//        mComment4.setNomUser("Bruno");
-//        mComment4.setApellidoUser("Minino");
-//        mComment4.setUrlImagen("http://www.nosdivorciamos.com/imagenes/articulo/0054.jpg");
-//        mComment4.setComment("Me canse de perder al metegol");
-//        mComment4.setTitle("Soy el hijo de tincho");
-//        mComment4.setRaiting(2.2f);
-//
-//        mListComment.add(mComment4);
-//
-//
-//        Comment mComment5 = new Comment();
-//        mComment5.setDate("15/10/2015");
-//        mComment5.setNomUser("Juan");
-//        mComment5.setApellidoUser("Crespi");
-//        mComment5.setUrlImagen("http://www.nosdivorciamos.com/imagenes/articulo/0054.jpg");
-//        mComment5.setComment("El problema es que yo soy zurdo");
-//        mComment5.setTitle("Soy el hijo de tincho");
-//        mComment5.setRaiting(2.2f);
-//
-//        mListComment.add(mComment5);
-//
-//
-//        Comment mComment6 = new Comment();
-//        mComment6.setDate("15/10/2015");
-//        mComment6.setNomUser("Gonza");
-//        mComment6.setApellidoUser("Sanchez");
-//        mComment6.setUrlImagen("http://www.nosdivorciamos.com/imagenes/articulo/0054.jpg");
-//        mComment6.setComment("Me gusssssta");
-//        mComment6.setTitle("Holiss");
-//        mComment6.setRaiting(2.2f);
-//
-//        mListComment.add(mComment6);
-//
-//
-//        if (mListComment != null && !mListComment.isEmpty()) {
-//
-//            CommentListAdapter commentListAdapter = new CommentListAdapter(mListComment, mContext);
-//            mListViewComment.setAdapter(commentListAdapter);
-//        }
-//
-//
-//    }
 
 
     private void setStadiumImages() {
@@ -347,8 +249,8 @@ public class FieldDetailFragment extends BaseFragment implements GoogleMap.OnInf
         addMarkersToMap();
 
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(mContext));
-        mMap.setOnInfoWindowClickListener(FieldDetailFragment.this);
-        mMap.setOnMarkerClickListener(FieldDetailFragment.this);
+        mMap.setOnInfoWindowClickListener(StadiumDetailFragment.this);
+        mMap.setOnMarkerClickListener(StadiumDetailFragment.this);
 
         final View mapView = supportMapFragment.getView();
 

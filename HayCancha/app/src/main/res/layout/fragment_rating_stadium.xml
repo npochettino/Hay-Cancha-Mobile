@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:scaleType="centerInside"
-        android:padding="5dp"
+        android:padding="10dp"
         android:src="@drawable/hay_cancha_verde_sin_sombra"/>
 
     <LinearLayout

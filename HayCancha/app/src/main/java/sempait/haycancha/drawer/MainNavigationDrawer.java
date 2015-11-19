@@ -16,6 +16,7 @@ import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseDrawerFragment;
+import sempait.haycancha.fragment.MyInvitationFragment;
 import sempait.haycancha.fragment.PerfilFragment;
 import sempait.haycancha.fragment.ReservationConfirmsFragments;
 import sempait.haycancha.fragment.ReservationsPendingFragment;
@@ -184,7 +185,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
                 break;
 
             case INVITATIONS:
-//                fragment = new PromosFragment();
+                fragment = new MyInvitationFragment();
                 tagFragment = getString(R.string.players);
                 break;
 

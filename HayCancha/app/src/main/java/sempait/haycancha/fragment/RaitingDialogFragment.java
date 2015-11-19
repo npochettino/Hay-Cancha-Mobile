@@ -31,13 +31,13 @@ public class RaitingDialogFragment extends DialogFragment {
     private Boolean mRate3State = false;
     private Boolean mRate4State = false;
     private Boolean mRate5State = false;
-    private FieldDetailFragment mInstace;
+    private StadiumDetailFragment mInstace;
     private EditText mTitle, mComment;
     private View view;
 
 
     @SuppressLint("ValidFragment")
-    public RaitingDialogFragment(FieldDetailFragment instace) {
+    public RaitingDialogFragment(StadiumDetailFragment instace) {
 
         mInstace = instace;
     }

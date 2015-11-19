@@ -22,7 +22,7 @@ import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseActivity;
-import sempait.haycancha.fragment.FieldDetailFragment;
+import sempait.haycancha.fragment.StadiumDetailFragment;
 import sempait.haycancha.models.Stadium;
 import sempait.haycancha.models.Turn;
 import sempait.haycancha.services.GET.GetLocalTask;
@@ -152,7 +152,7 @@ public class TurnListAdapter extends BaseAdapter {
 
                     Stadium stadium = stadiums.get(0);
 
-                    ((BaseActivity) mContext).replaceInnerFragmentWhitFLip(new FieldDetailFragment().newInstance(stadium), true);
+                    ((BaseActivity) mContext).replaceInnerFragmentWhitFLip(new StadiumDetailFragment().newInstance(stadium), true);
 
 
                 } else {

@@ -64,6 +64,7 @@ public class TurnsFilterFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        getBaseActivity().setSectionTitle(mContext.getString(R.string.fields));
 
         mView = inflater.inflate(R.layout.fragment_filter_turns, container, false);
         mExpDate = (EditText) mView.findViewById(R.id.exp_date);
