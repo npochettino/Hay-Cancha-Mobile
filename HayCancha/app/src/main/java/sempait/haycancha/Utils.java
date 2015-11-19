@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -51,7 +53,7 @@ public class Utils {
         } else {
             if (selectedImageUri.getLastPathSegment().split(":").length > 1) {
                 String id = selectedImageUri.getLastPathSegment().split(":")[1];
-                final String[] imageColumns = { MediaStore.Images.Media.DATA };
+                final String[] imageColumns = {MediaStore.Images.Media.DATA};
                 final String imageOrderBy = null;
                 Uri uri = getUri();
                 Cursor imageCursor = context.getContentResolver()
@@ -74,7 +76,7 @@ public class Utils {
     public static String getRealPathFromURI(Uri contentUri, Context context) {
         Cursor cursor = null;
         try {
-            String[] proj = { MediaStore.Images.Media.DATA };
+            String[] proj = {MediaStore.Images.Media.DATA};
             cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
             int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
@@ -92,6 +94,40 @@ public class Utils {
             return MediaStore.Images.Media.INTERNAL_CONTENT_URI;
         return MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
     }
+
+
+    public static void setupRating(float rating, LinearLayout holder) {
+
+        int intRating = (int) rating;
+        int doubleRating = (int) (rating * 2);
+
+        switch (intRating) {
+            case 5: // 5
+                ((ImageView) holder.findViewById(R.id.img_star_5)).setImageResource(R.drawable.star_on);
+            case 4: // 4
+                ((ImageView) holder.findViewById(R.id.img_star_4)).setImageResource(R.drawable.star_on);
+                if (doubleRating == 9)
+                    ((ImageView) holder.findViewById(R.id.img_star_5)).setImageResource(R.drawable.star_half);
+            case 3: // 3
+                ((ImageView) holder.findViewById(R.id.img_star_3)).setImageResource(R.drawable.star_on);
+                if (doubleRating == 7)
+                    ((ImageView) holder.findViewById(R.id.img_star_4)).setImageResource(R.drawable.star_half);
+            case 2: // 2
+                ((ImageView) holder.findViewById(R.id.img_star_2)).setImageResource(R.drawable.star_on);
+                if (doubleRating == 5)
+                    ((ImageView) holder.findViewById(R.id.img_star_3)).setImageResource(R.drawable.star_half);
+            case 1: // 1
+                ((ImageView) holder.findViewById(R.id.img_star_1)).setImageResource(R.drawable.star_on);
+                if (doubleRating == 3)
+                    ((ImageView) holder.findViewById(R.id.img_star_2)).setImageResource(R.drawable.star_half);
+            case 0:
+                if (doubleRating == 1)
+                    ((ImageView) holder.findViewById(R.id.img_star_1)).setImageResource(R.drawable.star_half);
+                break;
+        }
+
+    }
+
 
 }
 

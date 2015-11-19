@@ -16,8 +16,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.io.File;
 
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
@@ -27,6 +30,7 @@ import sempait.haycancha.activities.LoginActivity;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.services.PUT.CreateAccountTask;
+import sempait.haycancha.services.PUT.UpdateImageUser;
 
 /**
  * Created by martin on 16/11/15.
@@ -39,6 +43,7 @@ public class PerfilFragment extends BaseFragment {
     private int mPositionSelected;
     private String mDescPositionSelected;
     private CreateAccountTask mUpdateAccountTask;
+    private UpdateImageUser mUpdateImageTask;
     private Switch mSwichActivo;
     public static final CharSequence options_Upload_Photo[] = new CharSequence[]{"Choose from Library", "Take a Photo"};
 
@@ -98,7 +103,39 @@ public class PerfilFragment extends BaseFragment {
             cursor.close();
             String url = picturePath;
             mImgProfile.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+            executeUpdateImage(picturePath);
         }
+    }
+
+    private void executeUpdateImage(String urlImage) {
+
+        mUpdateImageTask = new UpdateImageUser(mContext) {
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+
+                if (result != null) {
+
+                    ConfigurationClass.setImageUser(mContext, result);
+                    Toast.makeText(mContext, R.string.success_update_user_image, Toast.LENGTH_SHORT);
+                } else {
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.perfil), mContext.getString(R.string.acept_text));
+                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                    ft.add(dialog, null);
+                    ft.commitAllowingStateLoss();
+                }
+
+
+            }
+
+        };
+
+        mUpdateImageTask.mCodigoUsuario = ConfigurationClass.getUserCod(mContext);
+        mUpdateImageTask.mImageUser = new File(urlImage);
+
     }
 
     @Override
@@ -218,8 +255,6 @@ public class PerfilFragment extends BaseFragment {
         mUpdateAccountTask.mCodigoUsuario = ConfigurationClass.getUserCod(mContext);
         mUpdateAccountTask.mCodigoTelefono = ConfigurationClass.getCodigoTelefono(mContext);
         mUpdateAccountTask.mIsActivo = mSwichActivo.isChecked();
-        mUpdateAccountTask.mUrlImage = ConfigurationClass.getImageUser(mContext);
-
         mUpdateAccountTask.execute();
 
 

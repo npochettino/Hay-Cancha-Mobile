@@ -127,7 +127,6 @@ public class SearchPlayerFragment extends BaseFragment {
 
                 if (result != null && result.length() != 2) {
 
-
                     List<User> mUsers = new Gson().fromJson(result.toString(), new TypeToken<List<User>>() {
                     }.getType());
 
@@ -136,7 +135,7 @@ public class SearchPlayerFragment extends BaseFragment {
 
                 } else {
 
-                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.players), mContext.getString(R.string.acept_text));
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.no_found_player), mContext.getString(R.string.players), mContext.getString(R.string.acept_text));
                     FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
                     ft.add(dialog, null);
                     ft.commitAllowingStateLoss();

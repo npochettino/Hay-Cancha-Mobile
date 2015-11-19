@@ -21,6 +21,7 @@ public class GetCommentForStadiumTask extends AsyncTask<Void, Void, String> {
     private String METHOD_NAME = "RecuperarValoracionesComplejo";
     private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarValoracionesComplejo";
     public int mCodigoComplejo;
+    public int mCodigoUser;
     private Context mContext;
 
 
@@ -34,6 +35,7 @@ public class GetCommentForStadiumTask extends AsyncTask<Void, Void, String> {
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
         request.addProperty("codigoComplejo", mCodigoComplejo);
+        request.addProperty("codigoUsuarioApp", mCodigoUser);
 
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);

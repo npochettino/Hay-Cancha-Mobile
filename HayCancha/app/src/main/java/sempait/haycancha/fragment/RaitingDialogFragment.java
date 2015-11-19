@@ -10,10 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import java.util.List;
 
 import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
+import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseActivity;
+import sempait.haycancha.models.Comment;
 
 /**
  * Created by martin on 16/11/15.
@@ -31,15 +36,17 @@ public class RaitingDialogFragment extends DialogFragment {
     private Boolean mRate3State = false;
     private Boolean mRate4State = false;
     private Boolean mRate5State = false;
+    private LinearLayout mLinearStars;
     private StadiumDetailFragment mInstace;
     private EditText mTitle, mComment;
+    private List<Comment> mComments;
     private View view;
 
 
     @SuppressLint("ValidFragment")
-    public RaitingDialogFragment(StadiumDetailFragment instace) {
-
+    public RaitingDialogFragment(StadiumDetailFragment instace, List<Comment> comments) {
         mInstace = instace;
+        mComments = comments;
     }
 
 
@@ -61,12 +68,29 @@ public class RaitingDialogFragment extends DialogFragment {
         mRate3 = (ImageView) view.findViewById(R.id.img_star_3);
         mRate4 = (ImageView) view.findViewById(R.id.img_star_4);
         mRate5 = (ImageView) view.findViewById(R.id.img_star_5);
+        mLinearStars = (LinearLayout) view.findViewById(R.id.lyt_stars_rating);
         mComment = (EditText) view.findViewById(R.id.exp_comment);
         mTitle = (EditText) view.findViewById(R.id.exp_title);
+
+        setYourCommnetIfExists(mComments);
 
 
         return view;
 
+
+    }
+
+    private void setYourCommnetIfExists(List<Comment> mComments) {
+
+        for (Comment commnet : mComments) {
+
+            if (commnet.getMyComment()) {
+                mComment.setText(commnet.getComment());
+                mTitle.setText(commnet.getTitle());
+                Utils.setupRating(commnet.getRaiting(), mLinearStars);
+                break;
+            }
+        }
 
     }
 

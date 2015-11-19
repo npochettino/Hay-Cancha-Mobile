@@ -105,7 +105,7 @@ public class TurnListAdapter extends BaseAdapter {
         holder.name.setText(turn.getDescripcionComplejo());
         holder.direction.setText(turn.getDireccion());
         holder.distance.setText(" (A " + String.valueOf(round(turn.calculateDistanceTo(LocationManager.getInstance(mContext).getLocation()) / 1000, 2)) + " Km)");
-        setupRating(Float.parseFloat(turn.getPuntajeComplejo()), holder.rating);
+        Utils.setupRating(Float.parseFloat(turn.getPuntajeComplejo()), holder.rating);
         holder.hourTo.setText(turn.getHoraDesde() + " hs");
         holder.fieldCod.setText(turn.getDescripcionCancha() + " ($ " + turn.getPrecio() + ")");
         ImageLoader.getInstance().displayImage(turn.getImagenComplejo().contains("http:") ? turn.getImagenComplejo() : "http:" + turn.getImagenComplejo(), holder.logoStadium, Utils.getImageLoaderOptionRouded());
@@ -235,37 +235,5 @@ public class TurnListAdapter extends BaseAdapter {
 
     }
 
-
-    private void setupRating(float rating, LinearLayout holder) {
-
-        int intRating = (int) rating;
-        int doubleRating = (int) (rating * 2);
-
-        switch (intRating) {
-            case 5: // 5
-                ((ImageView) holder.findViewById(R.id.img_billboard_star_5)).setImageResource(R.drawable.star_on);
-            case 4: // 4
-                ((ImageView) holder.findViewById(R.id.img_billboard_star_4)).setImageResource(R.drawable.star_on);
-                if (doubleRating == 9)
-                    ((ImageView) holder.findViewById(R.id.img_billboard_star_5)).setImageResource(R.drawable.star_half);
-            case 3: // 3
-                ((ImageView) holder.findViewById(R.id.img_billboard_star_3)).setImageResource(R.drawable.star_on);
-                if (doubleRating == 7)
-                    ((ImageView) holder.findViewById(R.id.img_billboard_star_4)).setImageResource(R.drawable.star_half);
-            case 2: // 2
-                ((ImageView) holder.findViewById(R.id.img_billboard_star_2)).setImageResource(R.drawable.star_on);
-                if (doubleRating == 5)
-                    ((ImageView) holder.findViewById(R.id.img_billboard_star_3)).setImageResource(R.drawable.star_half);
-            case 1: // 1
-                ((ImageView) holder.findViewById(R.id.img_billboard_star_1)).setImageResource(R.drawable.star_on);
-                if (doubleRating == 3)
-                    ((ImageView) holder.findViewById(R.id.img_billboard_star_2)).setImageResource(R.drawable.star_half);
-            case 0:
-                if (doubleRating == 1)
-                    ((ImageView) holder.findViewById(R.id.img_billboard_star_1)).setImageResource(R.drawable.star_half);
-                break;
-        }
-
-    }
 
 }

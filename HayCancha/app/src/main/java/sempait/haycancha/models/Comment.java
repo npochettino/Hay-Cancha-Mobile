@@ -19,6 +19,7 @@ public class Comment implements Serializable {
     @SerializedName("titulo")
     private String title;
     private String urlImagen;
+    private Boolean myComment;
 
     public Comment() {
     }
@@ -70,5 +71,13 @@ public class Comment implements Serializable {
 
     public void setNombreApellidoUsuarioApp(String nombreApellidoUsuarioApp) {
         this.nombreApellidoUsuarioApp = nombreApellidoUsuarioApp;
+    }
+
+    public Boolean getMyComment() {
+        return myComment;
+    }
+
+    public void setMyComment(Boolean myComment) {
+        this.myComment = myComment;
     }
 }

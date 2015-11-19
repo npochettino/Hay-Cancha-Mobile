@@ -63,6 +63,7 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
     private GetCommentForStadiumTask mGetCommentTask;
     private PutStadiumCommentTask mPutCommentTask;
     private CommentListAdapter commentListAdapter;
+    private List<Comment> mListComment;
 
 
     public Fragment newInstance(Stadium stadium) {
@@ -118,8 +119,7 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
             @Override
             public void onClick(View v) {
 
-
-                RaitingDialogFragment dialog = new RaitingDialogFragment(StadiumDetailFragment.this);
+                RaitingDialogFragment dialog = new RaitingDialogFragment(StadiumDetailFragment.this,mListComment);
                 FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
                 ft.add(dialog, null);
                 ft.commitAllowingStateLoss();
@@ -167,6 +167,8 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
                 List<Comment> coments = new Gson().fromJson(result.toString(), new TypeToken<List<Comment>>() {
                 }.getType());
 
+                mListComment = coments;
+
                 if (coments != null && !coments.isEmpty()) {
 
                     commentListAdapter = new CommentListAdapter(coments, mContext);
@@ -178,6 +180,7 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
         };
 
         mGetCommentTask.mCodigoComplejo = mStadium.getCodigoComplejo();
+        mGetCommentTask.mCodigoUser = ConfigurationClass.getUserCod(mContext);
         mGetCommentTask.execute();
     }
 
