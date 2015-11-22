@@ -28,6 +28,8 @@ public class Turn implements Serializable {
     private Double longitud;
     private String codigoCancha;
     private int codigoTurno;
+    private int codigoEstado;
+    private String descripcionEstado;
 
 
     public String getDate() {
@@ -204,5 +206,21 @@ public class Turn implements Serializable {
 
     public void setCodigoTurno(int codigoTurno) {
         this.codigoTurno = codigoTurno;
+    }
+
+    public int getCodigoEstado() {
+        return codigoEstado;
+    }
+
+    public void setCodigoEstado(int codigoEstado) {
+        this.codigoEstado = codigoEstado;
+    }
+
+    public String getDescripcionEstado() {
+        return descripcionEstado;
+    }
+
+    public void setDescripcionEstado(String descripcionEstado) {
+        this.descripcionEstado = descripcionEstado;
     }
 }

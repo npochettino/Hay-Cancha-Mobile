@@ -24,10 +24,14 @@ public class DeepLinkActivity extends BaseActivity {
             if (data.equalsIgnoreCase("home"))
                 i = new Intent(getApplicationContext(), SplashActivity.class);
             else if (data.equalsIgnoreCase("invitation")) {
-                i = new Intent(getApplicationContext(), SplashActivity.class);
+                i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("section", data);
 
-            } else
-                i = new Intent(getApplicationContext(), SplashActivity.class);
+            } else if (data.equalsIgnoreCase("asnwer_field")) {
+                i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("section", data);
+            }
+
 
         }
         if (i != null) {

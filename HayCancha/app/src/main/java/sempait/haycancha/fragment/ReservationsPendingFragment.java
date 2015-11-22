@@ -97,6 +97,7 @@ public class ReservationsPendingFragment extends BaseFragment {
 
         if (listReservation != null && !listReservation.isEmpty()) {
 
+
             MyReservationsAdapter turnAdapter = new MyReservationsAdapter(listReservation, mContext, "");
             mListReservations.setAdapter(turnAdapter);
         }

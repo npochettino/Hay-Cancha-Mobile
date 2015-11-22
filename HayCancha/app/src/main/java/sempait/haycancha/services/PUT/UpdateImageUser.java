@@ -21,10 +21,10 @@ import sempait.haycancha.base.BaseActivity;
  */
 public class UpdateImageUser extends AsyncTask<Void, Void, String> {
 
-    private String METHOD_NAME = "InsertarActualizarImageUsuarioApp";
-    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarImageUsuarioApp";
+    private String METHOD_NAME = "InsertarActualizarImagenUsuarioApp";
+    private String SOAP_ACTION = Constants.SOAP_ACTION + "InsertarActualizarImagenUsuarioApp";
     public int mCodigoUsuario;
-    public Bitmap mImageUser;
+    public String mImageUser;
     private Context mContext;
 
 
@@ -39,7 +39,7 @@ public class UpdateImageUser extends AsyncTask<Void, Void, String> {
 
 
         request.addProperty("codigoUsuarioApp", mCodigoUsuario);
-        request.addProperty("imagenUsuario", mImageUser);
+        request.addProperty("base64", mImageUser);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 

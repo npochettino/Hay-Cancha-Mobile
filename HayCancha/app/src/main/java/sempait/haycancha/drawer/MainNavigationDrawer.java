@@ -136,12 +136,10 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
 
         mProfileItem.setVisibility(View.VISIBLE);
         txt_userPosition.setText("(" + ConfigurationClass.getDescPosition(mContext) + ")");
-//        txt_userTeamName.setText("(Aston birra)");
         txt_userName.setText(ConfigurationClass.getUserFirstNameUser(mContext));
         txt_userLastName.setText(ConfigurationClass.getUserLastNameUserUser(mContext));
-//        txt_userTeamName.setVisibility(View.VISIBLE);
 
-        String url = "http://3.bp.blogspot.com/-QgXJDaHt5Lo/UpxQPX_W-gI/AAAAAAAANII/TzU2P5KfGxU/s1600/3874_3_1219.jpg";
+        String url = ConfigurationClass.getImageUser(mContext);
 
         ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, imgAvatar, Utils.getImageLoaderOptionRouded());
 
@@ -160,7 +158,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
 
             case PROFILE:
 
-                fragment = new PerfilFragment();
+                fragment = new PerfilFragment(MainNavigationDrawer.this);
                 tagFragment = getString(R.string.perfil);
                 break;
 

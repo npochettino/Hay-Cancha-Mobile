@@ -26,7 +26,7 @@ import sempait.haycancha.activities.MainActivity;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.User;
-import sempait.haycancha.services.PUT.LoginTask;
+import sempait.haycancha.services.GET.LoginTask;
 
 /**
  * Created by martin on 21/10/15.

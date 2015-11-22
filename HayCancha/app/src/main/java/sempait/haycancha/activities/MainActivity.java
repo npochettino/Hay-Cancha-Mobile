@@ -21,6 +21,7 @@ public class MainActivity extends BaseActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private MainNavigationDrawer mMainNavigationDrawer;
     private Boolean firstRun = true;
+    private String data;
 
 
     @Override
@@ -31,6 +32,10 @@ public class MainActivity extends BaseActivity {
 
         setUpdDrawer();
 
+
+        if (getIntent().getExtras() != null)
+            data = getIntent().getExtras().getString("section");
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -40,6 +45,7 @@ public class MainActivity extends BaseActivity {
 
 
     }
+
 
     private void setUpdDrawer() {
 
@@ -56,6 +62,7 @@ public class MainActivity extends BaseActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.drawer_left, mMainNavigationDrawer).commitAllowingStateLoss();
 
+
     }
 
 
@@ -63,6 +70,9 @@ public class MainActivity extends BaseActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
+
+        if (data != null)
+            openSectionWithDeepLink();
     }
 
     @Override
@@ -92,4 +102,21 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    public void openSectionWithDeepLink() {
+
+        switch (data) {
+
+            case "invitation":
+                mMainNavigationDrawer.openSection(MainNavigationDrawer.Section.INVITATIONS);
+                break;
+            case "asnwer_field":
+                mMainNavigationDrawer.openSection(MainNavigationDrawer.Section.RESERVATIONS);
+                break;
+        }
+
+
+    }
+
+
 }
+

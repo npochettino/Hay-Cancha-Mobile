@@ -102,6 +102,20 @@ public class MyReservationsAdapter extends BaseAdapter {
         holder.fieldCod.setText(turn.getDescripcionCancha() + " ($ " + turn.getPrecio() + ")");
         ImageLoader.getInstance().displayImage(turn.getImagenComplejo().contains("http:") ? turn.getImagenComplejo() : "http:" + turn.getImagenComplejo(), holder.logoStadium, Utils.getImageLoaderOptionRouded());
 
+        switch (turn.getCodigoEstado()) {
+
+            case 1:
+                holder.save.setImageResource(R.drawable.confirmado);
+                break;
+
+            case 2:
+                holder.save.setImageResource(R.drawable.rechazado);
+                break;
+            case 3:
+                holder.save.setImageResource(R.drawable.pendiente);
+                break;
+        }
+
 
         return convertView;
 

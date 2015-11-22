@@ -16,7 +16,7 @@ import sempait.haycancha.base.BaseActivity;
  * Created by martin on 18/11/15.
  */
 public class GetPlayerAvailableForPosition extends AsyncTask<Void, Void, String> {
-    private String METHOD_NAME = "RecuperarUsuariosAppActivosPorPosicion";
+        private String METHOD_NAME = "RecuperarUsuariosAppActivosPorPosicion";
     private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarUsuariosAppActivosPorPosicion";
     public int mCodigoPosicion;
     private Context mContext;

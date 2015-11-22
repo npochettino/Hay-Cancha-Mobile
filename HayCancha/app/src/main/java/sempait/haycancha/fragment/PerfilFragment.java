@@ -3,12 +3,15 @@ package sempait.haycancha.fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +23,10 @@ import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
@@ -29,6 +35,7 @@ import sempait.haycancha.Utils;
 import sempait.haycancha.activities.LoginActivity;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.base.BaseFragment;
+import sempait.haycancha.drawer.MainNavigationDrawer;
 import sempait.haycancha.services.PUT.CreateAccountTask;
 import sempait.haycancha.services.PUT.UpdateImageUser;
 
@@ -45,7 +52,12 @@ public class PerfilFragment extends BaseFragment {
     private CreateAccountTask mUpdateAccountTask;
     private UpdateImageUser mUpdateImageTask;
     private Switch mSwichActivo;
+    private MainNavigationDrawer mInstace;
     public static final CharSequence options_Upload_Photo[] = new CharSequence[]{"Choose from Library", "Take a Photo"};
+
+    public PerfilFragment(MainNavigationDrawer mainNavigationDrawer) {
+        mInstace = mainNavigationDrawer;
+    }
 
     @Nullable
     @Override
@@ -102,11 +114,44 @@ public class PerfilFragment extends BaseFragment {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
             String url = picturePath;
-
-
-            executeUpdateImage(picturePath);
+            if (url != null)
+                executeUpdateImage(encode(encodeTobase64(picturePath)));
         }
     }
+
+    public String encode(byte[] bytes) {
+        return Base64.encodeToString(bytes, Base64.NO_WRAP);
+    }
+
+    public static byte[] streamToBytes(InputStream is) {
+        ByteArrayOutputStream os = new ByteArrayOutputStream(1024);
+        byte[] buffer = new byte[1024];
+        int len;
+        try {
+            while ((len = is.read(buffer)) >= 0) {
+                os.write(buffer, 0, len);
+            }
+        } catch (java.io.IOException e) {
+        }
+        return os.toByteArray();
+    }
+
+    public static byte[] encodeTobase64(String image) {
+        byte[] bytearray = null;
+        try {
+            FileInputStream is = new FileInputStream(image);
+            if (image != null)
+                try {
+                    bytearray = streamToBytes(is);
+                } finally {
+                    is.close();
+                }
+        } catch (Exception e) {
+        }
+
+        return bytearray;
+    }
+
 
     private void executeUpdateImage(String urlImage) {
 
@@ -119,6 +164,7 @@ public class PerfilFragment extends BaseFragment {
 
                 if (result != null) {
 
+                    result = result.replace("\"", "");
                     String url = result;
                     ConfigurationClass.setImageUser(mContext, result);
                     if (url != null)
@@ -137,7 +183,8 @@ public class PerfilFragment extends BaseFragment {
         };
 
         mUpdateImageTask.mCodigoUsuario = ConfigurationClass.getUserCod(mContext);
-        mUpdateImageTask.mImageUser = BitmapFactory.decodeFile(urlImage);
+        mUpdateImageTask.mImageUser = urlImage;
+        mUpdateImageTask.execute();
 
     }
 
@@ -342,8 +389,8 @@ public class PerfilFragment extends BaseFragment {
         ConfigurationClass.setIsActivo(mContext, mSwichActivo.isChecked());
 
 
-//        if (mInstace != null)
-//            mInstace.setNameUser();
+        if (mInstace != null)
+            mInstace.setUserInfo();
 
 
     }

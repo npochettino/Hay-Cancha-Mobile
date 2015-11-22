@@ -118,14 +118,24 @@
         </LinearLayout>
 
 
+        <sempait.haycancha.widgets.HelveticaNeueLightTextView
+            android:id="@+id/txt_field_row_hoour_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:singleLine="true"
+            android:text="10:00 am"
+            android:textColor="@color/green_dark" />
+
+
         <ImageView
-            android:id="@+id/txt_field_row_save_me"
+            android:id="@+id/img_field_row_state"
             android:layout_width="60dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
             android:padding="5dp"
             android:scaleType="centerInside"
-            android:src="@drawable/invitar" />
+            android:src="@drawable/pendiente" />
 
 
     </LinearLayout>
