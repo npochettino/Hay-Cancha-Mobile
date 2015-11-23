@@ -26,6 +26,8 @@ public class Invitation implements Serializable {
     private Float precio;
     private Boolean isHeader;
     private String headerText;
+    private int codigoUsuarioAppInvitado;
+    private int codigoTurnoVariable;
 
 
     public int getCodigoSolicitud() {
@@ -178,5 +180,21 @@ public class Invitation implements Serializable {
 
     public void setCodigoTelefono(String codigoTelefono) {
         this.codigoTelefono = codigoTelefono;
+    }
+
+    public int getCodigoUsuarioAppInvitado() {
+        return codigoUsuarioAppInvitado;
+    }
+
+    public void setCodigoUsuarioAppInvitado(int codigoUsuarioAppInvitado) {
+        this.codigoUsuarioAppInvitado = codigoUsuarioAppInvitado;
+    }
+
+    public int getCodigoTurnoVariable() {
+        return codigoTurnoVariable;
+    }
+
+    public void setCodigoTurnoVariable(int codigoTurnoVariable) {
+        this.codigoTurnoVariable = codigoTurnoVariable;
     }
 }

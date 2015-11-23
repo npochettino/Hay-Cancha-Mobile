@@ -79,12 +79,6 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-//        mView.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
 
         mProfileItem.setOnClickListener(new OnClickListener() {
             @Override

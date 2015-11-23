@@ -122,6 +122,7 @@ public class MyInvitationAdapter extends BaseAdapter {
                 holder.state = (ImageView) view.findViewById(R.id.img_field_row_state);
                 holder.fieldCod = (TextView) view.findViewById(R.id.txt_field_row_field_cod);
                 holder.logoStadium = (ImageView) view.findViewById(R.id.img_logo);
+                holder.date = (TextView) view.findViewById(R.id.txt_field_row_date);
 
 
                 view.setTag(holder);
@@ -135,7 +136,9 @@ public class MyInvitationAdapter extends BaseAdapter {
             holder.name.setText(invitation.getNombreApellidoUsuario());
             holder.direction.setText(invitation.getDirection());
             holder.hourTo.setText(invitation.getHoraDesde() + " hs");
-            holder.fieldCod.setText(invitation.getDescripcionCancha() + " ($ " + invitation.getPrecio() + ")");
+            holder.date.setText(invitation.getFecha());
+            Utils.setupRating(invitation.getPuntaje(), holder.rating);
+            holder.fieldCod.setText(invitation.getDescripcionComplejo() + " ($ " + invitation.getPrecio() + ")");
             if (invitation.getImagenUsuario() != null)
                 ImageLoader.getInstance().displayImage(invitation.getImagenUsuario().contains("http:") ? invitation.getImagenUsuario() : "http:" + invitation.getImagenUsuario(), holder.logoStadium, Utils.getImageLoaderOptionRouded());
 
@@ -154,93 +157,95 @@ public class MyInvitationAdapter extends BaseAdapter {
                     break;
             }
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            if (invitation.getCodigoEstadoSolicitud() == 1 && !invitation.getIsCreator()) {
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-                    ConfirmDialogCustom2 dialog = new ConfirmDialogCustom2("¿Queres ir a jugar con" + " " + invitation.getNombreApellidoUsuario() + "?", mContext.getString(R.string.invitations), "Rechazar", "Aceptar") {
+                        ConfirmDialogCustom2 dialog = new ConfirmDialogCustom2("¿Queres ir a jugar con" + " " + invitation.getNombreApellidoUsuario() + "?", mContext.getString(R.string.invitations), "Rechazar", "Aceptar") {
 
 
-                        @Override
-                        public void actionButtonLeft() {
-                            super.actionButtonLeft();
+                            @Override
+                            public void actionButtonLeft() {
+                                super.actionButtonLeft();
 
-//                            executeServiceInvitateTask(invitation, 2);
+                                executeServiceInvitateTask(invitation, 2);
 
-                        }
+                            }
 
-                        @Override
-                        public void actionButtonRigth() {
-                            super.actionButtonRigth();
-//                            executeServiceInvitateTask(invitation, 3);
+                            @Override
+                            public void actionButtonRigth() {
+                                super.actionButtonRigth();
+                                executeServiceInvitateTask(invitation, 3);
 
-                        }
-                    };
-                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
-                    ft.add(dialog, null);
-                    ft.commitAllowingStateLoss();
-                }
-            });
+                            }
+                        };
+                        FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                        ft.add(dialog, null);
+                        ft.commitAllowingStateLoss();
+                    }
+                });
 
+            }
         }
 
         return view;
 
     }
 
-//    private void executeServiceInvitateTask(final Invitation invitation, int cod) {
-//        mPutInvitation = new PutInvitationTask(mContext) {
-//
-//
-//            @Override
-//            protected void onPostExecute(String result) {
-//                super.onPostExecute(result);
-//
-//                ConfirmDialogCustom dialog;
-//                if (result != null) {
-//
-//
-//                    ParseQuery pushQuery = ParseInstallation.getQuery();
-//                    pushQuery.whereEqualTo("deviceToken", invitation.getCodigoTelefono());
-//                    ParsePush push = new ParsePush();
-//
-//                    JSONObject obj = new JSONObject();
-//
-//                    try {
-//                        obj.put("deep_link", "invitation");
-//                        obj.put("message", ConfigurationClass.getUserNameCompleted(mContext) + " " + "te ha invitado a un partido");
-//                        obj.put("title", "HayCancha!");
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    push.setQuery(pushQuery);
-//                    push.setData(obj);
-//                    push.sendInBackground();
-//
-//
-//                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_invite_player_message), mContext.getString(R.string.invitations), mContext.getString(R.string.acept_text));
-//
-//
-//                } else
-//                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.create_account_title), mContext.getString(R.string.acept_text));
-//
-//
-//                FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
-//                ft.add(dialog, null);
-//                ft.commitAllowingStateLoss();
-//
-//
-//            }
-//        };
-//
-//
-//        mPutInvitation.mCodigoEstadoSolicitud = invitation.getCodigoSolicitud();
-//        mPutInvitation.mCodigoEstadoSolicitud = cod;
-//        mPutInvitation.mCodigoTurnoVariable = invitation.getc;
-//        mPutInvitation.mcodigoUsuarioAppInvitado = invitation.get;
-//        mPutInvitation.execute();
-//
-//    }
+    private void executeServiceInvitateTask(final Invitation invitation, int cod) {
+        mPutInvitation = new PutInvitationTask(mContext) {
+
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+                ConfirmDialogCustom dialog;
+                if (result != null) {
+
+
+                    ParseQuery pushQuery = ParseInstallation.getQuery();
+                    pushQuery.whereEqualTo("deviceToken", invitation.getCodigoTelefono());
+                    ParsePush push = new ParsePush();
+
+                    JSONObject obj = new JSONObject();
+
+                    try {
+                        obj.put("deep_link", "invitation");
+                        obj.put("message", invitation.getNombreApellidoUsuario() + " " + "ha respondido");
+                        obj.put("title", "HayCancha!");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    push.setQuery(pushQuery);
+                    push.setData(obj);
+                    push.sendInBackground();
+
+
+                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_invite_player_message), mContext.getString(R.string.invitations), mContext.getString(R.string.acept_text));
+
+
+                } else
+                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.create_account_title), mContext.getString(R.string.acept_text));
+
+
+                FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                ft.add(dialog, null);
+                ft.commitAllowingStateLoss();
+
+
+            }
+        };
+
+
+        mPutInvitation.mCodigoEstadoSolicitud = invitation.getCodigoSolicitud();
+        mPutInvitation.mCodigoEstadoSolicitud = cod;
+        mPutInvitation.mCodigoTurnoVariable = invitation.getCodigoTurnoVariable();
+        mPutInvitation.mcodigoUsuarioAppInvitado = invitation.getCodigoUsuarioAppInvitado();
+        mPutInvitation.execute();
+
+    }
 
     public static float round(float d, int decimalPlace) {
         BigDecimal bd = new BigDecimal(Float.toString(d));
@@ -260,6 +265,7 @@ public class MyInvitationAdapter extends BaseAdapter {
         ImageView state;
         LinearLayout rating;
         TextView titleInvitation;
+        TextView date;
 
     }
 
