@@ -184,7 +184,7 @@ public class PlayerListAdapter extends BaseAdapter {
         };
 
 
-        mPutInvitation.mCodigoEstadoSolicitud = 0;
+        mPutInvitation.mCodigoSolicitud = 0;
         mPutInvitation.mCodigoEstadoSolicitud = 1;
         mPutInvitation.mCodigoTurnoVariable = mTurn.getCodigoTurno();
         mPutInvitation.mcodigoUsuarioAppInvitado = user.getCodigoUsuario();

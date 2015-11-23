@@ -22,6 +22,7 @@ public class Invitation implements Serializable {
     private Boolean isCreator;
     private String direction;
     private Float puntaje;
+    private String codigoTelefono;
     private Float precio;
     private Boolean isHeader;
     private String headerText;
@@ -169,5 +170,13 @@ public class Invitation implements Serializable {
 
     public void setHeaderText(String headerText) {
         this.headerText = headerText;
+    }
+
+    public String getCodigoTelefono() {
+        return codigoTelefono;
+    }
+
+    public void setCodigoTelefono(String codigoTelefono) {
+        this.codigoTelefono = codigoTelefono;
     }
 }

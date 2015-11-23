@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sempait.haycancha.ConfigurationClass;
@@ -94,14 +95,31 @@ public class ReservationConfirmsFragments extends BaseFragment {
 
     private void fillDataAdapter(List<Turn> listReservation) {
 
+        List<Turn> mConfirmedList = filterList(listReservation);
 
-        if (listReservation != null && !listReservation.isEmpty()) {
 
-            MyReservationsConfirmAdapter turnAdapter = new MyReservationsConfirmAdapter(listReservation, mContext, "");
+        if (mConfirmedList != null && !mConfirmedList.isEmpty()) {
+
+            MyReservationsConfirmAdapter turnAdapter = new MyReservationsConfirmAdapter(mConfirmedList, mContext, "");
             mListReservations.setAdapter(turnAdapter);
         }
 
 
+    }
+
+    private List<Turn> filterList(List<Turn> listReservation) {
+
+        List<Turn> listConfirm = new ArrayList<Turn>();
+        for (Turn turn : listReservation) {
+
+
+            if (turn.getCodigoEstado() == 1)
+                listConfirm.add(turn);
+
+
+        }
+
+        return listConfirm;
     }
 
 

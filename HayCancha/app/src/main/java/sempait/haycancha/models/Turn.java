@@ -97,11 +97,11 @@ public class Turn implements Serializable {
 
 
     public String getImagenComplejo() {
-        return "http://miguiaargentina.com.ar/Imagenes/m/784985453-1-ha-roes-fa-tbol-5.jpeg";
+        return imagenComplejo;
     }
 
     public void setImagenComplejo(String imagenComplejo) {
-        this.imagenComplejo = "http://miguiaargentina.com.ar/Imagenes/m/784985453-1-ha-roes-fa-tbol-5.jpeg";
+        this.imagenComplejo = imagenComplejo;
     }
 
     public String getCodigoTipoCancha() {

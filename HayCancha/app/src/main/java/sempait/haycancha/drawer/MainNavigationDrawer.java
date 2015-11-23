@@ -63,7 +63,6 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
 
         imgAvatar = (ImageView) mView.findViewById(R.id.img_profile);
         txt_userPosition = (TextView) mView.findViewById(R.id.user_position);
-//        txt_userTeamName = (TextView) mView.findViewById(R.id.user_team_name);
         txt_userName = (TextView) mView.findViewById(R.id.user_name);
         txt_userLastName = (TextView) mView.findViewById(R.id.user_last_name);
 
@@ -138,9 +137,7 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
         txt_userPosition.setText("(" + ConfigurationClass.getDescPosition(mContext) + ")");
         txt_userName.setText(ConfigurationClass.getUserFirstNameUser(mContext));
         txt_userLastName.setText(ConfigurationClass.getUserLastNameUserUser(mContext));
-
         String url = ConfigurationClass.getImageUser(mContext);
-
         ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, imgAvatar, Utils.getImageLoaderOptionRouded());
 
 

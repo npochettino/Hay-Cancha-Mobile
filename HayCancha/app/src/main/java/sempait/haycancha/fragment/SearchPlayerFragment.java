@@ -14,6 +14,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
+import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.ConfirmDialogCustom;
 import sempait.haycancha.R;
 import sempait.haycancha.base.BaseActivity;
@@ -145,6 +146,7 @@ public class SearchPlayerFragment extends BaseFragment {
         };
 
         mGetPlayerTask.mCodigoPosicion = mPositionSelected;
+        mGetPlayerTask.mCodigoUsuarioApp = ConfigurationClass.getUserCod(mContext);
         mGetPlayerTask.execute();
 
     }

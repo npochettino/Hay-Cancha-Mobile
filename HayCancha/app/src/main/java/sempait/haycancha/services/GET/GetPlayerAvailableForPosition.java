@@ -19,6 +19,7 @@ public class GetPlayerAvailableForPosition extends AsyncTask<Void, Void, String>
         private String METHOD_NAME = "RecuperarUsuariosAppActivosPorPosicion";
     private String SOAP_ACTION = Constants.SOAP_ACTION + "RecuperarUsuariosAppActivosPorPosicion";
     public int mCodigoPosicion;
+    public int mCodigoUsuarioApp;
     private Context mContext;
 
 
@@ -33,6 +34,8 @@ public class GetPlayerAvailableForPosition extends AsyncTask<Void, Void, String>
 
 
         request.addProperty("codigoPosicion", mCodigoPosicion);
+        request.addProperty("codigoUsuarioApp", mCodigoUsuarioApp);
+
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 

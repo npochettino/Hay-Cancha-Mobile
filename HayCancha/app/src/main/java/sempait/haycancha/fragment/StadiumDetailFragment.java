@@ -2,7 +2,9 @@ package sempait.haycancha.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -64,6 +66,7 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
     private PutStadiumCommentTask mPutCommentTask;
     private CommentListAdapter commentListAdapter;
     private List<Comment> mListComment;
+    private ImageView imgPhone;
 
 
     public Fragment newInstance(Stadium stadium) {
@@ -101,6 +104,7 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
         mLinearImages = (LinearLayout) mView.findViewById(R.id.img_type_salas);
         mListViewComment = (ListView) mView.findViewById(R.id.list_comment);
         mTxtCalificar = (TextView) mView.findViewById(R.id.txt_calificar_stadium);
+        imgPhone = (ImageView) mView.findViewById(R.id.img_phone);
 
 
         setData();
@@ -115,11 +119,20 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
         super.onViewCreated(view, savedInstanceState);
 
 
+        imgPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + mStadium.getTelefono()));
+                startActivity(intent);
+            }
+        });
+
+
         mTxtCalificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                RaitingDialogFragment dialog = new RaitingDialogFragment(StadiumDetailFragment.this,mListComment);
+                RaitingDialogFragment dialog = new RaitingDialogFragment(StadiumDetailFragment.this, mListComment);
                 FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
                 ft.add(dialog, null);
                 ft.commitAllowingStateLoss();

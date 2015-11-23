@@ -169,7 +169,8 @@ public class PerfilFragment extends BaseFragment {
                     ConfigurationClass.setImageUser(mContext, result);
                     if (url != null)
                         ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, mImgProfile, Utils.getImageLoaderOptionRouded());
-                    Toast.makeText(mContext, R.string.success_update_user_image, Toast.LENGTH_SHORT);
+                    Toast.makeText(mContext, R.string.success_update_user_image, Toast.LENGTH_LONG);
+
                 } else {
                     ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.perfil), mContext.getString(R.string.acept_text));
                     FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
