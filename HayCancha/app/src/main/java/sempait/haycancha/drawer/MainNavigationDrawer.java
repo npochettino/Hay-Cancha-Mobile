@@ -132,7 +132,8 @@ public class MainNavigationDrawer extends BaseDrawerFragment {
         txt_userName.setText(ConfigurationClass.getUserFirstNameUser(mContext));
         txt_userLastName.setText(ConfigurationClass.getUserLastNameUserUser(mContext));
         String url = ConfigurationClass.getImageUser(mContext);
-        ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, imgAvatar, Utils.getImageLoaderOptionRouded());
+        if (url != null)
+            ImageLoader.getInstance().displayImage(url.contains("http:") ? url : "http:" + url, imgAvatar, Utils.getImageLoaderOptionRouded());
 
 
     }

@@ -290,12 +290,13 @@ public class BaseActivity extends AppCompatActivity {
         final RelativeLayout loadingView = (RelativeLayout) findViewById(R.id.loadingView);
         ImageView loadingView_item = (ImageView) findViewById(R.id.loadingView_item);
 
-        loadingView_item.setBackgroundResource(R.drawable.loading);
+        if (loadingView_item != null) {
+            loadingView_item.setBackgroundResource(R.drawable.loading);
 
-        AnimationDrawable frameAnimation = (AnimationDrawable) loadingView_item.getBackground();
+            AnimationDrawable frameAnimation = (AnimationDrawable) loadingView_item.getBackground();
 
-        frameAnimation.stop();
-
+            frameAnimation.stop();
+        }
 
         if (loadingView != null) {
             if (loadingView.getVisibility() != View.GONE) {

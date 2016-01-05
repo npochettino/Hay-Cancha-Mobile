@@ -25,5 +25,5 @@
     <dimen name="purchase_picker_edit_text_size">45dp</dimen>
     <dimen name="purchase_picker_width">200dp</dimen>
     <dimen name="navigation_drawer_width">280dp</dimen>
-    <integer name="anim_speed">29</integer>
+    <integer name="anim_speed">31</integer>
 </resources>
