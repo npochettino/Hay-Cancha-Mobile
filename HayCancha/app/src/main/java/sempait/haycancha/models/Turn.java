@@ -23,7 +23,7 @@ public class Turn implements Serializable {
     private String isFavorito;
     private String precio;
     private String direccion;
-    private String puntajeComplejo;
+    private float puntajeComplejo;
     private Double latitud;
     private Double longitud;
     private String codigoCancha;
@@ -97,11 +97,11 @@ public class Turn implements Serializable {
 
 
     public String getImagenComplejo() {
-        return imagenComplejo;
+        return "http://miguiaargentina.com.ar/Imagenes/m/784985453-1-ha-roes-fa-tbol-5.jpeg";
     }
 
     public void setImagenComplejo(String imagenComplejo) {
-        this.imagenComplejo = imagenComplejo;
+        this.imagenComplejo = "http://miguiaargentina.com.ar/Imagenes/m/784985453-1-ha-roes-fa-tbol-5.jpeg";
     }
 
     public String getCodigoTipoCancha() {
@@ -152,13 +152,6 @@ public class Turn implements Serializable {
         this.direccion = direccion;
     }
 
-    public String getPuntajeComplejo() {
-        return puntajeComplejo;
-    }
-
-    public void setPuntajeComplejo(String puntajeComplejo) {
-        this.puntajeComplejo = puntajeComplejo;
-    }
 
     public Double getLatitud() {
         return latitud;
@@ -222,5 +215,13 @@ public class Turn implements Serializable {
 
     public void setDescripcionEstado(String descripcionEstado) {
         this.descripcionEstado = descripcionEstado;
+    }
+
+    public float getPuntajeComplejo() {
+        return puntajeComplejo;
+    }
+
+    public void setPuntajeComplejo(float puntajeComplejo) {
+        this.puntajeComplejo = puntajeComplejo;
     }
 }

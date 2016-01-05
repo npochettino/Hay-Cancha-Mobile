@@ -55,7 +55,6 @@ public class GetCommentForStadiumTask extends AsyncTask<Void, Void, String> {
             return result.toString();
 
         } catch (Exception e) {
-            Log.d("", e.getMessage());
 
         }
         return null;

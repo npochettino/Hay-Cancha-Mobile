@@ -39,6 +39,7 @@
     <string name="error_hora_message">"La hora desde no puede ser mayor a la hora hasta"</string>
     <string name="success_save_turn_message">"Excelente, esperemos a que tu canchero responda"</string>
     <string name="success_invite_player_message">"Esperemos a que tu invitado responda"</string>
+    <string name="success_response_player_message">"Disfrutá de tu partido"</string>
     <string name="save_turn">"Reservar turno"</string>
     <string name="success_create_account_message">"La cuenta fue creada con éxito"</string>
     <string name="success_update_user_info">"Los datos han sido modificados correctamente"</string>
@@ -51,6 +52,7 @@
     <string name="txt_desc_position">"Indicá tu posición favorita"</string>
     <string name="txt_close_sesion">"Cerrar sesión"</string>
     <string name="update">"Actualizar"</string>
+    <string name="search_turn">"Buscar turnos"</string>
 
 
 </resources>

@@ -1,8 +1,6 @@
 package sempait.haycancha.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -31,10 +29,7 @@ import sempait.haycancha.R;
 import sempait.haycancha.Utils;
 import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.models.Invitation;
-import sempait.haycancha.models.Turn;
-import sempait.haycancha.models.User;
 import sempait.haycancha.services.GET.GetLocalTask;
-import sempait.haycancha.services.LocationManager;
 import sempait.haycancha.services.PUT.PutInvitationTask;
 
 /**
@@ -134,10 +129,11 @@ public class MyInvitationAdapter extends BaseAdapter {
 
 
             holder.name.setText(invitation.getNombreApellidoUsuario());
-            holder.direction.setText(invitation.getDirection());
+            holder.direction.setText(invitation.getDescripcionComplejo());
             holder.hourTo.setText(invitation.getHoraDesde() + " hs");
             holder.date.setText(invitation.getFecha());
-            Utils.setupRating(invitation.getPuntaje(), holder.rating);
+            if (invitation.getPuntaje() != null)
+                Utils.setupRating(invitation.getPuntaje(), holder.rating);
             holder.fieldCod.setText(invitation.getDescripcionComplejo() + " ($ " + invitation.getPrecio() + ")");
             if (invitation.getImagenUsuario() != null)
                 ImageLoader.getInstance().displayImage(invitation.getImagenUsuario().contains("http:") ? invitation.getImagenUsuario() : "http:" + invitation.getImagenUsuario(), holder.logoStadium, Utils.getImageLoaderOptionRouded());
@@ -169,14 +165,14 @@ public class MyInvitationAdapter extends BaseAdapter {
                             public void actionButtonLeft() {
                                 super.actionButtonLeft();
 
-                                executeServiceInvitateTask(invitation, 2);
+                                executeServiceInvitateTask(invitation, 3);
 
                             }
 
                             @Override
                             public void actionButtonRigth() {
                                 super.actionButtonRigth();
-                                executeServiceInvitateTask(invitation, 3);
+                                executeServiceInvitateTask(invitation, 2);
 
                             }
                         };
@@ -213,7 +209,7 @@ public class MyInvitationAdapter extends BaseAdapter {
 
                     try {
                         obj.put("deep_link", "invitation");
-                        obj.put("message", invitation.getNombreApellidoUsuario() + " " + "ha respondido");
+                        obj.put("message", ConfigurationClass.getUserNameCompleted(mContext) + " " + "ha respondido");
                         obj.put("title", "HayCancha!");
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -223,7 +219,7 @@ public class MyInvitationAdapter extends BaseAdapter {
                     push.sendInBackground();
 
 
-                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_invite_player_message), mContext.getString(R.string.invitations), mContext.getString(R.string.acept_text));
+                    dialog = new ConfirmDialogCustom(mContext.getString(R.string.success_response_player_message), mContext.getString(R.string.invitations), mContext.getString(R.string.acept_text));
 
 
                 } else
@@ -239,9 +235,9 @@ public class MyInvitationAdapter extends BaseAdapter {
         };
 
 
-        mPutInvitation.mCodigoEstadoSolicitud = invitation.getCodigoSolicitud();
+        mPutInvitation.mCodigoSolicitud = invitation.getCodigoSolicitud();
         mPutInvitation.mCodigoEstadoSolicitud = cod;
-        mPutInvitation.mCodigoTurnoVariable = invitation.getCodigoTurnoVariable();
+        mPutInvitation.mCodigoTurnoVariable = invitation.getCodigoTurno();
         mPutInvitation.mcodigoUsuarioAppInvitado = invitation.getCodigoUsuarioAppInvitado();
         mPutInvitation.execute();
 

@@ -37,7 +37,7 @@ public class GetMyInvitationsTask extends AsyncTask<Void, Void, String> {
         SoapObject request = new SoapObject(Constants.NAMESPACE, METHOD_NAME);
 
         request.addProperty("codigoUsuarioApp", mCodigoUsuario);
-        request.addProperty("codigoEstadoSolicitud", 1);
+        request.addProperty("codigoEstadoSolicitud", 0);
 
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
@@ -57,7 +57,6 @@ public class GetMyInvitationsTask extends AsyncTask<Void, Void, String> {
             return result.toString();
 
         } catch (Exception e) {
-            Log.d("", e.getMessage());
 
         }
         return null;

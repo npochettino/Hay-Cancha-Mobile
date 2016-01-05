@@ -161,7 +161,7 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
         mTxtNameStadium.setText(mStadium.getDescripcion());
         mTxtPhoneStadium.setText(mStadium.getTelefono());
         mTxtInfoStadium.setText(mStadium.getDireccion() + "/" + "Horarios: " + mStadium.getHoraApertura() + " a " + mStadium.getHoraCierre());
-        setupRating(mStadium.getRaiting(), mLinearStars);
+        setupRating(mStadium.getPuntajeComplejo(), mLinearStars);
         setStadiumImages();
         executeCommentTask();
 

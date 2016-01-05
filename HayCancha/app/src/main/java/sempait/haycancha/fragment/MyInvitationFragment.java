@@ -52,58 +52,58 @@ public class MyInvitationFragment extends BaseFragment {
         getBaseActivity().setSectionTitle(mContext.getString(R.string.invitations));
 
 
-        setDataInvitaions();
+//        setDataInvitaions();
 
-//        executeGetInvitationsServices();
+        executeGetInvitationsServices();
 
         return mView;
     }
 
     private void setDataInvitaions() {
+//
+//        List<Invitation> mListInvitation = new ArrayList<>();
+//
+//
+//        Invitation invitation = new Invitation();
+//
+//        invitation.setCodigoCancha(1);
+//        invitation.setCodigoComplejo(2);
+//        invitation.setCodigoEstadoSolicitud(2);
+//        invitation.setDescripcionCancha("Cancha 1");
+//        invitation.setDescripcionComplejo("La playa");
+//        invitation.setDirection("Oroño 827");
+//        invitation.setFecha("21/11/2015");
+//        invitation.setHoraDesde("14:00");
+//        invitation.setCodigoEstadoSolicitud(1);
+//        invitation.setHoraHasta("15:00");
+//        invitation.setImagenUsuario("");
+//        invitation.setIsCreator(false);
+//        invitation.setNombreApellidoUsuario("Ezequiel Dalaison");
+//        invitation.setPrecio(200f);
+//        invitation.setPuntaje(4.5f);
+//
+//        mListInvitation.add(invitation);
+//
+//
+//        Invitation invitation1 = new Invitation();
+//
+//        invitation1.setCodigoCancha(1);
+//        invitation1.setCodigoComplejo(2);
+//        invitation1.setCodigoEstadoSolicitud(2);
+//        invitation1.setDescripcionCancha("Cancha 1");
+//        invitation1.setDescripcionComplejo("La playa");
+//        invitation1.setDirection("Oroño 827");
+//        invitation1.setFecha("21/11/2015");
+//        invitation1.setHoraDesde("14:00");
+//        invitation1.setCodigoEstadoSolicitud(2);
+//        invitation1.setHoraHasta("15:00");
+//        invitation1.setImagenUsuario(ConfigurationClass.getImageUser(mContext));
+//        invitation1.setIsCreator(true);
+//        invitation1.setNombreApellidoUsuario("Juan Diego Vivero");
+//        invitation1.setPrecio(200f);
+//        invitation1.setPuntaje(4.5f);
 
-        List<Invitation> mListInvitation = new ArrayList<>();
-
-
-        Invitation invitation = new Invitation();
-
-        invitation.setCodigoCancha(1);
-        invitation.setCodigoComplejo(2);
-        invitation.setCodigoEstadoSolicitud(2);
-        invitation.setDescripcionCancha("Cancha 1");
-        invitation.setDescripcionComplejo("La playa");
-        invitation.setDirection("Oroño 827");
-        invitation.setFecha("21/11/2015");
-        invitation.setHoraDesde("14:00");
-        invitation.setCodigoEstadoSolicitud(1);
-        invitation.setHoraHasta("15:00");
-        invitation.setImagenUsuario("");
-        invitation.setIsCreator(false);
-        invitation.setNombreApellidoUsuario("Ezequiel Dalaison");
-        invitation.setPrecio(200f);
-        invitation.setPuntaje(4.5f);
-
-        mListInvitation.add(invitation);
-
-
-        Invitation invitation1 = new Invitation();
-
-        invitation1.setCodigoCancha(1);
-        invitation1.setCodigoComplejo(2);
-        invitation1.setCodigoEstadoSolicitud(2);
-        invitation1.setDescripcionCancha("Cancha 1");
-        invitation1.setDescripcionComplejo("La playa");
-        invitation1.setDirection("Oroño 827");
-        invitation1.setFecha("21/11/2015");
-        invitation1.setHoraDesde("14:00");
-        invitation1.setCodigoEstadoSolicitud(2);
-        invitation1.setHoraHasta("15:00");
-        invitation1.setImagenUsuario(ConfigurationClass.getImageUser(mContext));
-        invitation1.setIsCreator(true);
-        invitation1.setNombreApellidoUsuario("Juan Diego Vivero");
-        invitation1.setPrecio(200f);
-        invitation1.setPuntaje(4.5f);
-
-        mListInvitation.add(invitation1);
+//        mListInvitation.add(invitation1);
 
 //        Invitation invitation2 = new Invitation();
 //
@@ -229,7 +229,7 @@ public class MyInvitationFragment extends BaseFragment {
 //        mListInvitation.add(invitation7);
 
 
-        fillDataAdapter(mListInvitation);
+//        fillDataAdapter(mListInvitation);
 
     }
 
@@ -250,16 +250,14 @@ public class MyInvitationFragment extends BaseFragment {
 
                         fillDataAdapter(invitations);
 
-                    } else {
-
-                        ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.fields), mContext.getString(R.string.acept_text));
-
-                        FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
-                        ft.add(dialog, null);
-                        ft.commitAllowingStateLoss();
                     }
 
 
+                } else {
+                    ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.fields), mContext.getString(R.string.acept_text));
+                    FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
+                    ft.add(dialog, null);
+                    ft.commitAllowingStateLoss();
                 }
 
             }

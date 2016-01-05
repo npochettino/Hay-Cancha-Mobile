@@ -13,11 +13,11 @@ public class Stadium implements Serializable {
     private String direccion;
     private String horaApertura;
     private String horaCierre;
-    private Float latitud;
-    private Float longitud;
+    private float latitud;
+    private float longitud;
     private String mail;
     private String telefono;
-    private float raiting;
+    private float puntajeComplejo;
 
     public int getCodigoComplejo() {
         return codigoComplejo;
@@ -91,11 +91,12 @@ public class Stadium implements Serializable {
         this.telefono = telefono;
     }
 
-    public float getRaiting() {
-        return raiting;
+
+    public float getPuntajeComplejo() {
+        return puntajeComplejo;
     }
 
-    public void setRaiting(float raiting) {
-        this.raiting = raiting;
+    public void setPuntajeComplejo(float puntajeComplejo) {
+        this.puntajeComplejo = puntajeComplejo;
     }
 }

@@ -116,14 +116,25 @@
         android:visibility="gone" />
 
 
-    <ImageView
+    <!--<ImageView-->
+    <!--android:id="@+id/img_hay_cancha"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_weight="2"-->
+    <!--android:padding="20dp"-->
+    <!--android:src="@drawable/boton_buscar_cancha" />-->
+
+    <Button
         android:id="@+id/img_hay_cancha"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_weight="2"
-        android:padding="20dp"
-        android:src="@drawable/boton_buscar_cancha" />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
+        android:text="@string/search_turn"
+        android:textColor="@color/green"
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/view"

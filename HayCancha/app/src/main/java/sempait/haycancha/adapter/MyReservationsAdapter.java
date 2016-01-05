@@ -97,7 +97,7 @@ public class MyReservationsAdapter extends BaseAdapter {
         holder.name.setText(turn.getDescripcionComplejo());
         holder.direction.setText(turn.getDireccion());
         holder.distance.setText(" (A " + String.valueOf(round(turn.calculateDistanceTo(LocationManager.getInstance(mContext).getLocation()) / 1000, 2)) + " Km)");
-        Utils.setupRating(Float.parseFloat(turn.getPuntajeComplejo()), holder.rating);
+        Utils.setupRating(turn.getPuntajeComplejo(), holder.rating);
         holder.hourTo.setText(turn.getHoraDesde() + " hs");
         holder.fieldCod.setText(turn.getDescripcionCancha() + " ($ " + turn.getPrecio() + ")");
         ImageLoader.getInstance().displayImage(turn.getImagenComplejo().contains("http:") ? turn.getImagenComplejo() : "http:" + turn.getImagenComplejo(), holder.logoStadium, Utils.getImageLoaderOptionRouded());

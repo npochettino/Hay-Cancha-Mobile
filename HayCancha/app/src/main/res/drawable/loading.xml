@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item android:drawable="@drawable/ball_0" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_1" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_2" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_3" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_4" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_5" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_6" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_7" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_8" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_9" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_10" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_11" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_12" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_13" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_14" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_15" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_16" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_17" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_18" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_19" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_20" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_21" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_22" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_23" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_24" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_25" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_26" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_27" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_28" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_29" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_30" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_31" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_32" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_33" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_34" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_35" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_36" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_37" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_38" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_39" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_40" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_41" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_42" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_43" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_44" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_45" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_46" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_47" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_48" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_49" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_50" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_51" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_52" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_53" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_54" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_55" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_56" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_57" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_58" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_59" android:duration="@integer/anim_speed" />
+    <item android:drawable="@drawable/ball_60" android:duration="@integer/anim_speed" />
+
+
+
+
+</animation-list>

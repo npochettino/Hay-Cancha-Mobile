@@ -27,7 +27,7 @@ public class DeepLinkActivity extends BaseActivity {
                 i = new Intent(getApplicationContext(), MainActivity.class);
                 i.putExtra("section", data);
 
-            } else if (data.equalsIgnoreCase("asnwer_field")) {
+            } else if (data.equalsIgnoreCase("d")) {
                 i = new Intent(getApplicationContext(), MainActivity.class);
                 i.putExtra("section", data);
             }

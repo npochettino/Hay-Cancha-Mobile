@@ -70,7 +70,7 @@
                 android:gravity="center"
                 android:hint="@string/phone"
                 android:imeOptions="actionNext"
-                android:inputType="textWebEmailAddress"
+                android:inputType="number"
                 android:singleLine="true"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"

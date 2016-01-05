@@ -3,6 +3,7 @@ package sempait.haycancha.base;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import sempait.haycancha.R;
@@ -74,9 +77,16 @@ public class BaseActivity extends AppCompatActivity {
 
 
     public void showLoadingView() {
-        View loadingView = findViewById(R.id.loadingView);
+        RelativeLayout loadingView = (RelativeLayout) findViewById(R.id.loadingView);
+        ImageView loadingView_item = (ImageView) findViewById(R.id.loadingView_item);
         if (loadingView != null)
             loadingView.setVisibility(View.VISIBLE);
+
+        loadingView_item.setBackgroundResource(R.drawable.loading);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) loadingView_item.getBackground();
+
+        frameAnimation.start();
     }
 
     public void replaceInnerFragment(android.support.v4.app.Fragment fragment, Boolean addToBackStack) {
@@ -277,7 +287,16 @@ public class BaseActivity extends AppCompatActivity {
 
     public void dismissLoadingView() {
 
-        final View loadingView = findViewById(R.id.loadingView);
+        final RelativeLayout loadingView = (RelativeLayout) findViewById(R.id.loadingView);
+        ImageView loadingView_item = (ImageView) findViewById(R.id.loadingView_item);
+
+        loadingView_item.setBackgroundResource(R.drawable.loading);
+
+        AnimationDrawable frameAnimation = (AnimationDrawable) loadingView_item.getBackground();
+
+        frameAnimation.stop();
+
+
         if (loadingView != null) {
             if (loadingView.getVisibility() != View.GONE) {
                 Animation fadeInAnimation = AnimationUtils.loadAnimation(this, android.R.anim.fade_out);
@@ -296,6 +315,7 @@ public class BaseActivity extends AppCompatActivity {
                     public void onAnimationEnd(Animation animation) {
 
                         loadingView.setVisibility(View.GONE);
+
                     }
                 });
 

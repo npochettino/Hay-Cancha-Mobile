@@ -120,6 +120,10 @@ public class TurnsFilterFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Date date1 = myCalendar.getTime();
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM");
+        final String stringDate = format1.format(date1);
+
         mView.findViewById(R.id.img_hay_cancha).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -20,14 +20,14 @@ public class Invitation implements Serializable {
     private String imagenUsuario;
     private String nombreApellidoUsuario;
     private Boolean isCreator;
-    private String direction;
+    private String direccionComplejo;
     private Float puntaje;
     private String codigoTelefono;
     private Float precio;
     private Boolean isHeader;
     private String headerText;
     private int codigoUsuarioAppInvitado;
-    private int codigoTurnoVariable;
+    private int codigoTurno;
 
 
     public int getCodigoSolicitud() {
@@ -134,13 +134,6 @@ public class Invitation implements Serializable {
         this.isCreator = isCreator;
     }
 
-    public String getDirection() {
-        return direction;
-    }
-
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
 
     public Float getPuntaje() {
         return puntaje;
@@ -190,11 +183,19 @@ public class Invitation implements Serializable {
         this.codigoUsuarioAppInvitado = codigoUsuarioAppInvitado;
     }
 
-    public int getCodigoTurnoVariable() {
-        return codigoTurnoVariable;
+    public int getCodigoTurno() {
+        return codigoTurno;
     }
 
-    public void setCodigoTurnoVariable(int codigoTurnoVariable) {
-        this.codigoTurnoVariable = codigoTurnoVariable;
+    public void setCodigoTurno(int codigoTurno) {
+        this.codigoTurno = codigoTurno;
+    }
+
+    public String getDireccionComplejo() {
+        return direccionComplejo;
+    }
+
+    public void setDireccionComplejo(String direccionComplejo) {
+        this.direccionComplejo = direccionComplejo;
     }
 }

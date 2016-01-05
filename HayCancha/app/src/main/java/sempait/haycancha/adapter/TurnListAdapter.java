@@ -105,7 +105,7 @@ public class TurnListAdapter extends BaseAdapter {
         holder.name.setText(turn.getDescripcionComplejo());
         holder.direction.setText(turn.getDireccion());
         holder.distance.setText(" (A " + String.valueOf(round(turn.calculateDistanceTo(LocationManager.getInstance(mContext).getLocation()) / 1000, 2)) + " Km)");
-        Utils.setupRating(Float.parseFloat(turn.getPuntajeComplejo()), holder.rating);
+        Utils.setupRating(turn.getPuntajeComplejo(), holder.rating);
         holder.hourTo.setText(turn.getHoraDesde() + " hs");
         holder.fieldCod.setText(turn.getDescripcionCancha() + " ($ " + turn.getPrecio() + ")");
         ImageLoader.getInstance().displayImage(turn.getImagenComplejo().contains("http:") ? turn.getImagenComplejo() : "http:" + turn.getImagenComplejo(), holder.logoStadium, Utils.getImageLoaderOptionRouded());
@@ -137,7 +137,7 @@ public class TurnListAdapter extends BaseAdapter {
         return bd.floatValue();
     }
 
-    private void executeGetLocalService(Turn turn) {
+    private void executeGetLocalService(final Turn turn) {
 
         mGetLocalTask = new GetLocalTask(mContext) {
             @Override
@@ -151,6 +151,7 @@ public class TurnListAdapter extends BaseAdapter {
                     }.getType());
 
                     Stadium stadium = stadiums.get(0);
+                    stadium.setPuntajeComplejo(turn.getPuntajeComplejo());
 
                     ((BaseActivity) mContext).replaceInnerFragmentWhitFLip(new StadiumDetailFragment().newInstance(stadium), true);
 
