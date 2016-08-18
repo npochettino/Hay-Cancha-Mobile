@@ -20,7 +20,6 @@ import sempait.haycancha.base.BaseActivity;
 import sempait.haycancha.fragment.SearchPlayerFragment;
 import sempait.haycancha.models.Turn;
 import sempait.haycancha.services.GET.GetLocalTask;
-import sempait.haycancha.services.LocationManager;
 
 /**
  * Created by martin on 18/11/15.
@@ -98,7 +97,9 @@ public class MyReservationsConfirmAdapter extends BaseAdapter {
 
         holder.name.setText(turn.getDescripcionComplejo());
         holder.direction.setText(turn.getDireccion());
+/*
         holder.distance.setText(" (A " + String.valueOf(round(turn.calculateDistanceTo(LocationManager.getInstance(mContext).getLocation()) / 1000, 2)) + " Km)");
+*/
         Utils.setupRating(turn.getPuntajeComplejo(), holder.rating);
         holder.hourTo.setText(turn.getHoraDesde() + " hs");
         holder.fieldCod.setText(turn.getDescripcionCancha() + " ($ " + turn.getPrecio() + ")");

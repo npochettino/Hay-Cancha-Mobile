@@ -1,3 +1,4 @@
+/*
 package sempait.haycancha.services;
 
 import android.content.Context;
@@ -15,9 +16,11 @@ import com.google.android.gms.location.LocationServices;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+*/
 /**
  * Created by martin on 19/02/15.
- */
+ *//*
+
 public class LocationManager implements
         LocationListener,
         GoogleApiClient.ConnectionCallbacks,
@@ -128,3 +131,4 @@ public class LocationManager implements
     }
 
 }
+*/

@@ -74,7 +74,7 @@ public class ReservationConfirmsFragments extends BaseFragment {
 
                     } else {
 
-                        ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.error_message), mContext.getString(R.string.fields), mContext.getString(R.string.acept_text));
+                        ConfirmDialogCustom dialog = new ConfirmDialogCustom(mContext.getString(R.string.no_reservation_confirmed), mContext.getString(R.string.fields), mContext.getString(R.string.acept_text));
 
                         FragmentTransaction ft = ((BaseActivity) mContext).getSupportFragmentManager().beginTransaction();
                         ft.add(dialog, null);

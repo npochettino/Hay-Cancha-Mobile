@@ -8,7 +8,6 @@ import android.os.Handler;
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.R;
 import sempait.haycancha.base.BaseActivity;
-import sempait.haycancha.services.LocationManager;
 
 /**
  * Created by martin on 19/10/15.
@@ -26,8 +25,9 @@ public class SplashActivity extends BaseActivity {
 
         context = getApplicationContext();
 
+/*
         LocationManager.getInstance(this);
-
+*/
 
 
         new Handler().postDelayed(new Runnable() {

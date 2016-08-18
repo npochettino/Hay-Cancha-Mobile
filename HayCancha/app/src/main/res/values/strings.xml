@@ -35,6 +35,7 @@
     <string name="acept_text">"Aceptar"</string>
     <string name="cancel_text">"Cancelar"</string>
     <string name="error_message">"Hubo un problema, intentelo nuevamente"</string>
+    <string name="no_reservation_confirmed">"No tienes reservas confirmadas por el momneto."</string>
     <string name="no_found_player">"No hemos encontrado jugadores disponibles en esa posición"</string>
     <string name="error_hora_message">"La hora desde no puede ser mayor a la hora hasta"</string>
     <string name="success_save_turn_message">"Excelente, esperemos a que tu canchero responda"</string>

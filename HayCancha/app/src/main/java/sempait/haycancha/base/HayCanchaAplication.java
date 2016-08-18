@@ -25,7 +25,6 @@ import java.io.File;
 
 import sempait.haycancha.ConfigurationClass;
 import sempait.haycancha.Utils;
-import sempait.haycancha.services.LocationManager;
 
 /**
  * Created by martin on 14/11/15.

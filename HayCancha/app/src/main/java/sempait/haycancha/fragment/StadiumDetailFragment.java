@@ -42,7 +42,6 @@ import sempait.haycancha.base.BaseFragment;
 import sempait.haycancha.models.Comment;
 import sempait.haycancha.models.Stadium;
 import sempait.haycancha.services.GET.GetCommentForStadiumTask;
-import sempait.haycancha.services.LocationManager;
 import sempait.haycancha.services.PUT.PutStadiumCommentTask;
 
 /**
@@ -240,7 +239,7 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
         super.onResume();
 
         setUpMapIfNeeded();
-        centerMapOnMyLocation();
+        /*centerMapOnMyLocation();*/
     }
 
     private void setUpMapIfNeeded() {
@@ -301,7 +300,7 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
         }
     }
 
-    private void centerMapOnMyLocation() {
+    /*private void centerMapOnMyLocation() {
 
         Location l = LocationManager.getInstance(mContext).getLocation();
 
@@ -309,7 +308,7 @@ public class StadiumDetailFragment extends BaseFragment implements GoogleMap.OnI
             LatLng location = new LatLng(l.getLatitude(), l.getLongitude());
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 16));
         }
-    }
+    }*/
 
     private void addMarkersToMap() {
         double latitude = 0;
